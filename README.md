@@ -81,4 +81,6 @@ The plugin file(papersgpt.xpi) will be built and generated into the build direct
 
 Contributions to PapersGPT are welcome! Please follow the standard GitHub process for submitting pull requests or reporting issues.
 
+## Acknowledgements
 
+Thanks to [zotero-gpt](https://github.com/MuiseDestiny/zotero-gpt.git), PapersGPT for Zotero was born, and have developed many unique, significant improvements based on it.
