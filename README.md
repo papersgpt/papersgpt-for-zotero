@@ -83,4 +83,4 @@ Contributions to PapersGPT are welcome! Please follow the standard GitHub proces
 
 ## Acknowledgements
 
-Thanks to [zotero-gpt](https://github.com/MuiseDestiny/zotero-gpt.git), PapersGPT for Zotero was born, and have developed many unique, significant improvements based on it.
+Thanks to [zotero-gpt](https://github.com/MuiseDestiny/zotero-gpt.git), PapersGPT for Zotero was born, and lots of unique, significant features have been developed based on it.
