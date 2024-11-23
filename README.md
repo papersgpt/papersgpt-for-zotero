@@ -8,14 +8,14 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *gemini-exp-1121*
-  *gemini-exp-1114*
-  *gemini-1.5-pro*
-  *gemini-1.5-flash*
-  *gpt-4o-2024-11-20* 
-  *gpt-4o-mini* 
-  *claude-3.5-sonnet* 
-  *claude-3.5-haiku* 
+  *gemini-exp-1121*  
+  *gemini-exp-1114*  
+  *gemini-1.5-pro*  
+  *gemini-1.5-flash*  
+  *gpt-4o-2024-11-20*  
+  *gpt-4o-mini*  
+  *claude-3.5-sonnet*  
+  *claude-3.5-haiku*  
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
