@@ -64,7 +64,7 @@
     "showdown": "^2.1.0",
     "terser": "^5.17.1",
     "zotero-adv-installer": "file:..",
-    "zotero-plugin-toolkit": "^2.3.1"
+    "zotero-plugin-toolkit": "2.3.1"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
