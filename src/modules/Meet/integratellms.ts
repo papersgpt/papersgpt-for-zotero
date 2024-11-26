@@ -306,9 +306,16 @@ export async function getResponseByOnlineModel(requestText: string) {
       }
     }
   } else if (curPublisher == "Gemini") {
+
+    var deployedModel = model
+    if (model.includes(":")) {
+        let index = model.indexOf(":")
+        deployedModel = model.substr(index + 1, model.length)  		   
+    }
+
     const index = apiURL.lastIndexOf("/")
     apiURL = apiURL.substr(0, index)
-    apiURL = apiURL + "/" + model + ":streamGenerateContent?alt=sse&key=" + apiKey
+    apiURL = apiURL + "/" + deployedModel + ":streamGenerateContent?alt=sse&key=" + apiKey
     var text = ""
     if (views.messages.slice(-1)[0].role == "user") {
       text = views.messages.slice(-1)[0].content 
@@ -372,7 +379,7 @@ export async function getResponseByOnlineModel(requestText: string) {
       var deployedModel = model
       if (model.includes(":")) {
           let index = model.indexOf(":")
-          deployedModel = model.substr(index + 1, model.length)  		   
+          deployedModel = model.substr(index + 1, model.length)
       }
       var re
       await Zotero.HTTP.request(
