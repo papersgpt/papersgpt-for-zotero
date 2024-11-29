@@ -21,7 +21,7 @@ export function sleep(time) {
 }
 
 export default class Views {
-  private id = "zotero-GPT-container";
+  private id = "papersgpt-for-zotero";
   /**
    * OpenAI interface historical message records need to be exposed to the GPT response function
    */
@@ -539,36 +539,36 @@ export default class Views {
 		  modelSelectDivContainer.remove() 
 	      }
 
-	     var apiUrlId  = "apiUrlDiv"
-	     apiUrlContainer = ztoolkit.UI.appendElement({
-	         tag: "div",
-		 id: apiUrlId,
-		 classList: [apiUrlId],
-		 styles: {
-		     margin: "6px",
-		     fontSize: "12px",
-                     borderRadius: "5px"
-		 }
-	     }, modelConfigContainer) as HTMLDivElement	
+	      var apiUrlId  = "apiUrlDiv"
+	      apiUrlContainer = ztoolkit.UI.appendElement({
+	          tag: "div",
+		  id: apiUrlId,
+		  classList: [apiUrlId],
+		  styles: {
+		      margin: "6px",
+		      fontSize: "12px",
+                      borderRadius: "5px"
+		  }
+	      }, modelConfigContainer) as HTMLDivElement	
 
-	     var apiId = "apiUrl"
-	     var apitext = curPublisher + " API URL"
-	     var apiUrlContainer: HTMLDivElement
-	     if (curPublisherElement.apiUrl.length > 0) {
- 	         apitext = curPublisherElement.apiUrl
+	      var apiId = "apiUrl"
+	      var apitext = curPublisher + " API URL"
+	      var apiUrlContainer: HTMLDivElement
+	      if (curPublisherElement.apiUrl.length > 0) {
+ 	          apitext = curPublisherElement.apiUrl
 
-		 apiUrlContainer = ztoolkit.UI.appendElement({
-  		     tag: "input",
-		     id: apiId,
-		     styles: {
-		         width: "150px"
-		     },
-		     properties: {
-		         type: "text",
-		         value: apitext
-		     }
-		 }, apiUrlContainer) as HTMLDivElement
-	     } else {
+		  apiUrlContainer = ztoolkit.UI.appendElement({
+  		      tag: "input",
+		      id: apiId,
+		      styles: {
+		          width: "150px"
+		      },
+		      properties: {
+		          type: "text",
+		          value: apitext
+		      }
+		  }, apiUrlContainer) as HTMLDivElement
+	      } else {
 		  apiUrlContainer = ztoolkit.UI.appendElement({
 		      tag: "input",
 		      id: apiId,
@@ -580,48 +580,48 @@ export default class Views {
 			  placeholder: apitext
 		      }
 		  }, apiUrlContainer) as HTMLDivElement
-	     }
+	      }
 
-	     apiUrlContainer.addEventListener("change", async event => {
-		 if ((<HTMLInputElement>apiUrlContainer).value == null) return
-	         const curPublisherElement = this.publisher2models.get(curPublisher)
-		 if (curPublisherElement != null) {
-		     curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlContainer).value
-		     Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlContainer).value)
-		 } 
-	     })
+	      apiUrlContainer.addEventListener("change", async event => {
+		  if ((<HTMLInputElement>apiUrlContainer).value == null) return
+	          const curPublisherElement = this.publisher2models.get(curPublisher)
+		  if (curPublisherElement != null) {
+		      curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlContainer).value
+		      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlContainer).value)
+		  } 
+	      })
 
 
-             var customModelDivId  = "customModelDiv"
-	     customModelDivContainer = ztoolkit.UI.appendElement({
-	         tag: "div",
-		 id: customModelDivId,
-		 classList: [customModelDivId],
-		 styles: {
-		     margin: "6px",
-		     fontSize: "12px",
-                     borderRadius: "5px"
-		 }
-	     }, modelConfigContainer) as HTMLDivElement	
+              var customModelDivId  = "customModelDiv"
+	      customModelDivContainer = ztoolkit.UI.appendElement({
+	          tag: "div",
+		  id: customModelDivId,
+		  classList: [customModelDivId],
+		  styles: {
+		      margin: "6px",
+		      fontSize: "12px",
+                      borderRadius: "5px"
+		  }
+	      }, modelConfigContainer) as HTMLDivElement	
 
-	     var customModelId = "customModelId"
-	     var customModelText = curPublisher + " Model Name"
-	     var customModelContainer: HTMLDivElement
-	     if (curPublisherElement.models.length > 0) {
- 	         customModelText = curPublisherElement.models[0]
+	      var customModelId = "customModelId"
+	      var customModelText = curPublisher + " Model Name"
+	      var customModelContainer: HTMLDivElement
+	      if (curPublisherElement.models.length > 0) {
+ 	          customModelText = curPublisherElement.models[0]
 
-		 customModelContainer = ztoolkit.UI.appendElement({
-  		     tag: "input",
-		     id: customModelId,
-		     styles: {
-		         width: "150px"
-		     },
-		     properties: {
-		         type: "text",
-		         value: customModelText
-		     }
-		 }, customModelDivContainer) as HTMLDivElement
-	     } else {
+		  customModelContainer = ztoolkit.UI.appendElement({
+  		      tag: "input",
+		      id: customModelId,
+		      styles: {
+		          width: "150px"
+		      },
+		      properties: {
+		          type: "text",
+		          value: customModelText
+		      }
+		  }, customModelDivContainer) as HTMLDivElement
+	      } else {
 		  customModelContainer = ztoolkit.UI.appendElement({
 		      tag: "input",
 		      id: customModelId,
@@ -633,20 +633,20 @@ export default class Views {
 			  placeholder: customModelText
 		      }
 		  }, customModelDivContainer) as HTMLDivElement
-	     }
+	      }
 
-	     customModelContainer.addEventListener("change", async event => {
-		 if ((<HTMLInputElement>customModelContainer).value == null) return
-		 const curPublisherElement = this.publisher2models.get(curPublisher)
-          	 if (curPublisherElement != null) {
-		     if (curPublisherElement.models.length > 0) {
-		         curPublisherElement.models[0] = (<HTMLInputElement>customModelContainer).value
-		     } else {
-		         curPublisherElement.models.push((<HTMLInputElement>customModelContainer).value)
-		     }
-		     Zotero.Prefs.set(`${config.addonRef}.usingModel`, (<HTMLInputElement>customModelContainer).value)
-		 }
-	     })
+	      customModelContainer.addEventListener("change", async event => {
+		  if ((<HTMLInputElement>customModelContainer).value == null) return
+		  const curPublisherElement = this.publisher2models.get(curPublisher)
+          	  if (curPublisherElement != null) {
+		      if (curPublisherElement.models.length > 0) {
+		          curPublisherElement.models[0] = (<HTMLInputElement>customModelContainer).value
+		      } else {
+		          curPublisherElement.models.push((<HTMLInputElement>customModelContainer).value)
+		      }
+		      Zotero.Prefs.set(`${config.addonRef}.usingModel`, (<HTMLInputElement>customModelContainer).value)
+		  }
+	      })
 	  } 
 
 	  var apiDivNode = document.getElementById("apidiv") 
@@ -792,7 +792,8 @@ export default class Views {
 			 } else if (curPublisher == "Gemini") {
 			     Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
 			 }
-			 if (Zotero.isMac && curPublisher != "Customized") {
+			 //if (Zotero.isMac && curPublisher != "Customized") {
+			 if (Zotero.isMac) {
 			     const response = await setApiKey(curPublisher, (<HTMLInputElement>apiContainer).value)
 			 }
 		     }
