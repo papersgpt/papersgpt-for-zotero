@@ -481,6 +481,11 @@ export async function getResponseByLocalLLM(requestText: string) {
     id: id
   })
   const chatNumber = Zotero.Prefs.get(`${config.addonRef}.chatNumber`) as number
+  var responseTimeout = 2000
+  if (model == "QwQ-32B-Preview-IQ2" || model == "marco-o1") {
+    responseTimeout = 10 * 60000
+  }
+
   try {
     await Zotero.HTTP.request(
       "POST",
@@ -509,12 +514,14 @@ export async function getResponseByLocalLLM(requestText: string) {
             } catch {
               // The error usually occurs when the token exceeds the limit
               ztoolkit.log(e.target.response)
+	      Zotero.log(e.target.response)
             }
             if (e.target.timeout) {
               e.target.timeout = 0;
             }
           };
         },
+	timeout: responseTimeout
       }
     );
   } catch (error: any) {
