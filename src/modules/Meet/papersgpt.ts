@@ -355,6 +355,14 @@ function parseJsonResults(publisher2models: Map<string, ModelConfig>, publishers
     var modelsAreReady = new Map()
     if (publisher != "Local LLM") {
       models = supportedLLMsJson[i]["Models"]
+      if (publisher == "Customized") {
+	var customizedModel = Zotero.Prefs.get(`${config.addonRef}.customModelApiModel`)
+	if (customizedModel.length > 0 && models.length == 0) {
+          models.push(customizedModel)	
+	} else if (customizedModel.length > 0 && models.length > 0) {
+          modelds[0] = customizedModel	
+	}
+      }
     } else {
       for (let j = 0; j < supportedLLMsJson[i]["Models"].length; j++) {
         models.push(supportedLLMsJson[i]["Models"][j]["Name"])
@@ -375,13 +383,19 @@ function parseJsonResults(publisher2models: Map<string, ModelConfig>, publishers
 	}	
     }
 
+    var apiUrl = supportedLLMsJson[i]["API_URL"]
+    if (publisher == "Customized" && apiUrl.length == 0) {
+	apiUrl = Zotero.Prefs.get(`${config.addonRef}.customModelApiUrl`)
+    }
+
+
     let modelConfig: ModelConfig = {
       models: models,
       hasApiKey: supportedLLMsJson[i].hasOwnProperty("IsOpenSource") ? !supportedLLMsJson[i]["IsOpenSource"] : true,
       apiKey: apiKey,
       areModelsReady: modelsAreReady,
       defaultModelIdx: 0,
-      apiUrl: supportedLLMsJson[i]["API_URL"]
+      apiUrl: apiUrl 
     }
          
     if (publisher == curPublisher && supportedLLMsJson[i].hasOwnProperty("API_KEY") && supportedLLMsJson[i]["API_KEY"].length > 0) {

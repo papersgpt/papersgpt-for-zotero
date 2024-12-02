@@ -15,7 +15,9 @@ pref("extensions.zotero.__addonRef__.usingAPIURL", "https://api.openai.com/v1/ch
 pref("extensions.zotero.__addonRef__.openaiApiKey", "");
 pref("extensions.zotero.__addonRef__.geminiApiKey", "");
 pref("extensions.zotero.__addonRef__.claudeApiKey", "");
+pref("extensions.zotero.__addonRef__.customModelApiUrl", "");
 pref("extensions.zotero.__addonRef__.customModelApiKey", "");
+pref("extensions.zotero.__addonRef__.customModelApiModel", "");
 pref("extensions.zotero.__addonRef__.secretKey", "");
 pref("extensions.zotero.__addonRef__.model", "gpt-3.5-turbo");
 pref("extensions.zotero.__addonRef__.api", "https://api.openai.com");
