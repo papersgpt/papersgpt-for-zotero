@@ -587,6 +587,7 @@ export default class Views {
 	          const curPublisherElement = this.publisher2models.get(curPublisher)
 		  if (curPublisherElement != null) {
 		      curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlContainer).value
+		      Zotero.Prefs.set(`${config.addonRef}.customModelApiUrl`, (<HTMLInputElement>apiUrlContainer).value)
 		      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlContainer).value)
 		  } 
 	      })
@@ -644,6 +645,7 @@ export default class Views {
 		      } else {
 		          curPublisherElement.models.push((<HTMLInputElement>customModelContainer).value)
 		      }
+		      Zotero.Prefs.set(`${config.addonRef}.customModelApiModel`, (<HTMLInputElement>customModelContainer).value)
 		      Zotero.Prefs.set(`${config.addonRef}.usingModel`, (<HTMLInputElement>customModelContainer).value)
 		  }
 	      })
@@ -791,6 +793,8 @@ export default class Views {
 			     Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
 			 } else if (curPublisher == "Gemini") {
 			     Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+			 } else if (curPublisher == "Customized") {
+			     Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 			 }
 			 //if (Zotero.isMac && curPublisher != "Customized") {
 			 if (Zotero.isMac) {
@@ -1007,6 +1011,8 @@ export default class Views {
 			      Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
 			  } else if (curPublisher == "Gemini") {
 			      Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+			  } else if (curPublisher == "Customized") {
+			     Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 			  }
 
 			  if (Zotero.isMac) {
