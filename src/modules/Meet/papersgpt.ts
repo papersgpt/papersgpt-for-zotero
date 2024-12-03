@@ -458,15 +458,16 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
   } else {
     var isActivated = Zotero.Prefs.get(`${config.addonRef}.isLicenseActivated`)
     const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
-     
+    
     if (isActivated 
       && email.length > 0 
       && token.length > 0
       && supportedLLMs.length > 0) {
       var supportedLLMsJson = JSON.parse(supportedLLMs)
-      parseJsonResults(publisher2models, publishers, supportedLLMsJson)
-   
-      return 
+      if (supportedLLMsJson.length > 0) {
+        parseJsonResults(publisher2models, publishers, supportedLLMsJson)
+        return 
+      } 
     }
      
 

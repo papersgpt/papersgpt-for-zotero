@@ -3248,7 +3248,13 @@ export default class Views {
                   window.setTimeout(execFunc, 3000)
 	      }
 	  } 
-      }  
+      } else {
+	  var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
+          var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
+          await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+          Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
+      }
+      
       if (Zotero_Tabs.selectedIndex == 0) {
         const div = document.querySelector("#item-tree-main-default .row.selected")!
         if (div) {
