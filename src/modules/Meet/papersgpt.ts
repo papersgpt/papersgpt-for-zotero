@@ -488,33 +488,30 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 	      email: email,
               token: token,
             }),
+	    timeout: 1200
           }
         )
       } catch (error: any) {
         try {
           httpRequestError = true
           error = error.xmlhttp.response?.error
-          views.setText(`# ${error.code}\n> ${url}\n\n**${error.type}**\n${error.message}`, true)
-          new ztoolkit.ProgressWindow(error.code, { closeOtherProgressWindows: true })
-            .createLine({ text: error.message, type: "default" })
-            .show()
+	  Zotero.log(error.message)
         } catch {
-          new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
-            .createLine({ text: error, type: "default" })
-            .show()
+	  Zotero.log(error)
 	  httpRequestError = true
         }
       }
       trycount = trycount + 1
-      await sleep(3000)
-    } while (trycount < 5 && httpRequestError)
+    } while (trycount < 3 && httpRequestError)
   }
+
 
   if (httpRequestError) {
       return
   }
 
   if (res?.response.Code) {
+
     if (res.response.Code != 200) {
       return
     } 
