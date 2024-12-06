@@ -435,26 +435,21 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 				email: email,
 				token: token,
 			}),
+			timeout: 1000
 		}
         )
       } catch (error: any) {
         try {
           httpRequestError = true
           error = error.xmlhttp.response?.error
-          views.setText(`# ${error.code}\n> ${url}\n\n**${error.type}**\n${error.message}`, true)
-          new ztoolkit.ProgressWindow(error.code, { closeOtherProgressWindows: true })
-            .createLine({ text: error.message, type: "default" })
-            .show()
+	  Zotero.log(error.message)
         } catch {
-          new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
-            .createLine({ text: error, type: "default" })
-            .show()
+	  Zotero.log(error)
 	  httpRequestError = true
         }
       }
       trycount = trycount + 1
-      await sleep(3000)
-    } while (trycount < 5 && httpRequestError)
+    } while (trycount < 2 && httpRequestError)
   } else {
     var isActivated = Zotero.Prefs.get(`${config.addonRef}.isLicenseActivated`)
     const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
@@ -488,7 +483,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 	      email: email,
               token: token,
             }),
-	    timeout: 1200
+	    timeout: 1000
           }
         )
       } catch (error: any) {
@@ -502,7 +497,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
         }
       }
       trycount = trycount + 1
-    } while (trycount < 3 && httpRequestError)
+    } while (trycount < 2 && httpRequestError)
   }
 
 
