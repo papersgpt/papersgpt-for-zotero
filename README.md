@@ -8,6 +8,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
+  *gemini-2.0-flash-exp* :sparkles: :fire:   
   *gemini-exp-1206*  **#1 on Chatbot Arena** :sparkles: :fire:   
   *gemini-exp-1121*   
   *LearnLM-1.5* :fire:  
