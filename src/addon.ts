@@ -1,13 +1,13 @@
-import ZoteroToolkit from "zotero-plugin-toolkit/dist/index";
+import { ZoteroToolkit } from "zotero-plugin-toolkit";
 import { ColumnOptions } from "zotero-plugin-toolkit/dist/helpers/virtualizedTable";
 import hooks from "./hooks";
+//import { createZToolkit } from "./ztoolkit"
 
 class Addon {
   public data: {
     alive: boolean;
     // Env type, see build.js
     env: "development" | "production";
-    // ztoolkit: MyToolkit;
     ztoolkit: ZoteroToolkit;
     locale?: {
       stringBundle: any;
@@ -27,8 +27,8 @@ class Addon {
     this.data = {
       alive: true,
       env: __env__,
-      // ztoolkit: new MyToolkit(),
       ztoolkit: new ZoteroToolkit(),
+      //ztoolkit: createZToolkit(),
     };
     this.hooks = hooks;
     this.api = {};

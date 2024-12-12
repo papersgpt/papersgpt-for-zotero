@@ -6,7 +6,6 @@ import { help, fontFamily, defaultTags, parseTag } from "./base"
 import { getLocalModelDownloadProgress, setApiKey, getSupportedLLMs, ModelConfig, selectModel } from "./Meet/papersgpt";
 import { checkFileExist, startLocalLLMEngine, shutdownLocalLLMEngine } from "../hooks";
 
-
 const markdown = require("markdown-it")({
   breaks: true, // Convert line terminators \n to <br> tags
   xhtmlOut: true, // Use /> to close the tag, not >
@@ -3200,6 +3199,9 @@ export default class Views {
     await getSupportedLLMs(this.publisher2models, this.publishers, email, token) 
   }
 
+  
+
+
   /**
    * Bind shortcut key 
    */
@@ -3292,20 +3294,26 @@ export default class Views {
         }
       }
     }
-    if (Zotero.isMac) {
 
-      ztoolkit.Shortcut.register("event", {
-        id: config.addonRef,
-        modifiers: "meta",
-        key: "enter",
-        callback: callback
+
+    const key = "enter"
+    if (Zotero.isMac) {
+      const modifiers = "meta"
+      ztoolkit.Keyboard.register((ev, data) => {
+        if (data.type === "keyup" && data.keyboard) {
+          if (data.keyboard.equals(`${modifiers},${key}`)) {
+            callback() 
+          }
+        }
       })
     } else {
-      ztoolkit.Shortcut.register("event", {
-        id: config.addonRef,
-        modifiers: "control",
-        key: "enter",
-        callback: callback
+      const modifiers = "control"
+      ztoolkit.Keyboard.register((ev, data) => {
+        if (data.type === "keyup" && data.keyboard) {
+          if (data.keyboard.equals(`${modifiers},${key}`)) {
+            callback() 
+          }
+        }
       })
     }
     

@@ -2,6 +2,7 @@ import { config } from "../package.json";
 import { getString, initLocale } from "./modules/locale";
 import Views from "./modules/views";
 import Utils from "./modules/utils";
+import { createZToolkit } from "./ztoolkit"
 
 async function onStartup() {
   await Promise.all([
@@ -13,6 +14,10 @@ async function onStartup() {
   ztoolkit.ProgressWindow.setIconURI(
     "default",
     `chrome://${config.addonRef}/content/icons/favicon.ico`
+  );
+
+  await Promise.all(
+    Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
   );
 
   Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, "")
@@ -45,6 +50,19 @@ async function onStartup() {
       
       }
   }
+}
+
+async function onMainWindowLoad(win: Window): Promise<void> {
+  // Create ztoolkit for every window
+  addon.data.ztoolkit = createZToolkit();
+  //AddonTable.registerInToolbar();
+  //AddonTable.registerInMenuTool();
+
+  //Guide.showGuideInMainWindowIfNeed(win);
+}
+
+async function onMainWindowUnload(win: Window): Promise<void> {
+  ztoolkit.unregisterAll();
 }
 
 export async function downloadFile(url, filename) {
@@ -153,4 +171,6 @@ function onShutdown(): void {
 export default {
   onStartup,
   onShutdown,
+  onMainWindowLoad,
+  onMainWindowUnload,
 };
