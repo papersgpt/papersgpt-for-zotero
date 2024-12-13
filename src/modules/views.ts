@@ -6,6 +6,7 @@ import { help, fontFamily, defaultTags, parseTag } from "./base"
 import { getLocalModelDownloadProgress, setApiKey, getSupportedLLMs, ModelConfig, selectModel } from "./Meet/papersgpt";
 import { checkFileExist, startLocalLLMEngine, shutdownLocalLLMEngine } from "../hooks";
 
+
 const markdown = require("markdown-it")({
   breaks: true, // Convert line terminators \n to <br> tags
   xhtmlOut: true, // Use /> to close the tag, not >
@@ -1612,7 +1613,7 @@ export default class Views {
 					      Zotero.Prefs.set(`${config.addonRef}.isLicenseActivated`, true) 
 					      Zotero.Prefs.set(`${config.addonRef}.grade`, res.response.grader) 	
 
-
+                                
 					      await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
 					      Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
 
@@ -2832,8 +2833,9 @@ export default class Views {
   private async execTag(tag: Tag) {
     Meet.Global.input = this.inputContainer.querySelector("input")?.value as string
     this._tag = tag
-    const popunWin = new ztoolkit.ProgressWindow(tag.tag, { closeTime: -1, closeOtherProgressWindows: true })
+    const popunWin = new ztoolkit.ProgressWindow(tag.tag, { closeOnClick: true, closeTime: -1, closeOtherProgressWindows: true })
       .show()
+
     Meet.Global.popupWin = popunWin
     popunWin
       .createLine({ text: "Generating input content...", type: "default" })
@@ -3234,7 +3236,7 @@ export default class Views {
           var filename = "ChatPDFLocal"
 	  const temp = Zotero.getTempDirectory();
           filename = PathUtils.join(temp.path.replace(temp.leafName, ""), `${filename}.dmg`);
-	 
+
 	  if (await checkFileExist(filename + ".done")) {
 	      var startLocalServer = Zotero.Prefs.get(`${config.addonRef}.startLocalServer`)
               if (!startLocalServer) {
@@ -3243,8 +3245,8 @@ export default class Views {
 		  Zotero.Prefs.set(`${config.addonRef}.startLocalServer`, true)
 	          const execFunc = async() => {
 		      var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-                      var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
-                      await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+                      var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
+		      await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
                       Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
                   }
                   window.setTimeout(execFunc, 3000)
@@ -3252,7 +3254,7 @@ export default class Views {
 	  } 
       } else {
 	  var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-          var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
+          var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
 	  await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
           Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
       }
@@ -3299,7 +3301,8 @@ export default class Views {
     const key = "enter"
     if (Zotero.isMac) {
       const modifiers = "meta"
-      ztoolkit.Keyboard.register((ev, data) => {
+      //ztoolkit.Keyboard.register((ev, data) => {
+      ztoolkit.Shortcut.register((ev, data) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
             callback() 
@@ -3308,7 +3311,8 @@ export default class Views {
       })
     } else {
       const modifiers = "control"
-      ztoolkit.Keyboard.register((ev, data) => {
+      //ztoolkit.Keyboard.register((ev, data) => {
+      ztoolkit.Shortcut.register((ev, data) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
             callback() 
