@@ -3,6 +3,7 @@ import { getString, initLocale } from "./modules/locale";
 import Views from "./modules/views";
 import Utils from "./modules/utils";
 import { createZToolkit } from "./ztoolkit"
+import { ZoteroToolkit } from "zotero-plugin-toolkit";
 
 async function onStartup() {
   await Promise.all([
@@ -16,9 +17,11 @@ async function onStartup() {
     `chrome://${config.addonRef}/content/icons/favicon.ico`
   );
 
+  
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
   );
+  
 
   Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, "")
   Zotero[config.addonInstance].views = new Views();
@@ -42,7 +45,7 @@ async function onStartup() {
 
 	  const execFunc = async() => {
               var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-              var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
+              var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
               await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
               Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
           }
@@ -52,17 +55,48 @@ async function onStartup() {
   }
 }
 
+
+/**
+ * Register or unregister entrance in toolbar
+ */
+function registerInToolbar() {
+  const toolbar = Zotero.getMainWindow().document.querySelector("#zotero-items-toolbar")!;
+  const lookupNode = toolbar.querySelector("#zotero-tb-lookup")!;
+  const newNode = lookupNode?.cloneNode(true) as XUL.ToolBarButton;
+  newNode.setAttribute("id", "zotero-toolbaritem-papersgpt");
+  newNode.setAttribute("tooltiptext", getString("menuitem-papersgpt"));
+  newNode.setAttribute("command", "");
+  newNode.setAttribute("oncommand", "");
+  newNode.setAttribute("mousedown", "");
+  newNode.setAttribute("onmousedown", "");
+  newNode.addEventListener("click", async (event: any) => {
+     var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
+     var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
+     await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+     Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
+  });
+  const searchNode = toolbar.querySelector("#zotero-tb-search");
+  newNode.style.listStyleImage = `url(chrome://${config.addonRef}/content/icons/icon-128.png)`;
+  toolbar.insertBefore(newNode, searchNode);
+}
+
+
+
+
 async function onMainWindowLoad(win: Window): Promise<void> {
   // Create ztoolkit for every window
-  addon.data.ztoolkit = createZToolkit();
-  //AddonTable.registerInToolbar();
+  //addon.data.ztoolkit = createZToolkit();
+ 
+  addon.data.ztoolkit = new ZoteroToolkit();	
+  registerInToolbar();
   //AddonTable.registerInMenuTool();
 
   //Guide.showGuideInMainWindowIfNeed(win);
 }
 
 async function onMainWindowUnload(win: Window): Promise<void> {
-  ztoolkit.unregisterAll();
+  //ztoolkit.unregisterAll();
+  Zotero.getMainWindow().document.querySelector("#zotero-toolbaritem-papersgpt")?.remove();
 }
 
 export async function downloadFile(url, filename) {

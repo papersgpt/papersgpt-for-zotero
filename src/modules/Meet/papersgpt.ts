@@ -435,7 +435,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 				email: email,
 				token: token,
 			}),
-			timeout: 1000
+			timeout: 5000
 		}
         )
       } catch (error: any) {
@@ -483,7 +483,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 	      email: email,
               token: token,
             }),
-	    timeout: 1000
+	    timeout: 2000
           }
         )
       } catch (error: any) {
@@ -502,11 +502,11 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
 
 
   if (httpRequestError) {
+      Zotero.log("request error")
       return
   }
 
   if (res?.response.Code) {
-
     if (res.response.Code != 200) {
       return
     } 
