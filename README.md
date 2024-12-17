@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, Gemini, Claude, Llama 3.2, Gemma, Mistral and Phi-3.5. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, Gemini, Claude, Phi 4, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
@@ -52,7 +52,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Select LLM models:**
  
 - For Windows users, after registration the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
-- For Mac users, after registration besides the above excellent business models, Llama3.2, Gemma2, Phi-3.5 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
+- For Mac users, after registration besides the above excellent business models, Phi 4, Llama 3.2, Gemma 2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
 - Now the registration is open and free!
  
 **Chat PDFs in Zotero:** 
