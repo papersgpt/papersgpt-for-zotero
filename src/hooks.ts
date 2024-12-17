@@ -3,7 +3,6 @@ import { getString, initLocale } from "./modules/locale";
 import Views from "./modules/views";
 import Utils from "./modules/utils";
 import { createZToolkit } from "./ztoolkit"
-import { ZoteroToolkit } from "zotero-plugin-toolkit";
 
 async function onStartup() {
   await Promise.all([
@@ -17,15 +16,14 @@ async function onStartup() {
     `chrome://${config.addonRef}/content/icons/favicon.ico`
   );
 
+  Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, "")
+  Zotero[config.addonInstance].views = new Views();
+  Zotero[config.addonInstance].utils = new Utils();
   
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
   );
-  
 
-  Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, "")
-  Zotero[config.addonInstance].views = new Views();
-  Zotero[config.addonInstance].utils = new Utils();
   if (Zotero.isMac) {
       var filename = "ChatPDFLocal"
       const temp = Zotero.getTempDirectory();
@@ -50,54 +48,60 @@ async function onStartup() {
               Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
           }
           window.setTimeout(execFunc, 3000)
-      
       }
   }
+  
 }
-
-
-/**
- * Register or unregister entrance in toolbar
- */
-function registerInToolbar() {
-  const toolbar = Zotero.getMainWindow().document.querySelector("#zotero-items-toolbar")!;
-  const lookupNode = toolbar.querySelector("#zotero-tb-lookup")!;
-  const newNode = lookupNode?.cloneNode(true) as XUL.ToolBarButton;
-  newNode.setAttribute("id", "zotero-toolbaritem-papersgpt");
-  newNode.setAttribute("tooltiptext", getString("menuitem-papersgpt"));
-  newNode.setAttribute("command", "");
-  newNode.setAttribute("oncommand", "");
-  newNode.setAttribute("mousedown", "");
-  newNode.setAttribute("onmousedown", "");
-  newNode.addEventListener("click", async (event: any) => {
-     var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-     var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
-     await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
-     Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
-  });
-  const searchNode = toolbar.querySelector("#zotero-tb-search");
-  newNode.style.listStyleImage = `url(chrome://${config.addonRef}/content/icons/icon-128.png)`;
-  toolbar.insertBefore(newNode, searchNode);
-}
-
-
 
 
 async function onMainWindowLoad(win: Window): Promise<void> {
   // Create ztoolkit for every window
-  //addon.data.ztoolkit = createZToolkit();
+  addon.data.ztoolkit = createZToolkit();
  
-  addon.data.ztoolkit = new ZoteroToolkit();	
-  registerInToolbar();
-  //AddonTable.registerInMenuTool();
-
+  Zotero[config.addonInstance].views.registerInToolbar()
+  
+  Zotero[config.addonInstance].views.registerInMenupopup()
+  
   //Guide.showGuideInMainWindowIfNeed(win);
+
+  const callback = {
+    notify: async (
+      event: string,
+      type: string,
+      ids: number[] | string[],
+      extraData: { [key: string]: any },
+    ) => {
+      onNotify(event, type, ids, extraData);
+    },
+  };
+
+  var notifierID = Zotero.Notifier.registerObserver(callback, ["tab", "item", "file"]); 
 }
 
 async function onMainWindowUnload(win: Window): Promise<void> {
   //ztoolkit.unregisterAll();
-  Zotero.getMainWindow().document.querySelector("#zotero-toolbaritem-papersgpt")?.remove();
+  addon.data.ztoolkit.unregisterAll();
+  Zotero.getMainWindow().document.querySelector("#papersgpt")?.remove();
 }
+
+export function sleep(time) {
+    return new Promise((resolve) => window.setTimeout(resolve, time));
+}
+
+async function onNotify(
+  event: string,
+  type: string,
+  ids: Array<string | number>,
+  extraData: { [key: string]: any },
+) {
+  if (extraData?.skipAutoSync) return 
+   
+  if (event === "select" && type === "tab") {
+      await Zotero[config.addonInstance].views.registerInMenupopup()
+    return
+  }
+}
+
 
 export async function downloadFile(url, filename) {
     await Zotero.File.download(url, filename)
@@ -200,6 +204,7 @@ function onShutdown(): void {
 
   addon.data.alive = false;
   delete Zotero[config.addonInstance];
+  Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Offline")
 }
 
 export default {

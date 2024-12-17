@@ -1,6 +1,7 @@
 pref("extensions.zotero.__addonRef__.enable", true);
 pref("extensions.zotero.__addonRef__.tags", "[]");
 pref("extensions.zotero.__addonRef__.languages", "[\"Arabic\", \"Bengali\", \"Bulgarian\", \"Chinese\", \"Croatian\", \"Czech\", \"Danish\", \"Dutch\", \"English\", \"Estonian\", \"Finnish\", \"French\", \"German\", \"Greek\", \"Hebrew\", \"Hindi\", \"Hungarian\", \"Italian\", \"Indonesian\", \"Japanese\", \"Korean\", \"Latvian\", \"Norwegian\", \"Polish\", \"Portuguese\", \"Romanian\", \"Russian\", \"Serbian\", \"Slovak\", \"Slovenian\", \"Spanish\", \"Swahili\", \"Swedish\", \"Thai\", \"Turkish\", \"Ukrainian\", \"Vietnamese\"]");
+pref("extensions.zotero.__addonRef__.papersgptState", "Offline");
 pref("extensions.zotero.__addonRef__.startLocalServer", false);
 pref("extensions.zotero.__addonRef__.email", "");
 pref("extensions.zotero.__addonRef__.token", "");

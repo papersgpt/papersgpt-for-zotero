@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "papersgpt",
-  "version": "0.0.4",
-  "description": "Chat PDF in Zotero with ChatGPT, Gemini, Claude, Llama 3.2, QwQ-32B-Preview, Gemma, Mistral, Phi-3.5",
-  "author": "vincent",
+  "version": "0.0.5",
+  "description": "Chat PDF in Zotero with ChatGPT, Gemini, Claude, Phi-4, Llama 3.2, QwQ-32B-Preview, Gemma, Mistral",
+  "author": "Vincent",
   "icons": {
     "48": "chrome/content/icons/favicon@0.5x.ico",
     "96": "chrome/content/icons/favicon.ico"
