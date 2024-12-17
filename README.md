@@ -22,11 +22,11 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
 - There are many SOTA free and open source models built in, Now support the following models:  
+  *Phi-4* :sparkles: :fire:   
   *Llama3.2*  
   *QwQ-32B-Preview* :fire:   
   *Marco-o1* :fire:  
   *Gemma2*   
-  *Phi-3.5*  
   *Mistral*   
   After free registration, these models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.

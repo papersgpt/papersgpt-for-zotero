@@ -518,7 +518,8 @@ export default class Views {
 		  }
 	      }, modelNode) as HTMLDivElement
 	  }
-	  modelNode.selectedIndex = curPublisherElement.defaultModelIdx
+	  //modelNode.selectedIndex = curPublisherElement.defaultModelIdx
+	  modelNode.selectedIndex = 0 
 	  var curModel = curShowModels[modelNode.selectedIndex]
 	  Zotero.Prefs.set(`${config.addonRef}.usingModel`, curModel)
 
@@ -838,17 +839,27 @@ export default class Views {
 	}, modelSelectDivContainer) as HTMLSelectElement // DivElement
 
 	var curShowPublisher = this.publisher2models.get(curPublisher)
-	if (curShowPublisher == null)   { return}
+	if (curShowPublisher == null)   {
+          curShowPublisher = this.publisher2models.get("OpenAI")	
+          curShowPublisher.defaultModelIdx = 0  
+	}	
 	var curShowModels = curShowPublisher.models
 
+	var modelSelectedIdx = 0
 	for (var i = 0; i < curShowModels.length; i++) {
 	    var optionId = "optionModel" + i
 
+	    var curModel = Zotero.Prefs.get(`${config.addonRef}.usingModel`)
+	    if (curModel === curShowModels[i]) {
+		    modelSelectedIdx = i
+	    }
 	    var modelName = curShowModels[i]
 	    if (modelName.includes(":")) {
 	        let index = modelName.indexOf(":")
                 modelName = modelName.substr(0, index)  		   
 	    }
+
+
 	    const optionContainer = ztoolkit.UI.appendElement({
 	        tag: "option",
 	        id: optionId,
@@ -859,15 +870,18 @@ export default class Views {
 	    }, modelSelectContainer) as HTMLDivElement
 	}
 
-        modelSelectContainer.selectedIndex = curShowPublisher.defaultModelIdx
+        //modelSelectContainer.selectedIndex = curShowPublisher.defaultModelIdx
+        modelSelectContainer.selectedIndex = modelSelectedIdx 
 
 	modelSelectContainer.addEventListener("change", async event => {
             var curModel = modelSelectContainer.value
 
 	    for (var i = 0; i < curShowModels.length; i++) {
-	       if (curModel == curShowModels[i] || (curPublisher == "Claude-3" && curShowModels[i].includes(curModel))) {
+	       if (curModel == curShowModels[i] || ((curPublisher == "Claude-3" || curPublisher == "Gemini") && curShowModels[i].includes(curModel))) {
 	           Zotero.Prefs.set(`${config.addonRef}.usingModel`, curShowModels[i])
 		   modelSelectContainer.selectedIndex = i
+                   //this.publisher2models[curModel].defaultModelIdx = i
+		   //curShowPublisher.defaultModelIdx = i  
 		   var curPublisherElement = this.publisher2models.get(curPublisher)
 		   if (curPublisherElement != null) {
 		       curPublisherElement.defaultModelIdx = i
@@ -1953,13 +1967,13 @@ export default class Views {
           inputNode.value = ""
           inputNode.style.display = ""
           inputNode.focus()
-          return
+          //return
         }
         if (inputNode.value.length) {
           inputNode.value = ""
-          return
+          //return
         }
-        // 退出container
+        // Exit container
         that.hide()
         that.container!.remove()
         that.isInNote && Meet.BetterNotes.reFocus()
@@ -1972,6 +1986,7 @@ export default class Views {
             shutdownLocalLLMEngine()
 	    Zotero.Prefs.set(`${config.addonRef}.startLocalServer`, false)
 	}	
+        Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Offline")
       } else if (event.key == "/" && text == "/" && that.container.querySelector("input")?.style.display != "none") {
         const rect = that.container.querySelector("input")!.getBoundingClientRect()
         const commands = ["clear", "help", "report", "secretKey", "model", "api", "temperature", "chatNumber", "relatedNumber" , "deltaTime", "tagsMore", "width"]
@@ -2024,12 +2039,12 @@ export default class Views {
       listeners: [
         {
           /**
-           * 双击是插件的输出，可能是插入笔记
+           * Double-clicking is the output of the plug-in, which may be inserting notes 
            */
           type: "dblclick",
           listener: () => {
-            // 无论后面发生什么错误，都确保先复制下来
-            // 目前可能用户的Better Notes版本低，不支持API
+            // No matter what error occurs later, be sure to copy it first
+            // At present, the user's version of Better Notes may be old and does not support the API.
             const text = outputContainer.querySelector("[pureText]")!.getAttribute("pureText") || ""
             new ztoolkit.Clipboard()
               .addText(text, "text/unicode")
@@ -2055,7 +2070,7 @@ export default class Views {
                   e._item.parentID === parentID && !Components.utils.isDeadWrapper(e._iframeWindow)
               );
               ztoolkit.log(editor)
-              // 笔记被打开，且打开笔记视图，才触发向当前条目笔记插入
+              // The insertion of notes into the current entry is triggered only when the note is opened and the note view is opened. 
               if (editor && document.querySelector("#zotero-tb-toggle-notes-pane.toggled")) {
                 Meet.BetterNotes.insertEditorText(htmlString, editor)
                 new ztoolkit.ProgressWindow(config.addonName)
@@ -2431,10 +2446,6 @@ export default class Views {
 			      allLanguagesContainer.style.display = "none" 
 
 		      })
-
- 
-		      
-		  
 
                       document.documentElement.append(backgroundContainer)
                       document.documentElement.append(allLanguagesContainer)
@@ -2991,6 +3002,37 @@ export default class Views {
     this._ids.filter(id => id.type == "output").map(i => i.id).forEach(window.clearInterval)
   }
 
+  public exit() {
+    this.outputContainer.style.display = "none"
+    const textareaNode = this.inputContainer.querySelector("textarea")!
+    const inputNode = this.inputContainer?.querySelector("input")!
+    if (textareaNode.style.display != "none") {
+      textareaNode.style.display = "none"
+      inputNode.value = ""
+      inputNode.style.display = ""
+      inputNode.focus()
+      //return
+    }
+    if (inputNode.value.length) {
+      inputNode.value = ""
+      //return
+    }
+    // exit container
+    this.hide()
+    this.container!.remove()
+    this.isInNote && Meet.BetterNotes.reFocus()
+    if (Zotero.isMac) {
+      var filename = "ChatPDFLocal"
+      if (!(IOUtils.exists(filename))) {
+        const temp = Zotero.getTempDirectory();
+        filename = PathUtils.join(temp.path.replace(temp.leafName, ""), `${filename}.dmg`);
+      } 
+      shutdownLocalLLMEngine()
+      Zotero.Prefs.set(`${config.addonRef}.startLocalServer`, false)
+    }	
+    Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Offline")
+  }
+
   /**
    * Enter auxiliary buttons on the output interface
    * This is a very extensible function
@@ -3201,121 +3243,229 @@ export default class Views {
     await getSupportedLLMs(this.publisher2models, this.publishers, email, token) 
   }
 
-  
+  public registerInToolbar() {
+    const pluginName = "papersgpt"; 
+    const papersgptNode = Zotero.getMainWindow().document.querySelector("#" + pluginName)!;
+    if (papersgptNode) {
+      return; 
+    }
+
+    const toolbar = Zotero.getMainWindow().document.querySelector("#zotero-items-toolbar")!;
+    const lookupNode = toolbar.querySelector("#zotero-tb-lookup")!;
+    const newNode = lookupNode?.cloneNode(true) as XUL.ToolBarButton;
+    newNode.setAttribute("id", pluginName);
+    if (Zotero.isMac) {
+      newNode.setAttribute("tooltiptext", "Chat PDF with ChatGPT, Claude, Gemini and Local LLMs");
+    } else {
+      newNode.setAttribute("tooltiptext", "Chat PDF with ChatGPT, Claude, Gemini");
+    }
+    newNode.setAttribute("command", "");
+    newNode.setAttribute("oncommand", "");
+    newNode.setAttribute("mousedown", "");
+    newNode.setAttribute("onmousedown", "");
+    newNode.addEventListener("click", async (event: any) => {
+      var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
+      if (papersgptState === "Offline") {
+        this.callback()
+      } else if (papersgptState == "Online") {
+        this.exit()
+      } 
+    });
+    const searchNode = toolbar.querySelector("#zotero-tb-search");
+    newNode.style.listStyleImage = `url(chrome://${config.addonRef}/content/icons/papersgpt-logo.png)`;
+    toolbar.insertBefore(newNode, searchNode);
+  }
+
+
+  public async registerInMenupopup() {
+    var showText = "Chat PDF with ChatGPT, Claude, Gemini"
+    if (Zotero.isMac) {
+      showText = "Chat PDF with ChatGPT, Claude, Gemini and Local LLMs"
+    }
+
+    const waitTime = 5000 
+    let delayCount = 0;
+    const checkPeriod = 50;
+
+    let reader = Zotero.Reader.getByTabID(Zotero_Tabs.selectedID)
+    let pageDownNode = null
+     
+    let readerInit = false
+    while ((!reader || !pageDownNode) && delayCount * checkPeriod < waitTime) {
+      if (reader) {
+        if (!readerInit) {
+	  await reader._initPromise;
+	  readerInit = true
+	}	
+	if (!pageDownNode) {
+          await Zotero.Promise.delay(checkPeriod);
+	  pageDownNode = reader?._iframeWindow?.document.querySelector("#zoomOut")
+	}
+      } else {
+        await Zotero.Promise.delay(checkPeriod);
+	reader = Zotero.Reader.getByTabID(Zotero_Tabs.selectedID)
+      }
+      delayCount++; 
+    } 
+   
+    const toolbarid = "papersgpt-toolbar-" + Zotero_Tabs.selectedID
+    const papersgptNode = reader?._iframeWindow?.document.getElementById(toolbarid)
+    if (papersgptNode) {
+      return 
+    }
+    const newNode = pageDownNode?.cloneNode(true) as XUL.ToolBarButton;
+    newNode.setAttribute("id", toolbarid);
+    if (Zotero.isMac) {
+      newNode.setAttribute("title", "Chat PDF with ChatGPT, Claude, Gemini and Local LLMs");
+    } else {
+      newNode.setAttribute("title", "Chat PDF with ChatGPT, Claude, Gemini");
+    }
+    newNode.setAttribute("command", "");
+    newNode.setAttribute("oncommand", "");
+    newNode.setAttribute("mousedown", "");
+    newNode.setAttribute("onmousedown", "");
+    newNode.disabled = false; 
+    newNode.innerHTML = "";
+    let img = reader?._iframeWindow?.document.createElement('img')
+    img.src = `chrome://${config.addonRef}/content/icons/papersgpt-logo.png`;
+    img.alt = ''
+    newNode.appendChild(img);
+
+    newNode.addEventListener("click", async () => {
+      var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
+      if (papersgptState === "Offline") {
+	this.callback()
+      } else if (papersgptState == "Online") {
+        this.exit()
+      } 
+    });
+
+    const parentNode = reader?._iframeWindow?.document.querySelector(".start")
+
+    const inputNode =  reader?._iframeWindow?.document.querySelector(".toolbar-text-input")
+    parentNode.insertBefore(newNode, inputNode);
+
+  }
+
+  private async callback() {
+    Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Starting")
+    this.publisher2models.clear()
+    this.publishers = []
+
+    this.isInNote = false
+    const defaultModelApiKey = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`)
+    let modelConfig: ModelConfig = {
+      models: ["gpt-3.5-turbo", "gpt-4"],
+      hasApiKey: true,
+      apiKey: defaultModelApiKey,
+      areModelsReady: new Map(),
+      defaultModelIdx: 0,
+      apiUrl: "https://api.openai.com/v1/chat/completions"
+    }
+
+    this.publisher2models.set("OpenAI", modelConfig)
+    this.publishers.push("OpenAI")
+    //Zotero.Prefs.set(`${config.addonRef}.usingPublisher`, "OpenAI")
+    //Zotero.Prefs.set(`${config.addonRef}.usingModel`, "gpt-3.5-turbo")
+    //Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, "https://api.openai.com/v1/chat/completions")
+    //Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, defaultModelApiKey)
+
+    var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
+    var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
+    if (Zotero.isMac) {
+      var filename = "ChatPDFLocal"
+      const temp = Zotero.getTempDirectory();
+      filename = PathUtils.join(temp.path.replace(temp.leafName, ""), `${filename}.dmg`);
+
+      if (await checkFileExist(filename + ".done")) {
+        var startLocalServer = Zotero.Prefs.get(`${config.addonRef}.startLocalServer`)
+        if (!startLocalServer) {
+          await startLocalLLMEngine(filename)  
+	   
+	  Zotero.Prefs.set(`${config.addonRef}.startLocalServer`, true)
+          const execFunc = async() => {
+	    var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
+            var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
+	    await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+            Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
+          }
+          window.setTimeout(execFunc, 3000)
+	}
+      } 
+    } else {
+      var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
+      var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
+      await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+      Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
+    }
+      
+    if (Zotero_Tabs.selectedIndex == 0) {
+      const div = document.querySelector("#item-tree-main-default .row.selected")!
+      if (div) {
+        const rect = div.getBoundingClientRect()
+        this.show(rect.x, rect.y + rect.height)
+      } else {
+        this.show()
+      }
+    } else {
+      const reader = await ztoolkit.Reader.getReader()
+      
+      const div = reader?._iframeWindow?.document.querySelector(".selection-popup")!
+      if (div) {
+        window.setTimeout(() => {
+          this.messages = this.messages.concat(
+            [
+              {
+                role: "user",
+                content: `I am reading a PDF, and the following text is a part of the PDF. Please read it first, and I will ask you some question later: \n${Meet.Zotero.getPDFSelection()}`
+              },
+              {
+                role: "assistant",
+                content: "OK."
+              }
+            ]
+          )
+          const rect = div?.getBoundingClientRect()
+          const windRect = document.documentElement.getBoundingClientRect()
+          const ww = windRect.width *
+            0.01 * Number((Zotero.Prefs.get(`${config.addonRef}.width`) as string).slice(0, -1))
+          ww
+          this.show(rect.left + rect.width * .5 - ww * .5, rect.bottom)
+        }, 233)
+      } else {
+        this.show()
+      }
+    }
+    Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Online")
+  }
 
 
   /**
    * Bind shortcut key 
    */
   private registerKey() {
-    const callback = async () => {
-      this.publisher2models.clear()
-      this.publishers = []
-
-      this.isInNote = false
-      const defaultModelApiKey = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`)
-      let modelConfig: ModelConfig = {
-	  models: ["gpt-3.5-turbo", "gpt-4"],
-	  hasApiKey: true,
-	  apiKey: defaultModelApiKey,
-	  areModelsReady: new Map(),
-	  defaultModelIdx: 0,
-	  apiUrl: "https://api.openai.com/v1/chat/completions"
-      }
-
-      this.publisher2models.set("OpenAI", modelConfig)
-      this.publishers.push("OpenAI")
-      Zotero.Prefs.set(`${config.addonRef}.usingPublisher`, "OpenAI")
-      Zotero.Prefs.set(`${config.addonRef}.usingModel`, "gpt-3.5-turbo")
-      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, "https://api.openai.com/v1/chat/completions")
-      Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, defaultModelApiKey)
-
-      var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-      var token =  Zotero.Prefs.get(`${config.addonRef}.token`) 
-      if (Zotero.isMac) {
-          var filename = "ChatPDFLocal"
-	  const temp = Zotero.getTempDirectory();
-          filename = PathUtils.join(temp.path.replace(temp.leafName, ""), `${filename}.dmg`);
-
-	  if (await checkFileExist(filename + ".done")) {
-	      var startLocalServer = Zotero.Prefs.get(`${config.addonRef}.startLocalServer`)
-              if (!startLocalServer) {
-		  await startLocalLLMEngine(filename)  
-	   
-		  Zotero.Prefs.set(`${config.addonRef}.startLocalServer`, true)
-	          const execFunc = async() => {
-		      var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-                      var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
-		      await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
-                      Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
-                  }
-                  window.setTimeout(execFunc, 3000)
-	      }
-	  } 
-      } else {
-	  var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
-          var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
-	  await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
-          Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
-      }
-      
-      if (Zotero_Tabs.selectedIndex == 0) {
-        const div = document.querySelector("#item-tree-main-default .row.selected")!
-        if (div) {
-          const rect = div.getBoundingClientRect()
-          this.show(rect.x, rect.y + rect.height)
-        } else {
-          this.show()
-        }
-      } else {
-        const reader = await ztoolkit.Reader.getReader()
-        const div = reader?._iframeWindow?.document.querySelector(".selection-popup")!
-        if (div) {
-          window.setTimeout(() => {
-            this.messages = this.messages.concat(
-              [
-                {
-                  role: "user",
-                  content: `I am reading a PDF, and the following text is a part of the PDF. Please read it first, and I will ask you some question later: \n${Meet.Zotero.getPDFSelection()}`
-                },
-                {
-                  role: "assistant",
-                  content: "OK."
-                }
-              ]
-            )
-            const rect = div?.getBoundingClientRect()
-            const windRect = document.documentElement.getBoundingClientRect()
-            const ww = windRect.width *
-              0.01 * Number((Zotero.Prefs.get(`${config.addonRef}.width`) as string).slice(0, -1))
-            ww
-            this.show(rect.left + rect.width * .5 - ww * .5, rect.bottom)
-          }, 233)
-        } else {
-          this.show()
-        }
-      }
-    }
-
-
     const key = "enter"
     if (Zotero.isMac) {
       const modifiers = "meta"
-      //ztoolkit.Keyboard.register((ev, data) => {
       ztoolkit.Shortcut.register((ev, data) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
-            callback() 
+            var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
+	    if (papersgptState == "Offline") {
+              this.callback() 
+	    } 
           }
         }
       })
     } else {
       const modifiers = "control"
-      //ztoolkit.Keyboard.register((ev, data) => {
       ztoolkit.Shortcut.register((ev, data) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
-            callback() 
+            var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
+            if (papersgptState == "Offline") {
+	      this.callback() 
+	    }
           }
         }
       })

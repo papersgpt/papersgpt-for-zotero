@@ -11,6 +11,7 @@ class LocalStorage {
 
   async init(filename: string) {
     const temp = Zotero.getTempDirectory();
+    Zotero.log(temp)
     this.filename = PathUtils.join(temp.path.replace(temp.leafName, ""), `${filename}.json`);
     try {
       const rawString = await Zotero.File.getContentsAsync(this.filename) as string

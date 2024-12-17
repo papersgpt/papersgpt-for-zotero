@@ -481,8 +481,8 @@ export async function getResponseByLocalLLM(requestText: string) {
     id: id
   })
   const chatNumber = Zotero.Prefs.get(`${config.addonRef}.chatNumber`) as number
-  var responseTimeout = 2000
-  if (model == "QwQ-32B-Preview-IQ2" || model == "marco-o1") {
+  var responseTimeout = 60000 * 3
+  if (model == "QwQ-32B-Preview" || model == "marco-o1") {
     responseTimeout = 10 * 60000
   }
 
