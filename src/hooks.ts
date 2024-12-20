@@ -61,7 +61,9 @@ async function onMainWindowLoad(win: Window): Promise<void> {
   Zotero[config.addonInstance].views.registerInToolbar()
   
   Zotero[config.addonInstance].views.registerInMenupopup()
-  
+
+  Zotero[config.addonInstance].views.registerWindowAppearance()
+
   //Guide.showGuideInMainWindowIfNeed(win);
 
   const callback = {

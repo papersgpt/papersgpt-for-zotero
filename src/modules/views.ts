@@ -55,6 +55,7 @@ export default class Views {
   private dotsContainer!: HTMLDivElement;
   private tagsContainer!: HTMLDivElement;
   private utils: Utils;
+  private isDarkMode: boolean = false
   constructor() {
     this.utils = new Utils()
     this.registerKey()
@@ -63,6 +64,7 @@ export default class Views {
     // @ts-ignore
     window.Meet = Meet
     Meet.Global.views = this
+    this.isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   private addStyle() {
@@ -262,6 +264,7 @@ export default class Views {
       if (
         event.target instanceof window.HTMLInputElement ||
         event.target instanceof window.HTMLTextAreaElement ||
+        event.target instanceof window.HTMLSelectElement ||
         (event.target as HTMLDivElement).classList.contains("tag")
       ) {
         return
@@ -428,6 +431,10 @@ export default class Views {
 	  }
       }, publishConfigContainer) as HTMLSelectElement//HTMLDivElement
 
+      if (this.isDarkMode) {
+	publishSelectContainer.style.color = '#222';
+      }
+
       var publisherSelectIdx = 0 
       for (var i = 0; i < this.publishers.length; i++) {
 	  if (this.publishers[i] == curPublisher) {
@@ -444,6 +451,7 @@ export default class Views {
 	  }, publishSelectContainer) as HTMLDivElement
       }
       publishSelectContainer.selectedIndex = publisherSelectIdx 
+
 
       publishSelectContainer.addEventListener("change", async event => {
 	  event.stopPropagation();
@@ -472,7 +480,7 @@ export default class Views {
 	  if (modelNode != null) {
 	      modelNode.innerHTML = ""
 	  } else if (curPublisher != "Customized") {
-		  var modelSelectDivContainer = toolbarContainer.querySelector(".modelSelectDivCSS")
+        	  var modelSelectDivContainer = toolbarContainer.querySelector(".modelSelectDivCSS")
 
 		  if (modelSelectDivContainer != null) {
 			  modelSelectDivContainer.remove() 
@@ -500,6 +508,10 @@ export default class Views {
 			  id: modelSelectId,
 			  classList: ["modelSelect"],
 		  }, modelSelectDivContainer) as HTMLSelectElement // DivElement
+
+                  if (this.isDarkMode) {
+	            modelNode.style.color = '#222';
+                  }
 	  } 
 
 	  for (var i = 0; i < curShowModels.length; i++) {
@@ -518,7 +530,6 @@ export default class Views {
 		  }
 	      }, modelNode) as HTMLDivElement
 	  }
-	  //modelNode.selectedIndex = curPublisherElement.defaultModelIdx
 	  modelNode.selectedIndex = 0 
 	  var curModel = curShowModels[modelNode.selectedIndex]
 	  Zotero.Prefs.set(`${config.addonRef}.usingModel`, curModel)
@@ -552,30 +563,26 @@ export default class Views {
 		  }
 	      }, modelConfigContainer) as HTMLDivElement	
 
-	      var apiId = "apiUrl"
+	      var apiUrl = "apiUrl"
 	      var apitext = curPublisher + " API URL"
-	      var apiUrlContainer: HTMLDivElement
+	      var apiUrlInputContainer: HTMLDivElement
 	      if (curPublisherElement.apiUrl.length > 0) {
  	          apitext = curPublisherElement.apiUrl
 
-		  apiUrlContainer = ztoolkit.UI.appendElement({
+		  apiUrlInputContainer = ztoolkit.UI.appendElement({
   		      tag: "input",
-		      id: apiId,
-		      styles: {
-		          width: "150px"
-		      },
+		      id: apiUrl,
+		      classList: [apiUrl],
 		      properties: {
 		          type: "text",
 		          value: apitext
 		      }
 		  }, apiUrlContainer) as HTMLDivElement
 	      } else {
-		  apiUrlContainer = ztoolkit.UI.appendElement({
+		  apiUrlInputContainer = ztoolkit.UI.appendElement({
 		      tag: "input",
-		      id: apiId,
-		      styles: {
-			  width: "150px"
-		      },
+		      id: apiUrl,
+		      classList: [apiUrl],
 		      properties: {
 			  type: "text",
 			  placeholder: apitext
@@ -583,13 +590,17 @@ export default class Views {
 		  }, apiUrlContainer) as HTMLDivElement
 	      }
 
-	      apiUrlContainer.addEventListener("change", async event => {
-		  if ((<HTMLInputElement>apiUrlContainer).value == null) return
+	      if (this.isDarkMode) {
+	        apiUrlInputContainer.style.color = '#222';
+	      }
+	      
+	      apiUrlInputContainer.addEventListener("change", async event => {
+		  if ((<HTMLInputElement>apiUrlInputContainer).value == null) return
 	          const curPublisherElement = this.publisher2models.get(curPublisher)
 		  if (curPublisherElement != null) {
-		      curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlContainer).value
-		      Zotero.Prefs.set(`${config.addonRef}.customModelApiUrl`, (<HTMLInputElement>apiUrlContainer).value)
-		      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlContainer).value)
+		      curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlInputContainer).value
+		      Zotero.Prefs.set(`${config.addonRef}.customModelApiUrl`, (<HTMLInputElement>apiUrlInputContainer).value)
+		      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlInputContainer).value)
 		  } 
 	      })
 
@@ -615,9 +626,6 @@ export default class Views {
 		  customModelContainer = ztoolkit.UI.appendElement({
   		      tag: "input",
 		      id: customModelId,
-		      styles: {
-		          width: "150px"
-		      },
 		      properties: {
 		          type: "text",
 		          value: customModelText
@@ -627,14 +635,15 @@ export default class Views {
 		  customModelContainer = ztoolkit.UI.appendElement({
 		      tag: "input",
 		      id: customModelId,
-		      styles: {
-			  width: "150px"
-		      },
 		      properties: {
 			  type: "text",
 			  placeholder: customModelText
 		      }
 		  }, customModelDivContainer) as HTMLDivElement
+	      }
+
+              if (this.isDarkMode) {
+	        customModelContainer.style.color = '#222';
 	      }
 
 	      customModelContainer.addEventListener("change", async event => {
@@ -760,9 +769,7 @@ export default class Views {
 		 apiContainer = ztoolkit.UI.appendElement({
   		     tag: "input",
 		     id: apiId,
-		     styles: {
-		         width: "150px"
-		     },
+		     classList: [apiId],
 		     properties: {
 		         type: "text",
 		         value: apitext
@@ -772,16 +779,18 @@ export default class Views {
 		  apiContainer = ztoolkit.UI.appendElement({
 		      tag: "input",
 		      id: apiId,
-		      styles: {
-			  width: "150px"
-		      },
+		      classList: [apiId],
 		      properties: {
 			  type: "text",
 			  placeholder: apitext
 		      }
 		  }, apiDivContainer) as HTMLDivElement
 	     }
-
+ 
+	     if (this.isDarkMode) {
+	       apiContainer.style.color = '#222';
+	     }
+	     
 	     apiContainer.addEventListener("change", async event => {
 		 if ((<HTMLInputElement>apiContainer).value == null) return
 		 const curPublisherElement = this.publisher2models.get(curPublisher)
@@ -797,7 +806,6 @@ export default class Views {
 			 } else if (curPublisher == "Customized") {
 			     Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 			 }
-			 //if (Zotero.isMac && curPublisher != "Customized") {
 			 if (Zotero.isMac) {
 			     const response = await setApiKey(curPublisher, (<HTMLInputElement>apiContainer).value)
 			 }
@@ -806,7 +814,211 @@ export default class Views {
 	  }
 	});
 
+        var curPublisherElement = this.publisher2models.get(curPublisher)
+       	if (curPublisherElement && curPublisher == "Customized") {
+          const modelConfigContainer = toolbarContainer.querySelector(".model")! as HTMLDivElement
+	  var modelSelectDivContainer = toolbarContainer.querySelector(".modelSelectDivCSS")
 
+	  if (modelSelectDivContainer != null) {
+	      modelSelectDivContainer.remove() 
+	  }
+
+	  var customModelDivContainer = toolbarContainer.querySelector(".customModelDiv")
+          if (customModelDivContainer) {
+	      customModelDivContainer.remove()  
+	  }
+	  
+	  var apiUrlId  = "apiUrlDiv"
+	  var apiUrlContainer = toolbarContainer.querySelector(".apiUrlDiv")
+	  if (apiUrlContainer) {
+	      apiUrlContainer.remove()  
+	  }
+
+	  apiUrlContainer = ztoolkit.UI.appendElement({
+	    tag: "div",
+	    id: apiUrlId,
+	    classList: [apiUrlId],
+	    styles: {
+	      margin: "6px",
+	      fontSize: "12px",
+              borderRadius: "5px"
+	    }
+	  }, modelConfigContainer) as HTMLDivElement	
+
+	  var apiUrl = "apiUrl"
+	  var apitext = curPublisher + " API URL"
+	  var apiUrlInputContainer: HTMLDivElement
+	  if (curPublisherElement.apiUrl.length > 0) {
+ 	    apitext = curPublisherElement.apiUrl
+
+	    apiUrlInputContainer = ztoolkit.UI.appendElement({
+  	      tag: "input",
+	      id: apiUrl,
+	      classList: [apiUrl],
+	      properties: {
+	        type: "text",
+		value: apitext
+	      }
+	    }, apiUrlContainer) as HTMLDivElement
+	  } else {
+	    apiUrlInputContainer = ztoolkit.UI.appendElement({
+	      tag: "input",
+	      id: apiUrl,
+	      classList: [apiUrl],
+	      properties: {
+		type: "text",
+		placeholder: apitext
+	      }
+	    }, apiUrlContainer) as HTMLDivElement
+	  }
+
+	  if (this.isDarkMode) {
+	    apiUrlInputContainer.style.color = '#222';
+	  }
+	      
+	  apiUrlInputContainer.addEventListener("change", async event => {
+	    if ((<HTMLInputElement>apiUrlInputContainer).value == null) return
+	    const curPublisherElement = this.publisher2models.get(curPublisher)
+	    if (curPublisherElement != null) {
+	      curPublisherElement.apiUrl = (<HTMLInputElement>apiUrlInputContainer).value
+	      Zotero.Prefs.set(`${config.addonRef}.customModelApiUrl`, (<HTMLInputElement>apiUrlInputContainer).value)
+	      Zotero.Prefs.set(`${config.addonRef}.usingAPIURL`, (<HTMLInputElement>apiUrlInputContainer).value)
+	    } 
+	  })
+
+	  var customModelDivContainer = toolbarContainer.querySelector(".customModelDiv")
+          if (customModelDivContainer) {
+	      customModelDivContainer.remove()  
+	  }
+
+          var customModelDivId  = "customModelDiv"
+	  customModelDivContainer = ztoolkit.UI.appendElement({
+	    tag: "div",
+	    id: customModelDivId,
+	    classList: [customModelDivId],
+	    styles: {
+	      margin: "6px",
+	      fontSize: "12px",
+              borderRadius: "5px"
+            }
+	  }, modelConfigContainer) as HTMLDivElement	
+
+	  var customModelId = "customModelId"
+	  var customModelText = curPublisher + " Model Name"
+	  var customModelContainer: HTMLDivElement
+	  if (curPublisherElement.models.length > 0) {
+ 	    customModelText = curPublisherElement.models[0]
+
+	    customModelContainer = ztoolkit.UI.appendElement({
+  	      tag: "input",
+	      id: customModelId,
+	      properties: {
+	        type: "text",
+	        value: customModelText
+	      }
+	    }, customModelDivContainer) as HTMLDivElement
+	  } else {
+	    customModelContainer = ztoolkit.UI.appendElement({
+	      tag: "input",
+	      id: customModelId,
+	      properties: {
+		type: "text",
+		placeholder: customModelText
+	      }
+	    }, customModelDivContainer) as HTMLDivElement
+	  }
+
+          if (this.isDarkMode) {
+	    customModelContainer.style.color = '#222';
+	  }
+
+	  customModelContainer.addEventListener("change", async event => {
+	    if ((<HTMLInputElement>customModelContainer).value == null) return
+	    const curPublisherElement = this.publisher2models.get(curPublisher)
+            if (curPublisherElement != null) {
+	      if (curPublisherElement.models.length > 0) {
+	        curPublisherElement.models[0] = (<HTMLInputElement>customModelContainer).value
+	      } else {
+	        curPublisherElement.models.push((<HTMLInputElement>customModelContainer).value)
+	      }
+	      Zotero.Prefs.set(`${config.addonRef}.customModelApiModel`, (<HTMLInputElement>customModelContainer).value)
+	      Zotero.Prefs.set(`${config.addonRef}.usingModel`, (<HTMLInputElement>customModelContainer).value)
+	    }
+	  })
+          
+          var apiDivId  = "apidiv"
+	  
+	  var apiDivContainerExist = toolbarContainer.querySelector(".apidiv")
+          if (apiDivContainerExist) {
+	      apiDivContainerExist.remove()  
+	  }
+	  
+	  const apiDivContainer = ztoolkit.UI.appendElement({
+	    tag: "div",
+	    id: apiDivId,
+	    classList: [apiDivId],
+	    styles: {
+	      margin: "6px",
+	      fontSize: "12px",
+              borderRadius: "5px"
+	    }
+	  }, modelConfigContainer) as HTMLDivElement	
+
+	  var apiId = "api"
+	  var apitext = curPublisher + " API KEY"
+	  var apiContainer: HTMLDivElement
+	  if (curPublisherElement.apiKey.length > 0) {
+ 	    apitext = curPublisherElement.apiKey
+
+     	    apiContainer = ztoolkit.UI.appendElement({
+  	      tag: "input",
+	      id: apiId,
+	      classList: [apiId],
+	      properties: {
+	        type: "text",
+                value: apitext
+	      }
+            }, apiDivContainer) as HTMLDivElement
+	  } else {
+	    apiContainer = ztoolkit.UI.appendElement({
+	      tag: "input",
+	      id: apiId,
+	      classList: [apiId],
+	      properties: {
+	        type: "text",
+	        placeholder: apitext
+	      }
+	    }, apiDivContainer) as HTMLDivElement
+	  }
+ 
+	  if (this.isDarkMode) {
+	    apiContainer.style.color = '#222';
+	  }
+	     
+	  apiContainer.addEventListener("change", async event => {
+	    if ((<HTMLInputElement>apiContainer).value == null) return
+	    const curPublisherElement = this.publisher2models.get(curPublisher)
+	    if (curPublisherElement != null) { 
+	      curPublisherElement.apiKey = (<HTMLInputElement>apiContainer).value
+	      Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, (<HTMLInputElement>apiContainer).value)
+	      if (curPublisher == "OpenAI") {
+	        Zotero.Prefs.set(`${config.addonRef}.openaiApiKey`, (<HTMLInputElement>apiContainer).value)
+	      } else if (curPublisher == "Claude-3") {
+		Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
+	      } else if (curPublisher == "Gemini") {
+		Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+	      } else if (curPublisher == "Customized") {
+		Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
+	      }
+	      if (Zotero.isMac) {
+	        const response = await setApiKey(curPublisher, (<HTMLInputElement>apiContainer).value)
+	      }
+	    }
+	  })
+          
+	  return
+	}
+        
 	const modelConfigContainer = toolbarContainer.querySelector(".model")! as HTMLDivElement
 
 	var modelSelectDivContainer = toolbarContainer.querySelector(".modelSelectDivCSS")
@@ -831,6 +1043,12 @@ export default class Views {
 	    modelSelectContainer.remove()
         }
 
+	var modelSelectApiContainer = toolbarContainer.querySelector(".apidiv")!
+        if (modelSelectApiContainer) {
+	    modelSelectApiContainer.remove()
+        }
+
+
 	var modelSelectId = "modelSelect"
 	modelSelectContainer = ztoolkit.UI.appendElement({
 		  tag: "select",
@@ -838,8 +1056,12 @@ export default class Views {
 		  classList: ["modelSelect"],
 	}, modelSelectDivContainer) as HTMLSelectElement // DivElement
 
+	if (this.isDarkMode) {
+	  modelSelectContainer.style.color = '#222';
+	}
+
 	var curShowPublisher = this.publisher2models.get(curPublisher)
-	if (curShowPublisher == null)   {
+	if (!curPublisherElement)   {
           curShowPublisher = this.publisher2models.get("OpenAI")	
           curShowPublisher.defaultModelIdx = 0  
 	}	
@@ -870,7 +1092,6 @@ export default class Views {
 	    }, modelSelectContainer) as HTMLDivElement
 	}
 
-        //modelSelectContainer.selectedIndex = curShowPublisher.defaultModelIdx
         modelSelectContainer.selectedIndex = modelSelectedIdx 
 
 	modelSelectContainer.addEventListener("change", async event => {
@@ -880,8 +1101,6 @@ export default class Views {
 	       if (curModel == curShowModels[i] || ((curPublisher == "Claude-3" || curPublisher == "Gemini") && curShowModels[i].includes(curModel))) {
 	           Zotero.Prefs.set(`${config.addonRef}.usingModel`, curShowModels[i])
 		   modelSelectContainer.selectedIndex = i
-                   //this.publisher2models[curModel].defaultModelIdx = i
-		   //curShowPublisher.defaultModelIdx = i  
 		   var curPublisherElement = this.publisher2models.get(curPublisher)
 		   if (curPublisherElement != null) {
 		       curPublisherElement.defaultModelIdx = i
@@ -891,7 +1110,6 @@ export default class Views {
 	    }
 
 	      if (curPublisher == "Local LLM") {
-		      
 		  const progressContainer = modelConfigContainer.querySelector(".progress")! as HTMLProgressElement
 		  if (progressContainer != null) {
 		      progressContainer.remove()  
@@ -956,88 +1174,87 @@ export default class Views {
 	      }
 	  });
 
-	  var curPublisherConfig = this.publisher2models.get(curPublisher)
-	  if (curPublisherConfig != null) { 
-	      if (curPublisherConfig != null && curPublisherConfig.hasApiKey) {
-		  var apiDivId  = "apidiv"
+	  if (curPublisherElement && curPublisher == "Local LLM")  return
+          var apiDivId  = "apidiv"
 
-                  var apiDivContainer = toolbarContainer.querySelector(".apidiv")!
-                  if (apiDivContainer) {
-	              apiDivContainer.remove()
-                  }
+          var apiDivContainer = toolbarContainer.querySelector(".apidiv")!
+	  if (apiDivContainer) {
+		  apiDivContainer.remove()
+	  }
 
-		  apiDivContainer = ztoolkit.UI.appendElement({
-		      tag: "div",
-		      id: apiDivId,
-		      classList: [apiDivId], 
-		      styles: {
+	  apiDivContainer = ztoolkit.UI.appendElement({
+		  tag: "div",
+		  id: apiDivId,
+		  classList: [apiDivId], 
+		  styles: {
 			  margin: "6px",
 			  fontSize: "12px",
-                          borderRadius: "5px"
-		      }
-		  }, modelConfigContainer) as HTMLDivElement	
-
-		  var apiId = "api"
-		  var apitext = curPublisher + " API KEY"
-		  if (curPublisherConfig.apiKey.length > 0) {
-		      apitext = curPublisherConfig.apiKey
+			  borderRadius: "5px"
 		  }
+	  }, modelConfigContainer) as HTMLDivElement	
 
-		  var apiContainer: HTMLDivElement
-		  if (curPublisherConfig.apiKey.length > 0) {
-		      apitext = curPublisherConfig.apiKey
-
-		      apiContainer = ztoolkit.UI.appendElement({
-			  tag: "input",
-			  id: apiId,
-			  styles: {
-			      width: "150px",
-			  },
-			  properties: {
-			      type: "text",
-			      value: apitext
-			  }
-		      }, apiDivContainer) as HTMLDivElement
-
-		  } else {
-		      apiContainer = ztoolkit.UI.appendElement({
-			  tag: "input",
-			  id: apiId,
-			  styles: {
-			      width: "150px"
-			  },
-			  properties: {
-			      type: "text",
-			      placeholder: apitext
-			  }
-		      }, apiDivContainer) as HTMLDivElement
-		  }
-
-		  apiContainer.addEventListener("change", async event => {
-		      var curPublisherElement =  this.publisher2models.get(curPublisher)
-		      if (curPublisherElement != null) {
-			  curPublisherElement.apiKey = (<HTMLInputElement>apiContainer).value
-			  Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, curPublisherElement.apiKey)
-
-                          if (curPublisher == "OpenAI") {
-			      Zotero.Prefs.set(`${config.addonRef}.openaiApiKey`, (<HTMLInputElement>apiContainer).value)
-			  } else if (curPublisher == "Claude-3") {
-			      Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
-			  } else if (curPublisher == "Gemini") {
-			      Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
-			  } else if (curPublisher == "Customized") {
-			     Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
-			  }
-
-			  if (Zotero.isMac) {
-		  	    const response = await setApiKey(curPublisher, curPublisherElement.apiKey)
-			  }
-		      }
-		  })
-	      }
+	  var apiId = "api"
+	  var apitext = curPublisher + " API KEY"
+	  if (!curPublisherElement) {
+		  apitext = "OpenAI API KEY"
+	  } else if (curPublisherElement && curPublisherElement.apiKey.length > 0) {
+		  apitext = curPublisherElement.apiKey
 	  }
-      }
 
+	  var apiContainer: HTMLDivElement
+	  if (curPublisherElement && curPublisherElement.apiKey.length > 0) {
+		  apitext = curPublisherElement.apiKey
+
+		  apiContainer = ztoolkit.UI.appendElement({
+			  tag: "input",
+			  id: apiId,
+			  classList: [apiId],
+			  properties: {
+				  type: "text",
+				  value: apitext
+			  }
+		  }, apiDivContainer) as HTMLDivElement
+
+	  } else {
+		  apiContainer = ztoolkit.UI.appendElement({
+			  tag: "input",
+			  id: apiId,
+			  classList: [apiId],
+			  properties: {
+				  type: "text",
+				  placeholder: apitext
+			  }
+		  }, apiDivContainer) as HTMLDivElement
+	  }
+	  if (this.isDarkMode) {
+		  apiContainer.style.color = '#222';
+	  }
+
+	  apiContainer.addEventListener("change", async event => {
+		  if (curPublisher == "OpenAI") {
+			  Zotero.Prefs.set(`${config.addonRef}.openaiApiKey`, (<HTMLInputElement>apiContainer).value)
+		  } else if (curPublisher == "Claude-3") {
+			  Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
+		  } else if (curPublisher == "Gemini") {
+			  Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+		  } else if (curPublisher == "Customized") {
+			  Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
+		  }
+
+		  if (Zotero.isMac) {
+			  const response = await setApiKey(curPublisher, (<HTMLInputElement>apiContainer).value)
+		  }
+
+		  Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, (<HTMLInputElement>apiContainer).value)
+		  if (curPublisherElement != null) {
+			  curPublisherElement.apiKey = (<HTMLInputElement>apiContainer).value
+		  } else {
+			  curPublisher = "OpenAI"
+			  Zotero.Prefs.set(`${config.addonRef}.usingPublisher`, curPublisher)
+		  }
+
+	  })
+  }
 
 
   private buildContainer() {
@@ -3242,6 +3459,38 @@ export default class Views {
   public async updatePublisherModels(email: string, token: string) {
     await getSupportedLLMs(this.publisher2models, this.publishers, email, token) 
   }
+
+  private toggleDarkMode(isDark: boolean) {
+    if (isDark) {
+      if (this.container) {
+        var selectNode = this.container.querySelector(".publisherSelect") 
+        if (selectNode) {
+	  //selectNode.style.backgroundColor = '#8d8d8d';//'#222';
+	  //selectNode.style.color = '#fff';
+	  selectNode.style.color = '#222';
+	}
+
+	var modelNode = this.container.querySelector(".modelSelect")
+	if (modelNode) {
+          modelNode.style.color = '#222';	
+	}
+
+        var apiNode = this.container.querySelector(".api")
+	if (apiNode) {
+          apiNode.style.color = '#222';	
+	}
+      }
+    }   
+  }
+
+
+  public registerWindowAppearance() {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      this.isDarkMode = event.matches 
+      this.toggleDarkMode(event.matches);
+    }); 
+  } 
+
 
   public registerInToolbar() {
     const pluginName = "papersgpt"; 

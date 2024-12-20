@@ -8,6 +8,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
+  *gemini-2.0-flash-thinking* :sparkles: :fire:   
   *gemini-2.0-flash-exp* :sparkles: :fire:   
   *gemini-exp-1206*  **#1 on Chatbot Arena** :sparkles: :fire:   
   *gemini-exp-1121*   
@@ -22,7 +23,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
 - There are many SOTA free and open source models built in, Now support the following models:  
-  *Phi 4* :sparkles: :fire:   
+  *Phi-4* :sparkles: :fire:   
   *Llama3.2*  
   *QwQ-32B-Preview* :fire:   
   *Marco-o1* :fire:  
