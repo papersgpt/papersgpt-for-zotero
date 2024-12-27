@@ -2,7 +2,7 @@ import { config } from "../../package.json";
 import Meet from "./Meet/api"
 import Utils from "./utils";
 import { Document } from "langchain/document";
-import { help, fontFamily, defaultTags, parseTag } from "./base"
+import { help, fontFamily, defaultBuiltInTags, parseTag, defaultChatPrompt, defaultBuiltInPrompts } from "./base"
 import { getLocalModelDownloadProgress, setApiKey, getSupportedLLMs, ModelConfig, selectModel } from "./Meet/papersgpt";
 import { checkFileExist, startLocalLLMEngine, shutdownLocalLLMEngine } from "../hooks";
 
@@ -56,6 +56,7 @@ export default class Views {
   private tagsContainer!: HTMLDivElement;
   private utils: Utils;
   private isDarkMode: boolean = false
+  private isInference: boolean = false 
   constructor() {
     this.utils = new Utils()
     this.registerKey()
@@ -1969,9 +1970,6 @@ export default class Views {
                       verifyLicenseContainer.style.width = "68px" 
                       verifyLicenseContainer.style.height = "39px" 
 
-
-
-		      
 		      
 		      licenseContainer.style.left = `${x + container.clientWidth * 0.2}px`      
 	              licenseContainer.style.top = 	`${y + 210}px`
@@ -1986,13 +1984,13 @@ export default class Views {
 	}
         window.alert('Subscribe', this.container!);
       })
-           
+    
+
     // input 
     const inputContainer = this.inputContainer = ztoolkit.UI.appendElement({
       tag: "div",
       id: "input-container",
       styles: {
-        borderBottom: "1px solid #f6f6f6",
         width: "100%",
         display: "flex",
         justifyContent: "center",
@@ -2001,16 +1999,45 @@ export default class Views {
       },
       children: [
         {
+	  tag: "div",
+	  id: "input-send-container",
+	  styles: {
+            width: "100%",
+	    display: "flex",
+            alignItems: "center",
+	  },
+	  children: [ {
           tag: "input",
           styles: {
-            width: "calc(100% - 1.5em)",
-            height: "2.5em",
+            //width: "calc(100% - 1.5em)",
+            width: "calc(100% - 5em)",
+            height: "3em",
             borderRadius: "10px",
-            border: "none",
+            border: "1px solid #d3d3d3",
             outline: "none",
             fontFamily: "Consolas",
-            fontSize: ".8em",
+            fontSize: "1em",
           }
+	  } ,
+          {
+          tag: "div",
+	  id: "send-icon-container",
+	  classList: ["send-msgs-icon"],
+          styles: {
+	    position: "relative",
+            height: "3.2em",
+            width: "3.2em",
+	    borderRadius: "10px",
+            border: "1px solid #fff",
+            whiteSpace: "nowrap",
+
+            backgroundColor: "#fff0f5", //#fff0f5
+
+            transition: "backgroundColor 1s linear 0s"
+          }
+        }
+	]
+
         },
         {
           tag: "textarea",
@@ -2034,6 +2061,47 @@ export default class Views {
     const inputNode = inputContainer.querySelector("input")!
     this.bindUpDownKeys(inputNode)
     const textareaNode = inputContainer.querySelector("textarea")!
+    const sendMsgNode = inputContainer.querySelector(".send-msgs-icon")
+
+       
+    ztoolkit.UI.appendElement({
+        tag: "img",
+	id: "msg-send-icon",
+	styles: {
+          position: "absolute",
+	  top: "30%",
+	  left: "30%",
+          width: "1.2em",
+	  height: "1.2em",
+          justifyContent: "center"	
+	},
+	properties: {
+            src: `chrome://${config.addonRef}/content/icons/paperplane-fill.svg`,
+	    alt: ""	    
+	},
+    }, sendMsgNode)
+
+    sendMsgNode.addEventListener("mousedown", async event => {
+        let msgNode = this.inputContainer.querySelector(".send-msgs-icon")
+        let text = this.inputContainer.querySelector("input")?.value as string
+        if (msgNode && text.length > 0 && !this.isInference) {
+            msgNode.style.backgroundColor = "#fff0f5"
+            this.execTag({tag: "Chat PDF", position: 1, color: "red", trigger: "", text: defaultChatPrompt})
+	}	
+    })
+
+    inputNode.addEventListener("input", async event => {
+
+        let text = this.inputContainer.querySelector("input")?.value as string
+	if (text.length > 0 && !this.isInference) {
+          const sendMsgNode = inputContainer.querySelector(".send-msgs-icon")
+          sendMsgNode.style.backgroundColor = "#4169e1"
+	} else {
+          sendMsgNode.style.backgroundColor = "#fff0f5" 
+	}	
+    })
+
+    
     const that = this;
     let lastInputText = ""
     let inputListener = function (event: KeyboardEvent) {
@@ -2455,7 +2523,7 @@ export default class Views {
         {
           type: "mouseup",
           listener: async () => {
-            if (timer) {
+	    if (timer) {
               window.clearTimeout(timer)
               timer = undefined
               this.outputContainer.querySelector(".auxiliary")?.remove()
@@ -2669,8 +2737,6 @@ export default class Views {
 
 		      backgroundContainer.style.display = "flex"
 		      
-                      //const rect = document.documentElement.getBoundingClientRect()
-		      
 		      backgroundContainer.style.height = "30%" 
 		      backgroundContainer.style.width = parentContainer.style.width 
 		      languageContainer.style.display = "flex"
@@ -2731,7 +2797,7 @@ export default class Views {
 		  }
 		  window.alert('Please specify language first:', this.container);
 		  
-	      } else { 
+	      } else {
                   await this.execTag(tag)
 	      }
             }
@@ -3046,6 +3112,7 @@ export default class Views {
 
 
   private rippleEffect(div: HTMLDivElement, color: string) {
+    if (div == null) return 
     let [red, green, blue] = this.utils.getRGB(color)
     ztoolkit.UI.appendElement({
       tag: "div",
@@ -3059,7 +3126,34 @@ export default class Views {
    * execute tag 
    */
   private async execTag(tag: Tag) {
-    Meet.Global.input = this.inputContainer.querySelector("input")?.value as string
+    if (this.isInference) {
+      return 
+    }
+    this.isInference = true
+
+    let msgNode = this.inputContainer.querySelector(".send-msgs-icon")
+    let inputText = this.inputContainer.querySelector("input")?.value as string
+    if (msgNode && inputText.length > 0) {
+        msgNode.style.backgroundColor = "#fff0f5"
+    }	
+    
+    let chatTag = tag.tag
+    if (chatTag == "Chat PDF") {
+      Meet.Global.input = this.inputContainer.querySelector("input")?.value as string
+    } else if (chatTag == "Summary") {
+      Meet.Global.input = defaultBuiltInPrompts[0] 
+    } else if (chatTag == "Topic")  {
+      Meet.Global.input = defaultBuiltInPrompts[1] 
+    } else if (chatTag == "Background") {
+      Meet.Global.input = defaultBuiltInPrompts[2] 
+    } else if (chatTag == "Innovations") {
+      Meet.Global.input = defaultBuiltInPrompts[3] 
+    } else if (chatTag == "Challenges") {
+      Meet.Global.input = defaultBuiltInPrompts[4] 
+    } else if (chatTag == "Outlook") { 
+      Meet.Global.input = defaultBuiltInPrompts[5] 
+    }
+    //Meet.Global.input = this.inputContainer.querySelector("input")?.value as string
     this._tag = tag
     const popunWin = new ztoolkit.ProgressWindow(tag.tag, { closeOnClick: true, closeTime: -1, closeOtherProgressWindows: true })
       .show()
@@ -3069,12 +3163,28 @@ export default class Views {
       .createLine({ text: "Generating input content...", type: "default" })
     this.dotsContainer?.classList.add("loading")
     this.outputContainer.style.display = "none"
+    /*
     ztoolkit.log(tag, this.getTags())
     const tagIndex = this.getTags().map(JSON.stringify).indexOf(JSON.stringify(tag)) as number
     this.rippleEffect(
       this.container.querySelector(`#tag-${tagIndex}`)!,
       tag.color
-    )
+    )*/
+
+    //const tagIndex = this.getTags().map(JSON.stringify).indexOf(JSON.stringify(tag)) as number
+    if (chatTag == "Chat PDF") { 
+      this.rippleEffect(
+        this.container.querySelector(`#tag-chatpdf`)!,
+        tag.color
+      )
+    } else  {
+      const tagIndex = this.getTags().map(JSON.stringify).indexOf(JSON.stringify(tag)) as number
+      this.rippleEffect(
+        this.container.querySelector(`#tag-${tagIndex}`)!,
+        tag.color
+      )
+    }
+
     const outputDiv = this.outputContainer.querySelector("div")!
     outputDiv.innerHTML = ""
     outputDiv.setAttribute("pureText", "");
@@ -3110,6 +3220,15 @@ export default class Views {
       popunWin.createLine({ text: "Done", type: "fail" })
     }
     popunWin.startCloseTimer(3000)
+    this.isInference = false
+    
+    msgNode = this.inputContainer.querySelector(".send-msgs-icon")
+    inputText = this.inputContainer.querySelector("input")?.value as string
+    if (msgNode && inputText.length > 0) {
+        msgNode.style.backgroundColor = "#4169e1"
+    }	
+
+
   }
 
   /**
@@ -3155,12 +3274,12 @@ export default class Views {
       Zotero.Prefs.set(`${config.addonRef}.tags`, tagsJson)
     }
     let tags = JSON.parse(tagsJson)
-    for (let defaultTag of defaultTags) {
+    for (let defaultTag of defaultBuiltInTags) {
       if (!tags.find((tag: Tag) => tag.tag == defaultTag.tag)) {
         tags.push(defaultTag)
       }
     }
-    return (tags.length > 0 ? tags : defaultTags).sort((a: Tag, b: Tag) => a.position - b.position)
+    return (tags.length > 0 ? tags : defaultBuiltInTags).sort((a: Tag, b: Tag) => a.position - b.position)
   }
 
   private setTags(tags: any[]) {
@@ -3593,7 +3712,6 @@ export default class Views {
 
     const inputNode =  reader?._iframeWindow?.document.querySelector(".toolbar-text-input")
     parentNode.insertBefore(newNode, inputNode);
-
   }
 
   private async callback() {

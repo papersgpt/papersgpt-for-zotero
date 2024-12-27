@@ -79,12 +79,9 @@ function parseTag(text: string) {
   return tag
 }
 
-/**
- * The default label here cannot be deleted, but the content inside can be changed, such as color position and internal prompt
- */
-let defaultTags: any = [
+let defaultChatPrompt: string = 
 `
-#ChatPDF[color=#0EA293][position=10][trigger=/^(本文|这篇文章|论文)/]
+#Chat PDF[color=#0EA293][position=10][trigger=]
 You are a helpful assistant. Context information is below.
 $\{
 Meet.Global.views.messages = [];
@@ -95,71 +92,105 @@ Using the provided context information, write a comprehensive reply to the given
 Answer the question: $\{Meet.Global.input\}
 
 Reply in ${Zotero.locale}
+`
+
+
+let defaultBuiltInPrompts: any = [
+"Summary",
+"Define the topic discussed in the provided context information",
+"Provide a detailed overview of its origins, significant milestones, and key developments over time",
+"Innovations",
+"Criticisms, limitations, or challenges of the topic talking about in the paper",
+"Potential future directions and developments"
+]
+
+
+/**
+ * The default label here cannot be deleted, but the content inside can be changed, such as color position and internal prompt
+ */
+let defaultBuiltInTags: any = [
+`
+#Summary[color=#0EA293][position=10]
+You are an academic research expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, produce a concise and clear summary that encapsulates the main findings, methodology, results, and implications of the study. Ensure that the summary is written in a manner that is accessible to a general audience while retaining the core insights and nuances of the original paper. Include key terms and concepts, and provide any necessary context or background information. The summary should serve as a standalone piece that gives readers a comprehensive understanding of the paper's significance without needing to read the entire document. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information.
+
+Reply in ${Zotero.locale}
 `,
 `
-#Translate[c=#D14D72][pos=11][trigger=/^翻译/]
+#Topic[color=#F49D1A][position=11]
+You are a research expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, define the topic of the paper clearly. Please provide a comprehensive definition that includes the core aspects of the topic, its boundaries, and the various perspectives from which it can be understood. Also, highlight any key terms or concepts that are essential to grasping the topic fully. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information.
+
+Reply in ${Zotero.locale}
+`,
+`
+#Background[color=#0EA293][position=12]
+You are a research expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, understand the historical context of the topic talking about in the paper. Please provide a detailed overview of its origins, significant milestones, and key developments over time. Include any historical figures, events, or movements that have played a crucial role in shaping this topic. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information.
+
+Reply in ${Zotero.locale}
+`,
+`
+#Innovations[color=#159895][position=13]
+You are a research expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, list the main contributions or innovations of this paper. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information
+
+Reply in ${Zotero.locale}
+`,
+`
+#Challenges[color=#F14D72][position=14]
+You are a critical analysis expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, identify the challenges and criticisms. Please discuss any common criticisms, limitations, or challenges that researchers or practitioners face when dealing with this topic. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information
+
+Reply in ${Zotero.locale}
+`,
+`
+#Outlook[color=#F14D72][position=15]
+You are a futurist expert. Context information is below.
+$\{
+Meet.Global.views.messages = [];
+Meet.Zotero.getRelatedText(Meet.Global.input)
+\}
+Using the provided context information of the research paper, explore future directions and the potential. Please provide insights into where this field might be headed, including potential future developments and the impact they could have. Make sure to cite results using [number] notation after the reference. If the provided context information refer to multiple subjects with the same name, write separate answers for each subject. Use prior knowledge only if the given context didn't provide enough information
+
+Reply in ${Zotero.locale}
+`,
+`
+#Translate[color=#F14D72][position=16][trigger=/^translate/]
 Translate these content to $\{Meet.Zotero.getTranslatingLanguage\}:
 $\{
-Meet.Global.input.replace("翻译", "") ||
 Meet.Zotero.getPDFSelection() ||
 Meet.Global.views.messages[0].content
 \}
 `,
 `
-#Improve writing[color=#8e44ad][pos=12][trigger=/^润色/]
+#Improve writing[color=#8e44ad][position=17][trigger=/^improve writing/]
 Below is a paragraph from an academic paper. Polish the writing to meet the academic style, improve the spelling, grammar, clarity, concision and overall readability. When necessary, rewrite the whole sentence. Furthermore, list all modification and explain the reasons to do so in markdown table. Paragraph: "$\{
-Meet.Global.input.replace("润色", "") ||
 Meet.Global.views.messages[0].content
 \}"
 `,
-`
-#Clipboard[c=#576CBC][pos=13][trigger=/(剪贴板|复制内容)/]
-This is the content in my clipboard:
-$\{Meet.Zotero.getClipboardText()\}
----
-$\{Meet.Global.input\}
-`,
-`
-#Annotations[c=#F49D1A][pos=14][trigger=/(选中|选择的|选择|所选)?(注释|高亮|标注)/]
-These are PDF Annotation contents:
-$\{
-Meet.Zotero.getPDFAnnotations(Meet.Global.input.match(/(选中|选择的|选择|所选)/))
-\}
-
-Please answer me in the language of my question. Make sure to cite results using [number] notation after the reference. 
-My question is: $\{Meet.Global.input\}
-`,
-`
-#Selection[c=#D14D72][pos=15][trigger=/^(这段|选中)(文本|话|文字|描述)/]
-Read these content:
-$\{
-Meet.Zotero.getPDFSelection() ||
-Meet.Global.views.messages[0].content
-\}
----
-Answer me in the language of my question. This is my question: $\{Meet.Global.input\}
-`,
-  `
-#Item[c=#159895][pos=16][trigger=/这篇(文献|论文|文章)/]
-This is a Zotero item presented in JSON format:
-$\{
-JSON.stringify(ZoteroPane.getSelectedItems()[0].toJSON())
-\}
-
-Base on this JSON: $\{Meet.Global.input\}
-`,
-  `
-#Items[c=#159895][pos=17][trigger=/这些(文献|论文)/]
-These are Zotero items presented in JSON format:
-$\{
-Meet.Zotero.getRelatedText(Meet.Global.input)
-\}
-
-Please answer me using the lanaguage as same as my question. Make sure to cite results using [number] notation after the reference. 
-My question is: $\{Meet.Global.input\}
-`,
 ]
-defaultTags = defaultTags.map(parseTag)
+defaultBuiltInTags = defaultBuiltInTags.map(parseTag)
 
 
-export { help, fontFamily, defaultTags, parseTag }
+export { help, fontFamily, defaultBuiltInTags, parseTag, defaultChatPrompt, defaultBuiltInPrompts  }
