@@ -1,13 +1,14 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, Gemini, Claude, Phi 4, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, Gemini, Claude, DeepSeek, Phi 4, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
+  *DeepSeek* Beats Claude 3.5 Sonnet + GPT-4o, now the price almost 1/20 of GPT-4o :sparkles: :fire:   
   *gemini-2.0-flash-thinking* :sparkles: :fire:   
   *gemini-2.0-flash-exp* :sparkles: :fire:   
   *gemini-exp-1206*  **#1 on Chatbot Arena** :sparkles: :fire:   
