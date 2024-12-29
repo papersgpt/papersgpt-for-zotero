@@ -79,7 +79,7 @@ class Embeddings {
     } else if (curPublisher == "Gemini") {
       this.embeddingAPIURL = this.geminiAPIURL
       this.embeddingAPIURL += apiKey 
-    } else if (curPublisher == "Claude-3" || curPublisher == "Customized") {
+    } else if (curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") {
       const openaiApiKey = views.publisher2models.get("OpenAI").apiKey
       const geminiApiKey = views.publisher2models.get("Gemini").apiKey
       if (openaiApiKey.length > 0) {
@@ -96,12 +96,12 @@ class Embeddings {
    
     let res
     
-    if (!apiKey && curPublisher != "Claude-3") {
+    if (!apiKey && (curPublisher != "Claude-3" && curPublisher != "DeepSeek")) {
       new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
         .createLine({ text: "Your apiKey is not configured.", type: "default" })
         .show()
       return
-    } else if (curPublisher == "Claude-3" && this.embeddingAPIURL.length == 0) {
+    } else if ((curPublisher == "Claude-3" || curPublisher == "DeepSeek") && this.embeddingAPIURL.length == 0) {
       new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
         .createLine({ text: "Embedding api is not configured.", type: "default" })
         .show()
@@ -115,7 +115,7 @@ class Embeddings {
       const chunk = input.slice(i, i + split_len)
       
       try {
-	if (curPublisher == "OpenAI" || ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("openai"))) {
+	if (curPublisher == "OpenAI" || ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("openai"))) {
           res = await Zotero.HTTP.request(
             "POST",
             this.embeddingAPIURL,
@@ -131,7 +131,7 @@ class Embeddings {
               }),
             }
           )
-	} else if (curPublisher == "Gemini" || ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("googleapis"))) {
+	} else if (curPublisher == "Gemini" || ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("googleapis"))) {
 	  var batchRequests = []
 	  for (let j = 0; j < split_len; j++) {
             if (i + j >= input.length) break
@@ -157,7 +157,7 @@ class Embeddings {
               }),
             }
           )
-	} else if ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("localhost")) {
+	} else if ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("localhost")) {
 	  res = await Zotero.HTTP.request(
             "POST",
             this.embeddingAPIURL,
@@ -186,11 +186,11 @@ class Embeddings {
         }
       }
 
-      if ((curPublisher == "OpenAI" || ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("openai"))) && res?.response?.data) {
+      if ((curPublisher == "OpenAI" || ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("openai"))) && res?.response?.data) {
 	final_embeddings = final_embeddings.concat(res.response.data.map((i: any) => i.embedding))
-      } else if ((curPublisher == "Gemini" || ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("googleapis"))) && res?.response?.embeddings) {
+      } else if ((curPublisher == "Gemini" || ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("googleapis"))) && res?.response?.embeddings) {
 	final_embeddings = final_embeddings.concat(res.response.embeddings.map((i: any) => i.values))
-      } else if ((curPublisher == "Claude-3" || curPublisher == "Customized") && this.embeddingAPIURL.includes("localhost")) {
+      } else if ((curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") && this.embeddingAPIURL.includes("localhost")) {
 	final_embeddings = final_embeddings.concat(res.response.Embeddings.map((i: any) => i.values))
       }
     }
@@ -254,8 +254,14 @@ export async function getResponseByOnlineModel(requestText: string) {
   
   const curPublisher = Zotero.Prefs.get(`${config.addonRef}.usingPublisher`)
 
-  if (curPublisher == "OpenAI" || curPublisher == "Customized") {
+  if (curPublisher == "OpenAI" || curPublisher == "DeepSeek" || curPublisher == "Customized") {
     try {
+      var deployedModel = model
+      if (model.includes(":")) {
+          let index = model.indexOf(":")
+          deployedModel = model.substr(index + 1, model.length)
+      }
+
       await Zotero.HTTP.request(
 	"POST",
         apiURL,
@@ -265,7 +271,7 @@ export async function getResponseByOnlineModel(requestText: string) {
             "Authorization": `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: model,
+            model: deployedModel,
             messages: views.messages.slice(-chatNumber),
             stream: true,
             temperature: Number(temperature)
