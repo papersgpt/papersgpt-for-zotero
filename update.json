@@ -3,7 +3,7 @@
     "papersgpt@papersgpt.com": {
       "updates": [
         {
-          "version": "0.0.7",
+          "version": "0.0.8",
           "update_link": "",
           "applications": {
             "gecko": {
@@ -12,7 +12,7 @@
           }
         },
         {
-          "version": "0.0.7",
+          "version": "0.0.8",
           "update_link": "",
           "applications": {
             "zotero": {
