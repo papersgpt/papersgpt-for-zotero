@@ -50,7 +50,6 @@ async function onStartup() {
           window.setTimeout(execFunc, 3000)
       }
   }
-  
 }
 
 
@@ -104,7 +103,6 @@ async function onNotify(
   }
 }
 
-
 export async function downloadFile(url, filename) {
     await Zotero.File.download(url, filename)
     var signFile = filename + ".done"
@@ -141,36 +139,39 @@ export async function startLocalLLMEngine(filename) {
 }
 
 export async function shutdownLocalLLMEngine() {
-    var execCmd = ['-9', 'ChatPDFLocal']
-    var exec = "/usr/bin/killall"
+    var execArgs = ['-c', '/usr/bin/pgrep -af "ChatPDFLocal appLaunchType backend" | xargs kill -9']
+    var execCmd = '/bin/bash'
+     
     try { 
-        await Zotero.Utilities.Internal.exec(exec, execCmd);
-    } catch {
+        await Zotero.Utilities.Internal.exec(execCmd, execArgs);
+    } catch(error: any) {
+	Zotero.log('kill error!!!!')
+	Zotero.log(error)
     }
-
-    execCmd = ['-9', 'chatpdflocal-llama-server']
-    exec = "/usr/bin/killall"
+    
+    execArgs = ['-9', 'chatpdflocal-llama-server']
+    execCmd = "/usr/bin/killall"
     try {
-        await Zotero.Utilities.Internal.exec(exec, execCmd);
+        await Zotero.Utilities.Internal.exec(execCmd, execArgs);
     } catch {
     } 
     
-    execCmd = ['-9', 'chatpdflocal-llama-server-x86']
+    execArgs = ['-9', 'chatpdflocal-llama-server-x86']
     try { 
-        await Zotero.Utilities.Internal.exec(exec, execCmd);
+        await Zotero.Utilities.Internal.exec(execCmd, execArgs);
     } catch {
     }
 
-    execCmd = ['-9', 'huggingface_download']
+    execArgs = ['-9', 'huggingface_download']
     try { 
-        await Zotero.Utilities.Internal.exec(exec, execCmd);
+        await Zotero.Utilities.Internal.exec(execCmd, execArgs);
     } catch {
     }
 
-    execCmd = ['detach', '/Volumes/ChatPDFLocal'];
-    exec = "/usr/bin/hdiutil"
+    execArgs = ['detach', '/Volumes/ChatPDFLocal'];
+    execCmd = "/usr/bin/hdiutil"
     try { 
-        await Zotero.Utilities.Internal.exec(exec, execCmd);
+        await Zotero.Utilities.Internal.exec(execCmd, execArgs);
     } catch {
     }
 }

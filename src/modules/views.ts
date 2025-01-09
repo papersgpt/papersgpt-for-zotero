@@ -804,6 +804,8 @@ export default class Views {
 			     Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
 			 } else if (curPublisher == "Gemini") {
 			     Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+			 } else if (curPublisher == "DeepSeek") {
+			     Zotero.Prefs.set(`${config.addonRef}.deepseekApiKey`, (<HTMLInputElement>apiContainer).value)
 			 } else if (curPublisher == "Customized") {
 			     Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 			 }
@@ -1008,6 +1010,8 @@ export default class Views {
 		Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
 	      } else if (curPublisher == "Gemini") {
 		Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+	      } else if (curPublisher == "DeepSeek") {
+		Zotero.Prefs.set(`${config.addonRef}.deepseekApiKey`, (<HTMLInputElement>apiContainer).value)
 	      } else if (curPublisher == "Customized") {
 		Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 	      }
@@ -1238,6 +1242,8 @@ export default class Views {
 			  Zotero.Prefs.set(`${config.addonRef}.claudeApiKey`, (<HTMLInputElement>apiContainer).value)
 		  } else if (curPublisher == "Gemini") {
 			  Zotero.Prefs.set(`${config.addonRef}.geminiApiKey`, (<HTMLInputElement>apiContainer).value)
+		  } else if (curPublisher == "DeepSeek") {
+			  Zotero.Prefs.set(`${config.addonRef}.deepseekApiKey`, (<HTMLInputElement>apiContainer).value)
 		  } else if (curPublisher == "Customized") {
 			  Zotero.Prefs.set(`${config.addonRef}.customModelApiKey`, (<HTMLInputElement>apiContainer).value)
 		  }

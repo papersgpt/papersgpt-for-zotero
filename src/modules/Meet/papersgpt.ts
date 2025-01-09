@@ -1,6 +1,6 @@
 import { Document } from "langchain/document";
 import { Views, sleep } from "../views";
-import { config } from "../../../package.json";
+import { version, config } from "../../../package.json";
 
 export class ModelConfig {
 	public models: string[] = [];
@@ -378,6 +378,8 @@ function parseJsonResults(publisher2models: Map<string, ModelConfig>, publishers
 	    apiKey = Zotero.Prefs.get(`${config.addonRef}.claudeApiKey`)
 	} else if (publisher == "Gemini") {
 	    apiKey = Zotero.Prefs.get(`${config.addonRef}.geminiApiKey`)
+	} else if (publisher == "DeepSeek") {
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.deepseekApiKey`)
 	} else if (publisher == "Customized") {
 	    apiKey = Zotero.Prefs.get(`${config.addonRef}.customModelApiKey`)
 	}	
@@ -452,12 +454,13 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
     } while (trycount < 2 && httpRequestError)
   } else {
     var isActivated = Zotero.Prefs.get(`${config.addonRef}.isLicenseActivated`)
-    const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
+    const oldVersion = Zotero.Prefs.get(`${config.addonRef}.papersgptVersion`) as string
     
     if (isActivated 
       && email.length > 0 
       && token.length > 0
-      && supportedLLMs.length > 0) {
+      && oldVersion == version) {
+      const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
       var supportedLLMsJson = JSON.parse(supportedLLMs)
       if (supportedLLMsJson.length > 0) {
         parseJsonResults(publisher2models, publishers, supportedLLMsJson)
@@ -511,6 +514,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
       return
     } 
     Zotero.Prefs.set(`${config.addonRef}.isLicenseActivated`, true)
+    Zotero.Prefs.set(`${config.addonRef}.papersgptVersion`, version)
     var allElements = res?.response.SupportedLLMs as []
     var supportedLLMsStr = JSON.stringify(allElements)
     Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, supportedLLMsStr)
