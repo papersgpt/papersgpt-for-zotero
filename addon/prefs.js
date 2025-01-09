@@ -9,6 +9,7 @@ pref("extensions.zotero.__addonRef__.isLicenseActivated", false);
 pref("extensions.zotero.__addonRef__.grade", "");
 pref("extensions.zotero.__addonRef__.supportedLLMs", "");
 pref("extensions.zotero.__addonRef__.usingLanguage", "");
+pref("extensions.zotero.__addonRef__.papersgptVersion", "");
 pref("extensions.zotero.__addonRef__.usingPublisher", "OpenAI");
 pref("extensions.zotero.__addonRef__.usingModel", "gpt-3.5-turbo");
 pref("extensions.zotero.__addonRef__.usingAPIKEY", "");
@@ -16,6 +17,7 @@ pref("extensions.zotero.__addonRef__.usingAPIURL", "https://api.openai.com/v1/ch
 pref("extensions.zotero.__addonRef__.openaiApiKey", "");
 pref("extensions.zotero.__addonRef__.geminiApiKey", "");
 pref("extensions.zotero.__addonRef__.claudeApiKey", "");
+pref("extensions.zotero.__addonRef__.deepseekApiKey", "");
 pref("extensions.zotero.__addonRef__.customModelApiUrl", "");
 pref("extensions.zotero.__addonRef__.customModelApiKey", "");
 pref("extensions.zotero.__addonRef__.customModelApiModel", "");
