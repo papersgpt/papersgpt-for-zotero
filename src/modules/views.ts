@@ -5,6 +5,7 @@ import { Document } from "langchain/document";
 import { help, fontFamily, defaultBuiltInTags, parseTag, defaultChatPrompt, defaultBuiltInPrompts } from "./base"
 import { getLocalModelDownloadProgress, setApiKey, getSupportedLLMs, ModelConfig, selectModel } from "./Meet/papersgpt";
 import { checkFileExist, startLocalLLMEngine, shutdownLocalLLMEngine } from "../hooks";
+import { MyToolkit } from "../ztoolkit"
 
 
 const markdown = require("markdown-it")({
@@ -16,7 +17,7 @@ const markdown = require("markdown-it")({
 const mathjax3 = require('markdown-it-mathjax3');
 markdown.use(mathjax3);
 
-export function sleep(time) {
+export function sleep(time: any) {
     return new Promise((resolve) => window.setTimeout(resolve, time));
 }
 
@@ -65,7 +66,9 @@ export default class Views {
     // @ts-ignore
     window.Meet = Meet
     Meet.Global.views = this
-    this.isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (window != null && window.matchMedia != null) {
+      this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')!.matches;
+    } 
   }
 
   private addStyle() {
@@ -379,7 +382,7 @@ export default class Views {
       const result: Partial<StyleAttributes> = {};
       for (const key in styleAttributes) {
         const typedKey = key as StyleAttributeKeys;
-        result[typedKey] = style.getPropertyValue(styleAttributes[typedKey]);
+        result[typedKey] = style!.getPropertyValue(styleAttributes[typedKey]);
       }
       return result as StyleAttributes;
     };
@@ -427,13 +430,15 @@ export default class Views {
 	  tag: "select",
 	  id: publishId,
 	  classList: ["publisherSelect"],
+	  styles: {
+	  },
 	  properties: {
 	      value: "",
 	  }
       }, publishConfigContainer) as HTMLSelectElement//HTMLDivElement
 
       if (this.isDarkMode) {
-	publishSelectContainer.style.color = '#222';
+	(publishSelectContainer as HTMLElement).style.color = '#222';
       }
 
       var publisherSelectIdx = 0 
@@ -451,13 +456,13 @@ export default class Views {
 	      }
 	  }, publishSelectContainer) as HTMLDivElement
       }
-      publishSelectContainer.selectedIndex = publisherSelectIdx 
+      (publishSelectContainer as HTMLSelectElement).selectedIndex = publisherSelectIdx 
 
 
       publishSelectContainer.addEventListener("change", async event => {
 	  event.stopPropagation();
 
-	  curPublisher = publishSelectContainer.value
+	  curPublisher = (publishSelectContainer as HTMLSelectElement).value
 	  Zotero.Prefs.set(`${config.addonRef}.usingPublisher`, curPublisher)
 	  var curPublisherElement = this.publisher2models.get(curPublisher)
 	  if (curPublisherElement == null) return 
@@ -468,7 +473,7 @@ export default class Views {
 
 	  for (var i = 0; i < this.publishers.length; i++) {
 	      if (this.publishers[i] == curPublisher) {
-		  publishSelectContainer.selectedIndex = i
+		  (publishSelectContainer as HTMLSelectElement).selectedIndex = i
 		  break 
 	      }	  
 	  }
@@ -1062,12 +1067,12 @@ export default class Views {
 	}, modelSelectDivContainer) as HTMLSelectElement // DivElement
 
 	if (this.isDarkMode) {
-	  modelSelectContainer.style.color = '#222';
+	  (modelSelectContainer as HTMLSelectElement).style.color = '#222';
 	}
 
-	var curShowPublisher = this.publisher2models.get(curPublisher)
+	var curShowPublisher: ModelConfig = this.publisher2models.get(curPublisher)!
 	if (!curPublisherElement)   {
-          curShowPublisher = this.publisher2models.get("OpenAI")	
+          curShowPublisher = this.publisher2models.get("OpenAI")!
           curShowPublisher.defaultModelIdx = 0  
 	}	
 	var curShowModels = curShowPublisher.models
@@ -1097,15 +1102,15 @@ export default class Views {
 	    }, modelSelectContainer) as HTMLDivElement
 	}
 
-        modelSelectContainer.selectedIndex = modelSelectedIdx 
+        (modelSelectContainer as HTMLSelectElement).selectedIndex = modelSelectedIdx 
 
 	modelSelectContainer.addEventListener("change", async event => {
-            var curModel = modelSelectContainer.value
+            var curModel = (modelSelectContainer as HTMLSelectElement).value
 
 	    for (var i = 0; i < curShowModels.length; i++) {
 	       if (curModel == curShowModels[i] || ((curPublisher == "Claude-3" || curPublisher == "Gemini") && curShowModels[i].includes(curModel))) {
 	           Zotero.Prefs.set(`${config.addonRef}.usingModel`, curShowModels[i])
-		   modelSelectContainer.selectedIndex = i
+		   (modelSelectContainer as HTMLSelectElement).selectedIndex = i
 		   var curPublisherElement = this.publisher2models.get(curPublisher)
 		   if (curPublisherElement != null) {
 		       curPublisherElement.defaultModelIdx = i
@@ -1120,7 +1125,7 @@ export default class Views {
 		      progressContainer.remove()  
 		  }
 		  var curPublisherElement = this.publisher2models.get(curPublisher)
-		  var isModelReady = curPublisherElement.areModelsReady.get(curModel)
+		  var isModelReady = curPublisherElement!.areModelsReady.get(curModel)
 		  if (isModelReady)  {
 		      var retValue = await selectModel(curPublisher, curModel)
 		      if (!retValue) {
@@ -1265,7 +1270,8 @@ export default class Views {
 
 
   private buildContainer() {
-    const container = ztoolkit.UI.createElement(document, "div", {
+    //let props: ElementProps = {
+    let props = {
       id: this.id,
       styles: {
         display: "none",
@@ -1282,11 +1288,12 @@ export default class Views {
                     0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
                     0px 30px 90px rgba(0, 0, 0, 0.2)`,
         fontFamily: fontFamily,
-	zIndex:1
+	zIndex:"1"
       }
-    })
-    this.addDragEvent(container)
-    this.bindCtrlScrollZoom(container)
+    }
+    const container = ztoolkit.UI.createElement(document, "div", props)
+    this.addDragEvent(container as HTMLDivElement)
+    this.bindCtrlScrollZoom(container as HTMLDivElement)
 
     var curPublisher = Zotero.Prefs.get(`${config.addonRef}.usingPublisher`) as string
     var curModel =  Zotero.Prefs.get(`${config.addonRef}.usingModel`) as string
@@ -1360,8 +1367,8 @@ export default class Views {
     const registerContainer = toolbarContainer.querySelector(".register")! as HTMLDivElement
     
     registerContainer.addEventListener("mouseup", async event => {
-        window.alert = function(msg, container) {
-
+        //window.alert = function(message: string) {
+        window.alert = function() {
 	    const backgroundContainer = ztoolkit.UI.createElement(document, "div", {
 	      id: "languagesBg",
 	      styles: {
@@ -1378,10 +1385,10 @@ export default class Views {
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2)`,
 		fontFamily: fontFamily,
-		opacity: 0.6,
-		zIndex:2, 
+		opacity: "0.6",
+		zIndex:"2", 
               },
-            })
+            }) as HTMLElement
 
             const subscriberShowContainer = ztoolkit.UI.createElement(document, "div", {
 	      id: "subscriber",
@@ -1399,9 +1406,9 @@ export default class Views {
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2)`,
 		fontFamily: fontFamily,
-		zIndex:3, 
+		zIndex:"3", 
 	      },
-            })
+            }) as HTMLElement
 
             const subscriberCloseContainer = ztoolkit.UI.appendElement({
 		tag: "div",
@@ -1423,7 +1430,7 @@ export default class Views {
 		  fontFamily: fontFamily,
 		  color: "#1e90ff",
 		  cursor: "pointer",
-		  zIndex:3, 
+		  zIndex:"3", 
 		  margin: "10px" 
 		},
 		properties: {
@@ -1457,7 +1464,7 @@ export default class Views {
 		  fontFamily: fontFamily,
 		  //color: "#1e90ff",
 		  //cursor: "pointer",
-		  zIndex:3, 
+		  zIndex:"3", 
 		  //margin: "10px" 
 		},
 		
@@ -1508,10 +1515,10 @@ export default class Views {
 		      fontFamily: fontFamily,
 		      //cursor: "pointer",
 		      //spacing: "20px", 
-		      zIndex:3, 
+		      zIndex:"3", 
 
 	          },
-            })
+            }) as HTMLElement
 
         
             const subscribeContainer = ztoolkit.UI.appendElement({
@@ -1532,14 +1539,15 @@ export default class Views {
 			0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 			0px 30px 90px rgba(0, 0, 0, 0.2)`,
 			fontFamily: fontFamily,
-			zIndex:3, 
+			zIndex:"3", 
 
 		},
 		properties: {
 		    type: "text",
 	            placeholder: "Email" 
 		}
-            }, registerWrapContainer) as HTMLDivElement
+            //}, registerWrapContainer) as HTMLDivElement
+            }, registerWrapContainer) as HTMLElement
 
             const subscribeWarnNoteContainer = ztoolkit.UI.appendElement({
 	        tag: "div", 
@@ -1561,13 +1569,14 @@ export default class Views {
 			//0px 30px 90px rgba(0, 0, 0, 0.2)`,
 			fontFamily: fontFamily,
 			//cursor: "pointer",
-			zIndex:3, 
+			zIndex:"3", 
 
 		},
 		properties: {
 	            innerHTML: "" 
 		}
-            }, registerWrapContainer) as HTMLDivElement
+            //}, registerWrapContainer) as HTMLDivElement
+            }, registerWrapContainer) as HTMLElement
 
 
 	    const verifyWarnNoteContainer = ztoolkit.UI.appendElement({
@@ -1590,7 +1599,7 @@ export default class Views {
 			//0px 30px 90px rgba(0, 0, 0, 0.2)`,
 			fontFamily: fontFamily,
 			//cursor: "pointer",
-			zIndex:3, 
+			zIndex:"3", 
 
 		},
 		properties: {
@@ -1619,7 +1628,7 @@ export default class Views {
 		  fontFamily: fontFamily,
 		  //color: "#1e90ff",
 		  //cursor: "pointer",
-		  zIndex:3, 
+		  zIndex:"3", 
 		  //margin: "20px" 
 		},
 		
@@ -1646,7 +1655,7 @@ export default class Views {
 		  fontFamily: fontFamily,
 		  color: "#1e90ff",
 		  cursor: "pointer",
-		  zIndex:3, 
+		  zIndex:"3", 
 		  margin: "20px" 
 		},
 		properties: {
@@ -1680,7 +1689,7 @@ export default class Views {
                    border: "1px solid #fff",
 		   cursor: "pointer",
 		   whiteSpace: "nowrap",
-		   zIndex: 3
+		   zIndex: "3"
 	       }, 
 	       properties: {
 	           innerHTML: "Subscribe" 
@@ -1697,7 +1706,7 @@ export default class Views {
 		   listener: async (event: any) => {
 		     event.stopPropagation();
 		     var emailRegExp=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                     var ok = emailRegExp.test(subscribeContainer.value)
+                     var ok = emailRegExp.test((subscribeContainer as HTMLInputElement).value)
 		 
 		     var message = ""
 		     let res
@@ -1714,7 +1723,7 @@ export default class Views {
 				     "Content-Type": "application/json",
 				 },
 				 body: JSON.stringify({
-				     email: subscribeContainer.value
+				     email: (subscribeContainer as HTMLInputElement).value
 				 }),
 			     })
 		       } catch (error: any) {
@@ -1775,7 +1784,7 @@ export default class Views {
 				//color: "#1e90ff",
 				//cursor: "pointer",
 				//spacing: "20px", 
-				zIndex:3, 
+				zIndex: "3", 
 
 			},
 			properties: {
@@ -1802,7 +1811,7 @@ export default class Views {
 			  0px 30px 90px rgba(0, 0, 0, 0.2)`,
 			  fontFamily: fontFamily,
 			  cursor: "pointer",
-			  zIndex:3, 
+			  zIndex:"3", 
 		        },
 		        properties: {
 		          value: "",
@@ -1832,8 +1841,8 @@ export default class Views {
 							      "Content-Type": "application/json",
 						      },
 						      body: JSON.stringify({
-							      email: subscribeContainer.value,
-							      license: licenseContainer.value, 
+							      email: (subscribeContainer as HTMLInputElement).value,
+							      license: (licenseContainer as HTMLInputElement).value, 
 						      }),
 					      })
 			      } catch (error: any) {
@@ -1844,8 +1853,8 @@ export default class Views {
 
 			      if (res?.response) {
 				      if (res.response.status && res.response.status == 200) {
-					      const email =  subscribeContainer.value
-					      const token = licenseContainer.value
+					      const email =  (subscribeContainer as HTMLInputElement).value
+					      const token = (licenseContainer as HTMLInputElement).value
 					      Zotero.Prefs.set(`${config.addonRef}.email`, email) 	
 					      Zotero.Prefs.set(`${config.addonRef}.token`, token) 	
 					      Zotero.Prefs.set(`${config.addonRef}.isLicenseActivated`, true) 
@@ -1890,10 +1899,10 @@ export default class Views {
              backgroundContainer.style.display = "flex"
 		      
 	     backgroundContainer.style.height = "50%" 
-	     backgroundContainer.style.width = container.style.width 
+	     backgroundContainer.style.width = this.container.style.width 
 
-	     backgroundContainer.style.left = container.style.left 
-	     backgroundContainer.style.top = container.style.top 
+	     backgroundContainer.style.left = this.container.style.left 
+	     backgroundContainer.style.top = this.container.style.top 
 
 
 	     var x = -1
@@ -1950,45 +1959,45 @@ export default class Views {
 		      subscriberCloseContainer.style.height = "6px"
 
 		       
-		      registerNoteContainer.style.left = `${x + container.clientWidth * 0.1}px`
+		      registerNoteContainer.style.left = `${x + this.container.clientWidth * 0.1}px`
 		      registerNoteContainer.style.top = `${y + 20}px`
-		      registerNoteContainer.style.width = `${container.clientWidth * 0.85}px`
+		      registerNoteContainer.style.width = `${this.container.clientWidth * 0.85}px`
 		      registerNoteContainer.style.height = "100px"
                        
-		      subscribeContainer.style.left = `${x + container.clientWidth * 0.2}px`
+		      subscribeContainer.style.left = `${x + this.container.clientWidth * 0.2}px`
 		      subscribeContainer.style.top = `${y + 135}px`
-		      subscribeContainer.style.width = `${container.clientWidth * 0.6}px` 
+		      subscribeContainer.style.width = `${this.container.clientWidth * 0.6}px` 
 		      subscribeContainer.style.height = "32px"
 	           
-		      subscribeWarnNoteContainer.style.left = `${x + container.clientWidth * 0.2}px`
+		      subscribeWarnNoteContainer.style.left = `${x + this.container.clientWidth * 0.2}px`
 		      subscribeWarnNoteContainer.style.top = `${y + 172}px` 
-		      subscribeWarnNoteContainer.style.width = `${container.clientWidth * 0.6}px` 
+		      subscribeWarnNoteContainer.style.width = `${this.container.clientWidth * 0.6}px` 
 		      subscribeWarnNoteContainer.style.height = "28px" 
 
 
-	              subscribeSubmitContainer.style.left = `${x + container.clientWidth * 0.8 + 15}px`
+	              subscribeSubmitContainer.style.left = `${x + this.container.clientWidth * 0.8 + 15}px`
 		      subscribeSubmitContainer.style.top = `${y + 134}px`
 		      subscribeSubmitContainer.style.width = "68px" 
 		      subscribeSubmitContainer.style.height = "39px"
 	            
-                      verifyLicenseContainer.style.left = `${x + container.clientWidth * 0.8 + 15}px` 
+                      verifyLicenseContainer.style.left = `${x + this.container.clientWidth * 0.8 + 15}px` 
                       verifyLicenseContainer.style.top = `${y + 210}px` 
                       verifyLicenseContainer.style.width = "68px" 
                       verifyLicenseContainer.style.height = "39px" 
 
 		      
-		      licenseContainer.style.left = `${x + container.clientWidth * 0.2}px`      
+		      licenseContainer.style.left = `${x + this.container.clientWidth * 0.2}px`      
 	              licenseContainer.style.top = 	`${y + 210}px`
-	              licenseContainer.style.width = 	`${container.clientWidth * 0.6}px`      
+	              licenseContainer.style.width = 	`${this.container.clientWidth * 0.6}px`      
 	              licenseContainer.style.height = 	 "32px"     
 	
-		      verifyWarnNoteContainer.style.left = `${x + container.clientWidth * 0.2}px`
+		      verifyWarnNoteContainer.style.left = `${x + this.container.clientWidth * 0.2}px`
 		      verifyWarnNoteContainer.style.top = `${y + 240}px` 
-		      verifyWarnNoteContainer.style.width = `${container.clientWidth * 0.6}px` 
+		      verifyWarnNoteContainer.style.width = `${this.container.clientWidth * 0.6}px` 
 		      verifyWarnNoteContainer.style.height = "28px" 
 	
 	}
-        window.alert('Subscribe', this.container!);
+        window.alert('Subscribe');
       })
     
 
@@ -2085,13 +2094,13 @@ export default class Views {
             src: `chrome://${config.addonRef}/content/icons/paperplane-fill.svg`,
 	    alt: ""	    
 	},
-    }, sendMsgNode)
+    }, sendMsgNode!)
 
-    sendMsgNode.addEventListener("mousedown", async event => {
+    sendMsgNode!.addEventListener("mousedown", async event => {
         let msgNode = this.inputContainer.querySelector(".send-msgs-icon")
         let text = this.inputContainer.querySelector("input")?.value as string
         if (msgNode && text.length > 0 && !this.isInference) {
-            msgNode.style.backgroundColor = "#fff0f5"
+            (msgNode as HTMLElement).style.backgroundColor = "#fff0f5"
             this.execTag({tag: "Chat PDF", position: 1, color: "red", trigger: "", text: defaultChatPrompt})
 	}	
     })
@@ -2100,10 +2109,10 @@ export default class Views {
 
         let text = this.inputContainer.querySelector("input")?.value as string
 	if (text.length > 0 && !this.isInference) {
-          const sendMsgNode = inputContainer.querySelector(".send-msgs-icon")
-          sendMsgNode.style.backgroundColor = "#4169e1"
+          const sendMsgNode: HTMLElement = inputContainer.querySelector(".send-msgs-icon")!
+          sendMsgNode!.style.backgroundColor = "#4169e1"
 	} else {
-          sendMsgNode.style.backgroundColor = "#fff0f5" 
+          (sendMsgNode as HTMLElement).style.backgroundColor = "#fff0f5" 
 	}	
     })
 
@@ -2535,7 +2544,8 @@ export default class Views {
               this.outputContainer.querySelector(".auxiliary")?.remove()
 	      var curLanguage = Zotero.Prefs.get(`${config.addonRef}.usingLanguage`) as string
 	      if (tag.tag.includes("Translate") && curLanguage.length == 0) {
-		  window.alert = function(msg, parentContainer) {
+		  //window.alert = function(msg: any) {
+		  window.alert = function() {
 		       const backgroundContainer = ztoolkit.UI.createElement(document, "div", {
 			      id: "languagesBg",
                                
@@ -2555,12 +2565,12 @@ export default class Views {
 				  0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 				  0px 30px 90px rgba(0, 0, 0, 0.2)`,
 				  fontFamily: fontFamily,
-				  opacity: 0.6,
-				  zIndex:2, 
+				  opacity: "0.6",
+				  zIndex:"2", 
                               },
                       })
 
-		      const allLanguagesContainer = ztoolkit.UI.createElement(document, "div", {
+		      const allLanguagesContainer: any = ztoolkit.UI.createElement(document, "div", {
 			      id: "allLanguages",
                                
 			      styles: {
@@ -2580,7 +2590,7 @@ export default class Views {
 				  fontFamily: fontFamily,
 				  //cursor: "pointer",
 				  //spacing: "20px", 
-				  zIndex:3, 
+				  zIndex:"3", 
                                   
 			      },
                       })
@@ -2608,11 +2618,12 @@ export default class Views {
 				  color: "red",
 				  cursor: "pointer",
 				  //spacing: "20px", 
-				  zIndex:3, 
+				  zIndex:"3", 
                                   
 			      },
                               properties: {
-			          innerHTML: msg 
+			          //innerHTML: msg
+			          innerHTML: 'Please specify language first:'
 			      }
                       }, allLanguagesContainer) as HTMLDivElement
 
@@ -2638,7 +2649,7 @@ export default class Views {
 				  fontFamily: fontFamily,
 				  color: "#1e90ff",
 				  cursor: "pointer",
-				  zIndex:3, 
+				  zIndex:"3", 
 			          margin: "20px" 
 			      },
 			  properties: {
@@ -2678,7 +2689,10 @@ export default class Views {
 
 		      var curLanguage = Zotero.Prefs.get(`${config.addonRef}.usingLanguage`) as string
 		      var languageSelectIdx = 0
-		      this.supportedLanguages = JSON.parse(languagesJson)
+		      let parseJsonTmp: string[] = JSON.parse(languagesJson!)
+		      if (parseJsonTmp != null) {
+		        this.supportedLanguages = parseJsonTmp 
+		      }
 		      if (this.supportedLanguages.length == 0) {
 			      const defaultLanguages = ["Arbic","Chinese", "English", "French", "German", "Hindi", "Italian", "Japanese", "Portuguese", "Russian", "Spanish"]
 			      for (let defaultLanguage of defaultLanguages) {
@@ -2733,23 +2747,23 @@ export default class Views {
 				      }	  
 			      }
 
-                              backgroundContainer.style.display = "none"
+                              (backgroundContainer as HTMLElement).style.display = "none"
 			      allLanguagesContainer.style.display = "none" 
 
 		      })
 
-                      document.documentElement.append(backgroundContainer)
+		      document.documentElement.append(backgroundContainer)
                       document.documentElement.append(allLanguagesContainer)
 
-		      backgroundContainer.style.display = "flex"
+		      backgroundContainer.style.display = "flex" 
 		      
 		      backgroundContainer.style.height = "30%" 
-		      backgroundContainer.style.width = parentContainer.style.width 
+		      backgroundContainer.style.width = this.container.style.width 
 		      languageContainer.style.display = "flex"
 
-		      backgroundContainer.style.left = parentContainer.style.left 
-		      backgroundContainer.style.top = parentContainer.style.top 
-
+		      backgroundContainer.style.left = this.container.style.left 
+		      backgroundContainer.style.top = this.container.style.top 
+                      
 
 		      var x = -1
 		      var y = -1
@@ -2801,7 +2815,7 @@ export default class Views {
 		      closeContainer.style.height = "5px" 
 
 		  }
-		  window.alert('Please specify language first:', this.container);
+		  window.alert('Please specify language first:');
 		  
 	      } else {
                   await this.execTag(tag)
@@ -2840,7 +2854,8 @@ export default class Views {
 				type: "click",
 				listener: async () => {
 					var curLanguage = Zotero.Prefs.get(`${config.addonRef}.usingLanguage`) as string
-					window.alert = function(msg, parentContainer) {
+					//window.alert = function(msg: any) {
+					window.alert = function() {
 						const backgroundContainer = ztoolkit.UI.createElement(document, "div", {
 							id: "languagesBg",
 
@@ -2860,10 +2875,10 @@ export default class Views {
 								0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 								0px 30px 90px rgba(0, 0, 0, 0.2)`,
 								fontFamily: fontFamily,
-								opacity: 0.6,
-								zIndex:2, 
+								opacity: "0.6",
+								zIndex: "2", 
 							},
-						})
+						}) as HTMLElement
 
 						const allLanguagesContainer = ztoolkit.UI.createElement(document, "div", {
 							id: "allLanguages",
@@ -2885,10 +2900,10 @@ export default class Views {
 								fontFamily: fontFamily,
 								//cursor: "pointer",
 								//spacing: "20px", 
-								zIndex:3, 
+								zIndex:"3", 
 
 							},
-						})
+						}) as HTMLElement
 
 
 						const languageContainer = ztoolkit.UI.appendElement({
@@ -2913,11 +2928,12 @@ export default class Views {
 								color: "red",
 								cursor: "pointer",
 								//spacing: "20px", 
-								zIndex:3, 
+								zIndex:"3", 
 
 							},
 							properties: {
-								innerHTML: msg 
+								//innerHTML: msg 
+								innerHTML: 'Change translate language:' 
 							}
 						}, allLanguagesContainer) as HTMLDivElement
 
@@ -2943,7 +2959,7 @@ export default class Views {
 								fontFamily: fontFamily,
 								color: "#1e90ff",
 								cursor: "pointer",
-								zIndex:3, 
+								zIndex:"3", 
 								margin: "20px" 
 							},
 							properties: {
@@ -2982,7 +2998,10 @@ export default class Views {
 
 						var curLanguage = Zotero.Prefs.get(`${config.addonRef}.usingLanguage`) as string
 						var languageSelectIdx = 0
-						this.supportedLanguages = JSON.parse(languagesJson)
+						let languagesArray = JSON.parse(languagesJson!)
+						if (languagesArray) {
+						  this.supportedLanguages = languagesArray 
+						}
 						if (this.supportedLanguages.length == 0) {
 							const defaultLanguages = ["Arbic","Chinese", "English", "French", "German", "Hindi", "Italian", "Japanese", "Portuguese", "Russian", "Spanish"]
 							for (let defaultLanguage of defaultLanguages) {
@@ -3049,11 +3068,11 @@ export default class Views {
 						backgroundContainer.style.display = "flex"
 
 						backgroundContainer.style.height = "30%" 
-						backgroundContainer.style.width = parentContainer.style.width 
+						backgroundContainer.style.width = this.container.style.width 
 						languageContainer.style.display = "flex"
 
-						backgroundContainer.style.left = parentContainer.style.left 
-						backgroundContainer.style.top = parentContainer.style.top 
+						backgroundContainer.style.left = this.container.style.left 
+						backgroundContainer.style.top = this.container.style.top 
 
 
 						var x = -1
@@ -3106,7 +3125,7 @@ export default class Views {
 
 					}
 
-					window.alert('Change translate language:', this.container);
+					window.alert('Change translate language:');
 				}
 			   }
 		]
@@ -3137,7 +3156,7 @@ export default class Views {
     }
     this.isInference = true
 
-    let msgNode = this.inputContainer.querySelector(".send-msgs-icon")
+    let msgNode = this.inputContainer.querySelector(".send-msgs-icon") as HTMLElement
     let inputText = this.inputContainer.querySelector("input")?.value as string
     if (msgNode && inputText.length > 0) {
         msgNode.style.backgroundColor = "#fff0f5"
@@ -3228,7 +3247,7 @@ export default class Views {
     popunWin.startCloseTimer(3000)
     this.isInference = false
     
-    msgNode = this.inputContainer.querySelector(".send-msgs-icon")
+    msgNode = this.inputContainer.querySelector(".send-msgs-icon") as HTMLElement
     inputText = this.inputContainer.querySelector("input")?.value as string
     if (msgNode && inputText.length > 0) {
         msgNode.style.backgroundColor = "#4169e1"
@@ -3431,7 +3450,7 @@ export default class Views {
             }
           }
         ]
-      }, auxDiv)
+      }, auxDiv as HTMLElement)
     })
   }
 
@@ -3533,7 +3552,7 @@ export default class Views {
         }
         return arr
       })() as any
-    }, document.documentElement)
+    }, document.documentElement) as HTMLElement
     
     const winRect = document.documentElement.getBoundingClientRect()
     const nodeRect = menuNode.getBoundingClientRect()
@@ -3588,19 +3607,19 @@ export default class Views {
   private toggleDarkMode(isDark: boolean) {
     if (isDark) {
       if (this.container) {
-        var selectNode = this.container.querySelector(".publisherSelect") 
+        var selectNode = this.container.querySelector(".publisherSelect") as HTMLElement 
         if (selectNode) {
 	  //selectNode.style.backgroundColor = '#8d8d8d';//'#222';
 	  //selectNode.style.color = '#fff';
 	  selectNode.style.color = '#222';
 	}
 
-	var modelNode = this.container.querySelector(".modelSelect")
+	var modelNode = this.container.querySelector(".modelSelect") as HTMLElement
 	if (modelNode) {
           modelNode.style.color = '#222';	
 	}
 
-        var apiNode = this.container.querySelector(".api")
+        var apiNode = this.container.querySelector(".api") as HTMLElement
 	if (apiNode) {
           apiNode.style.color = '#222';	
 	}
@@ -3610,7 +3629,7 @@ export default class Views {
 
 
   public registerWindowAppearance() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    window.matchMedia('(prefers-color-scheme: dark)')!.addEventListener('change', (event) => {
       this.isDarkMode = event.matches 
       this.toggleDarkMode(event.matches);
     }); 
@@ -3700,7 +3719,7 @@ export default class Views {
     newNode.setAttribute("onmousedown", "");
     newNode.disabled = false; 
     newNode.innerHTML = "";
-    let img = reader?._iframeWindow?.document.createElement('img')
+    let img: any = reader?._iframeWindow?.document.createElement('img')
     img.src = `chrome://${config.addonRef}/content/icons/papersgpt-logo.png`;
     img.alt = ''
     newNode.appendChild(img);
@@ -3716,17 +3735,18 @@ export default class Views {
 
     const parentNode = reader?._iframeWindow?.document.querySelector(".start")
 
-    const inputNode =  reader?._iframeWindow?.document.querySelector(".toolbar-text-input")
-    parentNode.insertBefore(newNode, inputNode);
+    const inputNode =  reader?._iframeWindow?.document.querySelector(".toolbar-text-input")!
+    parentNode!.insertBefore(newNode, inputNode);
   }
 
   private async callback() {
+    Zotero.log("enter callback...")
     Zotero.Prefs.set(`${config.addonRef}.papersgptState`, "Starting")
     this.publisher2models.clear()
     this.publishers = []
 
     this.isInNote = false
-    const defaultModelApiKey = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`)
+    const defaultModelApiKey: string = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`) as string
     let modelConfig: ModelConfig = {
       models: ["gpt-3.5-turbo", "gpt-4"],
       hasApiKey: true,
@@ -3768,7 +3788,9 @@ export default class Views {
     } else {
       var email = Zotero.Prefs.get(`${config.addonRef}.email`) 
       var token =  Zotero.Prefs.get(`${config.addonRef}.token`)
+      Zotero.log("11111111") 
       await Zotero[config.addonInstance].views.updatePublisherModels(email, token)
+      Zotero.log("22222222") 
       Zotero[config.addonInstance].views.createOrUpdateModelsContainer()
     }
       
@@ -3820,7 +3842,8 @@ export default class Views {
     const key = "enter"
     if (Zotero.isMac) {
       const modifiers = "meta"
-      ztoolkit.Shortcut.register((ev, data) => {
+      //ztoolkit.Shortcut.register((ev: any, data: any) => {
+      ztoolkit.Keyboard.register((ev: any, data: any) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
             var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
@@ -3832,7 +3855,8 @@ export default class Views {
       })
     } else {
       const modifiers = "control"
-      ztoolkit.Shortcut.register((ev, data) => {
+      //ztoolkit.Shortcut.register((ev: any, data: any) => {
+      ztoolkit.Keyboard.register((ev: any, data: any) => {
         if (data.type === "keyup" && data.keyboard) {
           if (data.keyboard.equals(`${modifiers},${key}`)) {
             var papersgptState = Zotero.Prefs.get(`${config.addonRef}.papersgptState`)
