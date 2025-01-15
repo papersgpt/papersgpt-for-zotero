@@ -1,6 +1,7 @@
 import { BasicTool } from "zotero-plugin-toolkit";
 import Addon from "./addon";
 import { config } from "../package.json";
+import { MyToolkit } from "./ztoolkit"
 
 const basicTool = new BasicTool();
 
@@ -29,7 +30,13 @@ if (!basicTool.getGlobal("Zotero")[config.addonInstance]) {
 
   _globalThis.document = basicTool.getGlobal("document");
   _globalThis.addon = new Addon();
-  _globalThis.ztoolkit = addon.data.ztoolkit;
+  //_globalThis.ztoolkit = _globalThis.addon.data.ztoolkit//addon.data.ztoolkit;
+  _globalThis.ztoolkit = _globalThis.addon.data.ztoolkit //addon.data.ztoolkit;
+  /*  
+  defineGlobal("ztoolkit", () => {
+    return <MyToolkit>(_globalThis.addon.data.ztoolkit);
+  });
+  */ 
   ztoolkit.basicOptions.log.prefix = `[${config.addonName}]`;
   ztoolkit.basicOptions.log.disableConsole = addon.data.env === "production";
   ztoolkit.UI.basicOptions.ui.enableElementJSONLog = false
@@ -40,3 +47,16 @@ if (!basicTool.getGlobal("Zotero")[config.addonInstance]) {
   // Trigger addon hook for initialization
   addon.hooks.onStartup();
 }
+
+function defineGlobal(name: Parameters<BasicTool["getGlobal"]>[0]): void;
+function defineGlobal(name: string, getter: () => any): void;
+function defineGlobal(name: string, getter?: () => any) {
+  Object.defineProperty(_globalThis, name, {
+    get() {
+      return getter ? getter() : basicTool.getGlobal(name);
+    },
+  });
+}
+ 
+
+

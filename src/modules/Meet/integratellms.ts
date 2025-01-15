@@ -20,11 +20,11 @@ export async function similaritySearch(queryText: string, docs: Document[], obj:
   // Search local, to save space, only store vectors
   // The MD5 value is extracted here as verification. 
   // Here local JSON files may become larger and larger 
-  var embeddingSource = Zotero.Prefs.get(`${config.addonRef}.usingPublisher`)
+  var embeddingSource: string = Zotero.Prefs.get(`${config.addonRef}.usingPublisher`) as string
   if (embeddingSource == "Claude-3") {
-      const views = Zotero.PapersGPT.views as Views
-      const openaiApiKey = views.publisher2models.get("OpenAI").apiKey
-      const geminiApiKey = views.publisher2models.get("Gemini").apiKey
+      const views: Views = Zotero.PapersGPT.views! as Views
+      const openaiApiKey: string = views.publisher2models.get("OpenAI")!.apiKey as string
+      const geminiApiKey: string = views.publisher2models.get("Gemini")!.apiKey as string
       if (openaiApiKey != null && openaiApiKey.length > 0) {
           embeddingSource = "OpenAI" 
       } else if (geminiApiKey != null && geminiApiKey.length > 0) {
@@ -80,8 +80,8 @@ class Embeddings {
       this.embeddingAPIURL = this.geminiAPIURL
       this.embeddingAPIURL += apiKey 
     } else if (curPublisher == "Claude-3" || curPublisher == "DeepSeek" || curPublisher == "Customized") {
-      const openaiApiKey = views.publisher2models.get("OpenAI").apiKey
-      const geminiApiKey = views.publisher2models.get("Gemini").apiKey
+      const openaiApiKey = views.publisher2models.get("OpenAI")!.apiKey
+      const geminiApiKey = views.publisher2models.get("Gemini")!.apiKey
       if (openaiApiKey.length > 0) {
         this.embeddingAPIURL = this.openaiAPIURL
 	apiKey = openaiApiKey 
@@ -94,7 +94,7 @@ class Embeddings {
       }
     } 
    
-    let res
+    let res: any
     
     if (!apiKey && (curPublisher != "Claude-3" && curPublisher != "DeepSeek")) {
       new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
@@ -175,7 +175,7 @@ class Embeddings {
       } catch (error: any) {
         try {
           error = error.xmlhttp.response?.error
-          views.setText(`# ${error.code}\n> ${url}\n\n**${error.type}**\n${error.message}`, true)
+          views.setText(`# ${error.code}\n> \n\n**${error.type}**\n${error.message}`, true)
           new ztoolkit.ProgressWindow(error.code, { closeOtherProgressWindows: true })
             .createLine({ text: error.message, type: "default" })
             .show()
@@ -219,10 +219,10 @@ export async function getGPTResponse(requestText: string) {
 
 export async function getResponseByOnlineModel(requestText: string) {
   const views = Zotero.PapersGPT.views as Views
-  const apiKey = Zotero.Prefs.get(`${config.addonRef}.usingAPIKEY`)
+  const apiKey: string = Zotero.Prefs.get(`${config.addonRef}.usingAPIKEY`) as string
   const temperature = Zotero.Prefs.get(`${config.addonRef}.temperature`)
-  let apiURL = Zotero.Prefs.get(`${config.addonRef}.usingAPIURL`) as string
-  const model = Zotero.Prefs.get(`${config.addonRef}.usingModel`)
+  let apiURL: string = Zotero.Prefs.get(`${config.addonRef}.usingAPIURL`) as string
+  const model: string = Zotero.Prefs.get(`${config.addonRef}.usingModel`) as string
   views.messages.push({
     role: "user",
     content: requestText
@@ -258,7 +258,7 @@ export async function getResponseByOnlineModel(requestText: string) {
     try {
       var deployedModel = model
       if (model.includes(":")) {
-          let index = model.indexOf(":")
+          let index: number = model.indexOf(":")
           deployedModel = model.substr(index + 1, model.length)
       }
 

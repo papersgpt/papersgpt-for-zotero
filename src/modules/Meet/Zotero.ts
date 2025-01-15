@@ -4,7 +4,7 @@ import { Document } from "langchain/document";
 import { similaritySearch } from "./integratellms";
 import { search, isDocumentExist, addDoc } from "./papersgpt";
 import Meet from "./api";
-import ZoteroToolkit from "zotero-plugin-toolkit";
+//import ZoteroToolkit from "zotero-plugin-toolkit";
 
 /**
  * Read clipboard
@@ -20,15 +20,23 @@ export function getClipboardText(): string {
   }
   transferable.addDataFlavor('text/unicode');
   clipboardService.getData(transferable, clipboardService.kGlobalClipboard);
-  let clipboardData = {};
-  let clipboardLength = {};
+  var text = "" 
+  let clipboardData = new Object();
+  let clipboardLength = new Object();
   try {
     transferable.getTransferData('text/unicode', clipboardData, clipboardLength);
+    if ("value" in clipboardData) { 
+      clipboardData = (clipboardData.value as any).QueryInterface(Components.interfaces.nsISupportsString);
+      if ("data" in clipboardData) {
+        text = clipboardData.data as string
+      }
+    }
   } catch (err: any) {
     window.console.error('Clipboard service acquisition failed:', err.message);
   }
-  clipboardData = clipboardData.value.QueryInterface(Ci.nsISupportsString);
-  return clipboardData.data
+  //clipboardData = clipboardData.value.QueryInterface(Ci.nsISupportsString);
+  //clipboardData = clipboardData.value.QueryInterface(Components.interfaces.nsISupportsString);
+  return text 
 }
 
 /**
@@ -189,7 +197,7 @@ async function pdf2documents(itemkey: string) {
     }
     pageLines[pageNum] = lines
     popupWin.changeLine({ idx: popupWin.lines.length - 1, text: `[${pageNum + 1}/${totalPageNum}] Reading PDF`, progress: (pageNum + 1) / totalPageNum * 100})
-    if (index != -1 && pageNum / totalPageNum >= .9) {
+    if (index != -1 && pageNum / totalPageNum >= .75) {
       break
     }
   }
@@ -204,8 +212,7 @@ async function pdf2documents(itemkey: string) {
     const maxHeight = pdfPage._pageInfo.view[3];
     let lines = [...pageLines[pageNum1]]
     // Todo: Remove header and footer information, duplicate 
-  
-
+ 
     // paragraph clustering
     // principle: Font size from large to small, merge; From small to big
     let abs = (x: number) => x > 0 ? x : -x
@@ -237,6 +244,7 @@ async function pdf2documents(itemkey: string) {
       }
     }
     ztoolkit.log(paragraphs)
+
     // Paragraph merge
     for (let i = 0; i < paragraphs.length; i++) {
       let box: { page: number, left: number; top: number; right: number; bottom: number }
@@ -252,7 +260,7 @@ async function pdf2documents(itemkey: string) {
         nextLine = paragraphs[i]?.[j + 1]
         // Update boundaries 
         box ??= { page: pageNum1, left: line.x, right: line.x + line.width, top: line.y + line.height, bottom: line.y }
-        if (line.x < box.left) {
+	if (line.x < box.left) {
           box.left = line.x
         }
         if (line.x + line.width > box.right) {
@@ -284,6 +292,7 @@ async function pdf2documents(itemkey: string) {
             metadata: { type: "box", box: box!, key: itemkey },
           })
         )
+        
       }
     }
   }
@@ -352,8 +361,8 @@ export async function getRelatedText(queryText: string) {
 
         break
     }
-    const usingModel = Zotero.Prefs.get(`${config.addonRef}.usingModel`)
-    var results = await search("Local LLM", usingModel, key, queryText, topn, "", packFields) 	
+    const usingModel: string = Zotero.Prefs.get(`${config.addonRef}.usingModel`) as string
+    var results: any = await search("Local LLM", usingModel, key, queryText, topn, "", packFields) 	
 
 
     Zotero[config.addonInstance].views.insertAuxiliary(results)

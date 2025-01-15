@@ -2,7 +2,8 @@ import { config } from "../package.json";
 import { getString, initLocale } from "./modules/locale";
 import Views from "./modules/views";
 import Utils from "./modules/utils";
-import { createZToolkit } from "./ztoolkit"
+//import { createZToolkit } from "./ztoolkit"
+import { ZoteroToolkit } from "zotero-plugin-toolkit"
 
 async function onStartup() {
   await Promise.all([
@@ -55,7 +56,8 @@ async function onStartup() {
 
 async function onMainWindowLoad(win: Window): Promise<void> {
   // Create ztoolkit for every window
-  addon.data.ztoolkit = createZToolkit();
+  //addon.data.ztoolkit = createZToolkit();
+  addon.data.ztoolkit = new ZoteroToolkit();
  
   Zotero[config.addonInstance].views.registerInToolbar()
   
@@ -85,7 +87,7 @@ async function onMainWindowUnload(win: Window): Promise<void> {
   Zotero.getMainWindow().document.querySelector("#papersgpt")?.remove();
 }
 
-export function sleep(time) {
+export function sleep(time: any) {
     return new Promise((resolve) => window.setTimeout(resolve, time));
 }
 
@@ -103,7 +105,7 @@ async function onNotify(
   }
 }
 
-export async function downloadFile(url, filename) {
+export async function downloadFile(url: string, filename: string) {
     await Zotero.File.download(url, filename)
     var signFile = filename + ".done"
     var execCmd = [signFile];
@@ -115,11 +117,11 @@ export async function downloadFile(url, filename) {
     } 
 }
 
-export async function checkFileExist(filename) {
+export async function checkFileExist(filename: string) {
     return await IOUtils.exists(filename)
 }
 
-export async function startLocalLLMEngine(filename) {
+export async function startLocalLLMEngine(filename: string) {
     var execCmd = ['attach', filename];
     var exec = "/usr/bin/hdiutil"
     try {
@@ -145,8 +147,7 @@ export async function shutdownLocalLLMEngine() {
     try { 
         await Zotero.Utilities.Internal.exec(execCmd, execArgs);
     } catch(error: any) {
-	Zotero.log('kill error!!!!')
-	Zotero.log(error)
+	Zotero.log("Killing local llm engine!")
     }
     
     execArgs = ['-9', 'chatpdflocal-llama-server']

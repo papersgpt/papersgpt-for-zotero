@@ -2,7 +2,7 @@ import { config } from "../../package.json";
 
 export function initLocale() {
   addon.data.locale = {
-    stringBundle: Components.classes["@mozilla.org/intl/stringbundle;1"]
+    stringBundle: (Components.classes as any)["@mozilla.org/intl/stringbundle;1"]
       .getService(Components.interfaces.nsIStringBundleService)
       .createBundle(`chrome://${config.addonRef}/locale/addon.properties`),
   };

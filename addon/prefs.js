@@ -9,7 +9,7 @@ pref("extensions.zotero.__addonRef__.isLicenseActivated", false);
 pref("extensions.zotero.__addonRef__.grade", "");
 pref("extensions.zotero.__addonRef__.supportedLLMs", "");
 pref("extensions.zotero.__addonRef__.usingLanguage", "");
-pref("extensions.zotero.__addonRef__.papersgptVersion", "");
+pref("extensions.zotero.__addonRef__.papersgptVersion", "0.0.8");
 pref("extensions.zotero.__addonRef__.usingPublisher", "OpenAI");
 pref("extensions.zotero.__addonRef__.usingModel", "gpt-3.5-turbo");
 pref("extensions.zotero.__addonRef__.usingAPIKEY", "");

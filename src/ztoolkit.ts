@@ -1,6 +1,6 @@
 import { config } from "../package.json";
 
-export { createZToolkit };
+export { createZToolkit, MyToolkit };
 
 function createZToolkit() {
   // const _ztoolkit = new ZoteroToolkit();
@@ -58,3 +58,4 @@ class MyToolkit extends BasicTool {
     unregister(this);
   }
 }
+

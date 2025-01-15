@@ -1,6 +1,7 @@
 import { Document } from "langchain/document";
-import { Views, sleep } from "../views";
+import { sleep } from "../views";
 import { version, config } from "../../../package.json";
+import Views from "../views";
 
 export class ModelConfig {
 	public models: string[] = [];
@@ -351,57 +352,61 @@ function parseJsonResults(publisher2models: Map<string, ModelConfig>, publishers
   var curPublisher = Zotero.Prefs.get(`${config.addonRef}.usingPublisher`)
   for (var i = 0; i < supportedLLMsJson.length; i++) {
     const publisher = supportedLLMsJson[i]["Publisher"]
-    var models = []
+    var models : string[] = []
     var modelsAreReady = new Map()
     if (publisher != "Local LLM") {
       models = supportedLLMsJson[i]["Models"]
       if (publisher == "Customized") {
-	var customizedModel = Zotero.Prefs.get(`${config.addonRef}.customModelApiModel`)
+	var customizedModel: string = Zotero.Prefs.get(`${config.addonRef}.customModelApiModel`) as string
 	if (customizedModel.length > 0 && models.length == 0) {
           models.push(customizedModel)	
 	} else if (customizedModel.length > 0 && models.length > 0) {
-          modelds[0] = customizedModel	
+          models[0] = customizedModel	
 	}
       }
     } else {
-      for (let j = 0; j < supportedLLMsJson[i]["Models"].length; j++) {
-        models.push(supportedLLMsJson[i]["Models"][j]["Name"])
-        modelsAreReady.set(supportedLLMsJson[i]["Models"][j]["Name"],  supportedLLMsJson[i]["Models"][j]["IsModelReady"])
+      var supportedModels: any[] = supportedLLMsJson[i]["Models"]
+      for (let j = 0; j < supportedModels.length; j++) {
+        models.push(supportedModels[j]["Name"])
+        modelsAreReady.set(supportedModels[j]["Name"],  supportedModels[j]["IsModelReady"])
       } 
     }
 
-    var apiKey = supportedLLMsJson[i].hasOwnProperty("API_KEY") ? supportedLLMsJson[i]["API_KEY"] : ""
+    let modelNode: any = supportedLLMsJson[i]
+    let hasApiKeyProperty: boolean = modelNode.hasOwnProperty("API_KEY") 
+    var apiKey: string = hasApiKeyProperty ? modelNode["API_KEY"] : ""
     if (apiKey.length == 0) {
 	if (publisher == "OpenAI") {
-	    apiKey = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`)
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.openaiApiKey`) as string
 	} else if (publisher == "Claude-3") {
-	    apiKey = Zotero.Prefs.get(`${config.addonRef}.claudeApiKey`)
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.claudeApiKey`) as string
 	} else if (publisher == "Gemini") {
-	    apiKey = Zotero.Prefs.get(`${config.addonRef}.geminiApiKey`)
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.geminiApiKey`) as string
 	} else if (publisher == "DeepSeek") {
-	    apiKey = Zotero.Prefs.get(`${config.addonRef}.deepseekApiKey`)
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.deepseekApiKey`) as string
 	} else if (publisher == "Customized") {
-	    apiKey = Zotero.Prefs.get(`${config.addonRef}.customModelApiKey`)
+	    apiKey = Zotero.Prefs.get(`${config.addonRef}.customModelApiKey`) as string
 	}	
     }
 
-    var apiUrl = supportedLLMsJson[i]["API_URL"]
+    let hasApiUrlProperty: boolean = modelNode.hasOwnProperty("API_URL")
+    var apiUrl: string = hasApiUrlProperty ? modelNode["API_URL"] : ""
     if (publisher == "Customized" && apiUrl.length == 0) {
-	apiUrl = Zotero.Prefs.get(`${config.addonRef}.customModelApiUrl`)
+	apiUrl = Zotero.Prefs.get(`${config.addonRef}.customModelApiUrl`) as string
     }
 
 
     let modelConfig: ModelConfig = {
       models: models,
-      hasApiKey: supportedLLMsJson[i].hasOwnProperty("IsOpenSource") ? !supportedLLMsJson[i]["IsOpenSource"] : true,
+      hasApiKey: modelNode.hasOwnProperty("IsOpenSource") ? !modelNode["IsOpenSource"] : true,
       apiKey: apiKey,
       areModelsReady: modelsAreReady,
       defaultModelIdx: 0,
       apiUrl: apiUrl 
     }
          
-    if (publisher == curPublisher && supportedLLMsJson[i].hasOwnProperty("API_KEY") && supportedLLMsJson[i]["API_KEY"].length > 0) {
-      Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, supportedLLMsJson[i]["API_KEY"])
+    if (publisher == curPublisher && modelNode.hasOwnProperty("API_KEY") && modelNode["API_KEY"].length > 0) {
+      Zotero.Prefs.set(`${config.addonRef}.usingAPIKEY`, modelNode["API_KEY"])
     }
 
     var temp = publisher2models.get(publisher)
@@ -411,7 +416,6 @@ function parseJsonResults(publisher2models: Map<string, ModelConfig>, publishers
     publisher2models.set(publisher, modelConfig)
   }
 }
-
 
 export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig>, publishers:string[], email: string, token: string) {
   var httpRequestError = false 
@@ -453,22 +457,25 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
       trycount = trycount + 1
     } while (trycount < 2 && httpRequestError)
   } else {
+    if (email.length == 0 || token.length == 0) {
+      return 
+    } 
+	 
     var isActivated = Zotero.Prefs.get(`${config.addonRef}.isLicenseActivated`)
-    const oldVersion = Zotero.Prefs.get(`${config.addonRef}.papersgptVersion`) as string
-    
+ 
+    const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
+
     if (isActivated 
       && email.length > 0 
       && token.length > 0
-      && oldVersion == version) {
-      const supportedLLMs = Zotero.Prefs.get(`${config.addonRef}.supportedLLMs`) as string
+      && supportedLLMs.length > 0) {
       var supportedLLMsJson = JSON.parse(supportedLLMs)
       if (supportedLLMsJson.length > 0) {
         parseJsonResults(publisher2models, publishers, supportedLLMsJson)
-        return 
       } 
+      return 
     }
-     
-
+   
     var trycount = 0 
     
     do { 
@@ -514,7 +521,7 @@ export async function getSupportedLLMs(publisher2models: Map<string, ModelConfig
       return
     } 
     Zotero.Prefs.set(`${config.addonRef}.isLicenseActivated`, true)
-    Zotero.Prefs.set(`${config.addonRef}.papersgptVersion`, version)
+    //Zotero.Prefs.set(`${config.addonRef}.papersgptVersion`, version)
     var allElements = res?.response.SupportedLLMs as []
     var supportedLLMsStr = JSON.stringify(allElements)
     Zotero.Prefs.set(`${config.addonRef}.supportedLLMs`, supportedLLMsStr)
