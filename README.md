@@ -7,8 +7,9 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Lots of SOTA Business LLMs For Choosing:**
 
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *DeepSeek* Beats Claude 3.5 Sonnet + GPT-4o, now the price almost 1/20 of GPT-4o :sparkles: :fire:   
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
+  *DeepSeek-R1* Beats Claude 3.5 Sonnet + OpenAI o1, now the price is over 27x cheaper than o1.  :sparkles: :fire:   
+  *DeepSeek-V3* Beats Claude 3.5 Sonnet + GPT-4o, now the price almost 1/20 of GPT-4o :sparkles: :fire:   
   *gemini-2.0-flash-thinking* :sparkles: :fire:   
   *gemini-2.0-flash-exp* :sparkles: :fire:   
   *gemini-exp-1206*  **#1 on Chatbot Arena** :sparkles: :fire:   
