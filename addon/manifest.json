@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "papersgpt",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Chat PDF in Zotero with ChatGPT, Gemini, Claude, DeepSeek, Phi-4, Llama 3.2, QwQ-32B-Preview, Gemma, Mistral",
   "author": "Vincent",
   "icons": {
