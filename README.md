@@ -19,7 +19,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
   *gemini-1.5-pro*  
   *gemini-1.5-flash*  
   *chatgpt-4o-latest* :fire:  
-  *gpt-4o-2024-11-20*    
+  *gpt-4o-2024-11-20*   
   *gpt-4o-mini*  
   *claude-3.5-sonnet*  
   *claude-3.5-haiku*  
