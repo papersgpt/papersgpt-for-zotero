@@ -46,7 +46,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.1/papersgpt.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.12/papersgpt-v0.0.12.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
@@ -103,6 +103,3 @@ The plugin file(papersgpt.xpi) will be built and generated into the build direct
 
 Contributions to PapersGPT are welcome! Please follow the standard GitHub process for submitting pull requests or reporting issues.
 
-## Acknowledgements
-
-Inspired by [zotero-gpt](https://github.com/MuiseDestiny/zotero-gpt.git), PapersGPT for Zotero has developed lots of unique, significant features based on it.
