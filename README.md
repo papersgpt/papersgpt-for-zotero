@@ -47,7 +47,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.12/papersgpt-v0.0.12.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.14/papersgpt-v0.0.14.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
@@ -58,7 +58,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Select LLM models:**
  
 - For Windows users, after registration the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
-- For Mac users, after registration besides the above excellent business models, Phi 4, Llama 3.2, Gemma 2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
+- For Mac users, after registration besides the above excellent business models, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, Llama 3.2, Gemma 2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
 - Now the registration is open and free!
  
 **Chat PDFs in Zotero:** 
