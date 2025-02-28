@@ -21,7 +21,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
   *gpt-4.5-preview* **30x more expensive than gpt-o series models** :fire:  
   *chatgpt-4o-latest* :fire:  
   *gpt-4o-2024-11-20*   
-  *gpt-4o-mini*
+  *gpt-4o-mini*  
   *claude-3.7-sonnet* :sparkles: :fire:   
   *claude-3.5-sonnet*  
   *claude-3.5-haiku*  
