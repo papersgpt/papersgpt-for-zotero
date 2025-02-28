@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, Gemini, Claude, DeepSeek, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, GPT-4.5, Gemini, Claude, DeepSeek, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
@@ -10,17 +10,19 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *DeepSeek-R1* Beats Claude 3.5 Sonnet + OpenAI o1, now the price is over 27x cheaper than o1.  :sparkles: :fire:  
   *DeepSeek-V3* Beats Claude 3.5 Sonnet + GPT-4o, now the price almost 1/20 of GPT-4o :sparkles: :fire:   
-  *gemini-2.0-flash-thinking* **#2 on Chatbot Arena** :sparkles: :fire:   
+  *gemini-2.0-flash-thinking* **#2 on Chatbot Arena** :sparkles: :fire:  
   *gemini-2.0-pro-exp*  
-  *gemini-2.0-flash-exp* :sparkles: :fire:   
+  *gemini-2.0-flash-exp*     
   *gemini-2.0-flash*  :sparkles: :fire:   
   *gmini-2.0-flash-Lite*   
-  *LearnLM-1.5* :fire:  
+  *LearnLM-1.5*  
   *gemini-1.5-pro*  
   *gemini-1.5-flash*  
+  *gpt-4.5* **30x more expensive than gpt-o series models** :fire:  
   *chatgpt-4o-latest* :fire:  
   *gpt-4o-2024-11-20*   
   *gpt-4o-mini*  
+  *claude-3.7-sonnet* :sparkles: :fire:   
   *claude-3.5-sonnet*  
   *claude-3.5-haiku*  
 
@@ -47,7 +49,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.14/papersgpt-v0.0.14.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.15/papersgpt-v0.0.15.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
