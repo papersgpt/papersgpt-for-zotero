@@ -28,18 +28,18 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
-- There are many SOTA free and open source models built in, Now support the following models:  
+- There are many SOTA free and open source models built in, Now support the following models:
+  *QwQ-32B* :sparkles: :fire::fire::fire:  
   *DeepSeek-R1-Distill-Llama* :sparkles: :fire::fire::fire:  
   *DeepSeek-R1-Distill-Qwen* :sparkles: :fire::fire::fire:  
-  *Llama3.2*  
-  *QwQ-32B-Preview*    
+  *Llama3.2*     
   *Marco-o1*  
   *Gemma2*   
   *Mistral*   
   After free registration, these models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.
 - 100% Privacy and Safe of Your Personal Data. Besides local LLMs, the RAG modules of embeddings, vector database and rerank are all built and runned locally, There will be no data leakage and it can be used normally even on the plane when the internet can't be connected.
-- Notice: DeepSeek-R1-Distill-Llama/Qwen is great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G. 
+- Notice: QwQ-32B is as great as DeepSeek R1, while the model size is much smaller than DeepSeek. please ensure your Mac's memory at least 16G. DeepSeek-R1-Distill-Llama/Qwen is great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G. 
 
 **Seamless Zotero Integration:**
 
@@ -49,7 +49,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.18/papersgpt-v0.0.18.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.19/papersgpt-v0.0.19.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
