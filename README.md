@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, GPT-4.5, Gemini, Claude, DeepSeek, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, GPT-4.5, Gemini, Claude, DeepSeek, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
@@ -39,7 +39,8 @@ It is a zotero AI plugin for improving your papers reading and research efficent
   After free registration, these models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.
 - 100% Privacy and Safe of Your Personal Data. Besides local LLMs, the RAG modules of embeddings, vector database and rerank are all built and runned locally, There will be no data leakage and it can be used normally even on the plane when the internet can't be connected.
-- Notice: QwQ-32B is as great as DeepSeek R1, while the model size is much smaller than DeepSeek. please ensure your Mac's memory at least 16G. DeepSeek-R1-Distill-Llama/Qwen is great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G. 
+- Notice: QwQ-32B is as great as DeepSeek R1, while the model size is much smaller than DeepSeek. please ensure your Mac's memory at least 16G. DeepSeek-R1-Distill-Llama/Qwen is great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G.
+- If you want to use QwQ-32B on Windows, please use ollama or llama.cpp to deploy QwQ-32B locally first.
 
 **Seamless Zotero Integration:**
 
