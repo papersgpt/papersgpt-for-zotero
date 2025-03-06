@@ -28,7 +28,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
-- There are many SOTA free and open source models built in, Now support the following models:
+- There are many SOTA free and open source models built in, Now support the following models:  
   *QwQ-32B* :sparkles: :fire::fire::fire:  
   *DeepSeek-R1-Distill-Llama* :sparkles: :fire::fire::fire:  
   *DeepSeek-R1-Distill-Qwen* :sparkles: :fire::fire::fire:  
