@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, GPT-4.5, Gemini, Claude, DeepSeek, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2, Gemma and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, GPT-4.5, Gemini, Claude, DeepSeek, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
@@ -34,8 +34,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
   *DeepSeek-R1-Distill-Llama* :sparkles: :fire::fire::fire:  
   *DeepSeek-R1-Distill-Qwen* :sparkles: :fire::fire::fire:  
   *Llama3.2*     
-  *Marco-o1*  
-  *Gemma2*   
+  *Marco-o1*    
   *Mistral*   
   After free registration, these models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.
@@ -51,7 +50,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.0.19/papersgpt-v0.0.19.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.1.0/papersgpt-v0.1.0.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
