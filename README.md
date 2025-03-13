@@ -62,7 +62,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Select LLM models:**
  
 - For Windows users, after registration the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
-- For Mac users, after registration besides the above excellent business models, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, Llama 3.2, Gemma 2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
+- For Mac users, after registration besides the above excellent business models, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
 - Now the registration is open and free!
  
 **Chat PDFs in Zotero:** 
