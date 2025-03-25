@@ -8,8 +8,8 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *DeepSeek-R1* Beats Claude 3.5 Sonnet + OpenAI o1, now the price is over 27x cheaper than o1.  :sparkles: :fire:  
-  *DeepSeek-V3* Beats Claude 3.5 Sonnet + GPT-4o, now the price almost 1/20 of GPT-4o :sparkles: :fire:   
+  *DeepSeek-R1*  :sparkles: :fire:  
+  *DeepSeek-V3*  :sparkles: :fire:   
   *gemini-2.0-flash-thinking* **#2 on Chatbot Arena** :sparkles: :fire:  
   *gemini-2.0-pro-exp*  
   *gemini-2.0-flash-exp*     
@@ -36,7 +36,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
   *Llama3.2*     
   *Marco-o1*    
   *Mistral*   
-  After free registration, these models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
+  These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.
 - 100% Privacy and Safe of Your Personal Data. Besides local LLMs, the RAG modules of embeddings, vector database and rerank are all built and runned locally, There will be no data leakage and it can be used normally even on the plane when the internet can't be connected.
 - Notice: Gemma 3 is the 2nd best open model only below DeepSeek-R1 benchmarked by Chatbot Arena, while much smaller than DeepSeek R1, and it is not a reasoning model, your Mac's memory should be at least 12G.  
@@ -50,7 +50,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.1.0/papersgpt-v0.1.0.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.1.1/papersgpt-v0.1.1.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
@@ -60,10 +60,9 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 **Select LLM models:**
  
-- For Windows users, after registration the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
-- For Mac users, after registration besides the above excellent business models, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.
-- Now the registration is open and free!
- 
+- For Windows users, the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
+- For Mac users, besides the above excellent business models, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.  
+
 **Chat PDFs in Zotero:** 
 
 - Open any PDF and start asking questions. PapersGPT will process the document and provide insightful responses.
