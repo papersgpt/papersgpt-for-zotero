@@ -8,7 +8,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 **Lots of SOTA Business LLMs For Choosing:**
 
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *DeepSeek-V3*  the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
+  *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
   *DeepSeek-R1*  :sparkles: :fire:   
   *gemini-2.0-flash-thinking* **#2 on Chatbot Arena** :sparkles: :fire:  
   *gemini-2.0-pro-exp*  
