@@ -6,9 +6,10 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 ## Key Features
 
 **Lots of SOTA Business LLMs For Choosing:**
-- Integrate OpenRouter in which there are lots of SOTA business models, and just one key to access all the models on it.  
+- Integrate OpenRouter in which there are lots of SOTA business models, and just one key to access all the models on it.
+  *Llama 4 Maverick/Scout* is available here, **Llama 4 Maverick is #2 on ChatBot Arena Leaderboard**. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *gemini-2.5-pro* **#1 on ChatBot Arena and LiveBench LLM Leaderboard; it's free now** :sparkles: :fire:  
+  *gemini-2.5-pro* **#1 on ChatBot Arena and LiveBench LLM Leaderboard;** :sparkles: :fire:  
   *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
   *DeepSeek-R1*  :sparkles: :fire:  
   *gemini-2.0-flash-thinking*   
