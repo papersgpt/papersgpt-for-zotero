@@ -5,6 +5,17 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 ## Key Features
 
+**Chat multiple PDFs**  
+Select multiple files(Windows: ctrl+, MacOS: command+) or some collection in main window of Zotero, and then to chat with AI models:  
+- There are some built-in prompts, such as generating literature review, theoretical frameworks, and future directions etc.  
+- You can also directly input any words or prompts to chat.  
+
+
+https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
+
+
+  
+  
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are lots of SOTA business models, and just one key to access all the models on it.  
   *Llama 4 Maverick/Scout* are available here, **Llama 4 Maverick is #2 on ChatBot Arena Leaderboard**. :sparkles: :fire:  
