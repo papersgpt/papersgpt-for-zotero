@@ -5,7 +5,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 ## Key Features
 
-**Chat multiple PDFs**
+**Chat multiple PDFs**  
 In main window of Zotero to select multiple files(Windows: ctrl+select, MacOS: command+select) or some collection, and then to chat with SOTA AI models:  
 - There are some built-in prompts, such as generating literature review, theoretical frameworks, and future directions etc.  
 - You can also directly input any words or prompts to chat.  
