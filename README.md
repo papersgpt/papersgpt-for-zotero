@@ -23,7 +23,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
   *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
   *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
-  *DeepSeek-R1* :fire:
+  *DeepSeek-R1* :fire:  
   *claude-3.7-sonnet* :sparkles: :fire:  
   *grok3* :fire:  
   *gemini-2.0-flash-thinking*   
