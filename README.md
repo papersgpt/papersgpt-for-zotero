@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   Gemini 2.5 Pro/Flash, GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
-  *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:
+  *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
   *gpt-4.1* :fire:  
   *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
   *DeepSeek-R1* :fire:  
