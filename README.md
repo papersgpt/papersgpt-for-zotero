@@ -17,27 +17,30 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
   
 **Lots of SOTA Business LLMs For Choosing:**
-- Integrate OpenRouter in which there are lots of SOTA business models, and just one key to access all the models on it.  
-  *Llama 4 Maverick/Scout* are available here, **Llama 4 Maverick is #2 on ChatBot Arena Leaderboard**. :sparkles: :fire:  
+- Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
+  Gemini 2.5 Pro/Flash, GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *gemini-2.5-pro* **#1 on ChatBot Arena and LiveBench LLM Leaderboard;** :sparkles: :fire:  
+  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
+  *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
   *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
-  *DeepSeek-R1*  :sparkles: :fire:  
+  *DeepSeek-R1*  :sparkles: :fire:
+  *claude-3.7-sonnet* :sparkles: :fire:  
+  *grok3* :sparkles: :fire:  
   *gemini-2.0-flash-thinking*   
   *gemini-2.0-pro-exp*  
   *gemini-2.0-flash-exp*     
-  *gemini-2.0-flash*  :sparkles: :fire:   
-  *gmini-2.0-flash-Lite*   
+  *gemini-2.0-flash*    
+  *gmini-2.0-flash-Lite*
+  *LearnLM-2.0*  
   *LearnLM-1.5*  
   *gemini-1.5-pro*  
-  *gemini-1.5-flash*  
-  *gpt-4.5* **30x more expensive than gpt-o series models** :fire:  
-  *chatgpt-4o-latest* :fire:  
+  *gemini-1.5-flash*   
+  *chatgpt-4o-latest*   
   *gpt-4o-2024-11-20*   
   *gpt-4o-mini*  
-  *claude-3.7-sonnet* :sparkles: :fire:   
   *claude-3.5-sonnet*  
-  *claude-3.5-haiku*  
+  *claude-3.5-haiku*
+  
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
