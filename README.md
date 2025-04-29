@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, o1/o3/o4-mini, Gemini, Claude, DeepSeek, Grok3, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
+It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, o1/o3/o4-mini, Gemini, Claude, DeepSeek, Qwen3, Grok3, Gemma 3, DeepSeek-R1-Distill-Llama, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
 
@@ -18,8 +18,9 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  Gemini 2.5 Pro/Flash, GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
+  Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
+  *qwen3* **The newest and changellable opensource LLM, surpass DeepSeek R1** :sparkles: :fire: 
   *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
   *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
   *gpt-4.1* :fire:  
