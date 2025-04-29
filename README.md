@@ -19,9 +19,9 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
   Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
-  *qwen3* **The newest and changellable opensource LLM, surpass DeepSeek R1** :sparkles: :fire: 
-  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
+  *qwen3* **The newest and changellable opensource LLM, surpass DeepSeek R1** :sparkles: :fire:  
+  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:   
   *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
   *gpt-4.1* :fire:  
   *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
@@ -47,12 +47,10 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
 - There are many SOTA free and open source models built in, Now support the following models:  
-  *Gemma 3* :sparkles: :fire::fire::fire:  
-  *QwQ-32B* :sparkles: :fire:  
+  *Qwen 3* :sparkles: :fire::fire::fire:  
+  *Gemma 3* :sparkles: :fire::fire::fire:   
   *DeepSeek-R1-Distill-Llama* :sparkles: :fire::fire::fire:  
-  *DeepSeek-R1-Distill-Qwen* :fire:  
-  *Llama3.2*     
-  *Marco-o1*    
+  *Llama3.2*        
   *Mistral*   
   These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
   Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.
