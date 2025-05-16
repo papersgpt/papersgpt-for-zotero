@@ -43,13 +43,24 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *claude-3.5-sonnet*  
   *claude-3.5-haiku*
   
+**One click running local Open Source LLMs on Windows** :sparkles: :fire:  
+- Now support the following models:   
+  *Phi-4*  :fire:   
+  *Phi-4-Mini-Reasoning*   
+  *Gemma 3*  :fire:   
+  *Qwen 3*  :fire:   
+  *Mistral 3.1*  
+  *DeepSeek-Distill-Llama*  
+  *Llama 3.2*  
+- Models of different sizes are built in based on the size of the local machine GPU.  
+- Note: Please keep a good connection with huggingface and github network for models and environment downloading.  
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
 - There are many SOTA free and open source models built in, Now support the following models:  
   *Qwen 3* :sparkles: :fire::fire::fire:  
   *Gemma 3* :sparkles: :fire::fire::fire:   
-  *DeepSeek-R1-Distill-Llama* :sparkles: :fire::fire::fire:  
+  *DeepSeek-R1-Distill-Llama*   
   *Llama3.2*        
   *Mistral*   
   These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
