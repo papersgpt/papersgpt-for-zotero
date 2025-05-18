@@ -69,6 +69,10 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 - Notice: Gemma 3 is the 2nd best open model only below DeepSeek-R1 benchmarked by Chatbot Arena, while much smaller than DeepSeek R1, and it is not a reasoning model, your Mac's memory should be at least 12G.  
           Qwen 3 and DeepSeek-R1-Distill-Llama are great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G. If you want to use Gemma 3 or Qwen 3 on Windows, please use ollama or llama.cpp to deploy Qwen 3 locally first, and then connect to the local LLM server by customized LLM api.  
 
+**Compatible with ollama:**  
+
+- If use ollama, please set Customized API URL to http://localhost:11434/api/chat in the selection of Customized. The model name need to fill is consistent with the name in ollama.  
+
 **Seamless Zotero Integration:**
 
 - Syncs directly with your Zotero library, making it easy to manage and chat your documents without leaving the Zotero interface.
