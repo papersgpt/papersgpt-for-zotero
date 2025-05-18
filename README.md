@@ -71,7 +71,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 
 **Compatible with ollama:**  
 
-- If use ollama, please set Customized API URL to http://localhost:11434/api/chat in the selection of Customized. The model name need to fill is consistent with the name in ollama.  
+- If use ollama, please set Customized API URL to http://localhost:11434/api/chat in the selection of Customized. The model name need to fill is consistent with the name in ollama. API KEY no need to fill.  
 
 **Seamless Zotero Integration:**
 
