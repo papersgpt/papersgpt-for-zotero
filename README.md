@@ -45,11 +45,11 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *claude-3.5-haiku*  
   
 **One click running local Open Source LLMs on Windows** :sparkles: :fire:  
-- Now support the following models:   
-  *Phi-4*  :fire:   
-  *Phi-4-Mini-Reasoning*   
+- Now support the following models:
   *Gemma 3*  :fire:   
   *Qwen 3*  :fire:   
+  *Phi-4*  
+  *Phi-4-Mini-Reasoning*   
   *Mistral 3.1*  
   *DeepSeek-Distill-Llama*  
   *Llama 3.2*  
@@ -59,8 +59,8 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
 
 - There are many SOTA free and open source models built in, Now support the following models:  
-  *Qwen 3* :sparkles: :fire::fire::fire:  
-  *Gemma 3* :sparkles: :fire::fire::fire:   
+  *Qwen 3* :sparkles: :fire:  
+  *Gemma 3* :sparkles: :fire:   
   *DeepSeek-R1-Distill-Llama*   
   *Llama3.2*        
   *Mistral*   
