@@ -18,7 +18,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
+  Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude 4, Grok 3 are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
   *Gemini-2.5-Flash-Preview-05-20* **#1 on ChatBot Arena Leaderboard and the price is acceptable** :sparkles: :fire:  
