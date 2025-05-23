@@ -19,29 +19,30 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
   Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude Sonnet 3.7, Grok 3 are all here. :sparkles: :fire:  
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *qwen3* **The newest and changellable opensource LLM, surpass DeepSeek R1** :sparkles: :fire:  
-  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:   
-  *o1/o3/o4-mini* **OpenAI strong reasoning models, but price acceptable**  :sparkles: :fire:  
-  *gpt-4.1* :fire:  
-  *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence :sparkles: :fire:   
-  *DeepSeek-R1* :fire:  
-  *claude-3.7-sonnet* :sparkles: :fire:  
-  *grok3* :fire:  
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
+  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
+  *Gemini-2.5-Flash-Preview-05-20* **#1 on ChatBot Arena Leaderboard and the price is acceptable** :sparkles: :fire:  
+  *Claude-4-Sonnet* :fire:  
+  *Claude-4-Opus* :fire:  
+  *qwen3*  
+  *o1/o3/o4-mini*   
+  *gpt-4.1*   
+  *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence     
+  *DeepSeek-R1*   
+  *claude-3.7-sonnet*   
+  *grok3*   
   *gemini-2.0-flash-thinking*   
   *gemini-2.0-pro-exp*  
   *gemini-2.0-flash-exp*     
   *gemini-2.0-flash*    
-  *gmini-2.0-flash-Lite*
-  *LearnLM-2.0*  
-  *LearnLM-1.5*  
+  *gmini-2.0-flash-Lite*  
   *gemini-1.5-pro*  
   *gemini-1.5-flash*   
   *chatgpt-4o-latest*   
   *gpt-4o-2024-11-20*   
   *gpt-4o-mini*  
   *claude-3.5-sonnet*  
-  *claude-3.5-haiku*
+  *claude-3.5-haiku*  
   
 **One click running local Open Source LLMs on Windows** :sparkles: :fire:  
 - Now support the following models:   
