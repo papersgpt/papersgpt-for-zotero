@@ -56,9 +56,11 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 - Models of different sizes are built in based on the size of the local machine GPU.  
 - Note: Please keep a good connection with huggingface and github network for models and environment downloading.   
 
-<video width="320" height="240" controls loop="" muted="" autoplay="">
-     <source src="https://github.com/papersgpt/papersgpt-for-zotero/raw/refs/heads/main/videos/demo-local-llm.mp4">
-</video>  
+ 
+
+https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
+
+
 
 **Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**  
 
