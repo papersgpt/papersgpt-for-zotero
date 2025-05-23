@@ -54,11 +54,10 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *DeepSeek-Distill-Llama*  
   *Llama 3.2*  
 - Models of different sizes are built in based on the size of the local machine GPU.  
-- Note: Please keep a good connection with huggingface and github network for models and environment downloading.
+- Note: Please keep a good connection with huggingface and github network for models and environment downloading.  
+   
 
-https://github.com/papersgpt/papersgpt-for-zotero/blob/main/videos/demo-local-llm.mp4   
-
-**Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**
+**Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**  
 
 - There are many SOTA free and open source models built in, Now support the following models:  
   *Qwen 3* :sparkles: :fire:  
