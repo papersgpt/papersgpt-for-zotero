@@ -46,7 +46,8 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *claude-3.5-haiku*  
   
 **One click running local Open Source LLMs on Windows** :sparkles: :fire:  
-- Now support the following models:
+- Now support the following models:  
+  *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire:  
   *Gemma 3*  :fire:   
   *Qwen 3*  :fire:   
   *Phi-4*  
