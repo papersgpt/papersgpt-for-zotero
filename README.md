@@ -45,7 +45,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *claude-3.5-sonnet*  
   *claude-3.5-haiku*  
   
-**One click running local Open Source LLMs on Windows** :sparkles: :fire:  
+**One click running local totaly free SOTA LLMs on Windows and Mac** :sparkles: :fire:  
 - Now support the following models:  
   *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire:  
   *Gemma 3*  :fire:   
@@ -56,27 +56,15 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *DeepSeek-Distill-Llama*  
   *Llama 3.2*  
 - Models of different sizes are built in based on the size of the local machine GPU.  
-- Note: Please keep a good connection with huggingface and github network for models and environment downloading.   
-
- 
+- Note: Please keep a good connection with huggingface and github network for models and environment downloading.
+- These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
+  Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.  
+- 100% Privacy and Safe of Your Personal Data. Besides local LLMs, the RAG modules of embeddings, vector database and rerank are all built and runned locally, There will be no data leakage and it can be used normally even on the plane when the internet can't be connected.  
+- Don't worry about your memory overflow, all the Local models shown in PapersGPT can run on your PC. If there are GPUs on your computer, it will automatically choose GPU to run local LLM instead of CPU. Recommand Gemma3 1b, DeepSeek-Distill-Qwen-1.5B or Qwen3-1.7B, in almost all the computers, they all can run and respond quickly.    
 
 https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
 
-
-
-**Lots of the Latest SOTA Open Source Freely Local LLMs For Mac Users:**  
-
-- There are many SOTA free and open source models built in, Now support the following models:  
-  *Qwen 3* :sparkles: :fire:  
-  *Gemma 3* :sparkles: :fire:   
-  *DeepSeek-R1-Distill-Llama*   
-  *Llama3.2*        
-  *Mistral*   
-  These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
-  Of course, these models can be switched as your will, and smarter Open Source LLMs in the future would be accessed as soon as possible.  
-- 100% Privacy and Safe of Your Personal Data. Besides local LLMs, the RAG modules of embeddings, vector database and rerank are all built and runned locally, There will be no data leakage and it can be used normally even on the plane when the internet can't be connected.  
-- Notice: Gemma 3 is the 2nd best open model only below DeepSeek-R1 benchmarked by Chatbot Arena, while much smaller than DeepSeek R1, and it is not a reasoning model, your Mac's memory should be at least 12G.  
-          Qwen 3 and DeepSeek-R1-Distill-Llama are great! Highly recommended to try on your Mac, please ensure your Mac's memory at least 8G. If you want to use Gemma 3 or Qwen 3 on Windows, please use ollama or llama.cpp to deploy Qwen 3 locally first, and then connect to the local LLM server by customized LLM api.  
+ 
 
 **Compatible with ollama:**  
 
