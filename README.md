@@ -4,6 +4,8 @@ PapersGPT For Zotero
 It is a zotero AI plugin for improving your papers reading and research efficently with ChatGPT, o1/o3/o4-mini, Gemini, Claude, DeepSeek R1 0528, Qwen3, Grok3, Gemma 3, DeepSeek-R1-Distill-Llama, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.
 
 ## Key Features
+**Blazing-Fast. Even for 100+ Page Documents**  
+[PapersGPT v0.2.4](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.4/papersgpt-v0.2.4.xpi) is optimized for heavy documents, 5x Faster PDF Reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
 
 **Chat multiple PDFs**  
 Select multiple files(Windows: ctrl+, MacOS: command+) or some collection in main window of Zotero, and then to chat with AI models:  
@@ -78,7 +80,7 @@ https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.3/papersgpt-v0.2.3.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.4/papersgpt-v0.2.4.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
