@@ -5,7 +5,7 @@ It is a zotero AI plugin for improving your papers reading and research efficent
 
 ## Key Features  
 **Blazing-Fast. Even for 100+ Page Documents**  
-[PapersGPT v0.2.4](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.4/papersgpt-v0.2.4.xpi) is optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
+Optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
 
 **Chat multiple PDFs**  
 Select multiple files(Windows: ctrl+, MacOS: command+) or some collection in main window of Zotero, and then to chat with AI models:  
@@ -80,7 +80,7 @@ https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
 
 **Installation:** 
 
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.4/papersgpt-v0.2.4.xpi). 
+- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.5/papersgpt-v0.2.5.xpi). 
   Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
   Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
 
