@@ -1,7 +1,7 @@
 <h1 align="center">
 PapersGPT For Zotero
 </h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, DeepSeek R1 0528, Qwen3, Gemma 3, DeepSeek-R1-Distill-Llama, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.  
+It is a zotero AI plugin for improving your papers reading and research efficently with GPT 5, Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.  
 
 ## Key Features  
 **Blazing-Fast. Even for 100+ Page Documents**  
@@ -20,17 +20,17 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  Grok 4, Gemini 2.5 Pro/Flash, Qwen3(free), GPT-4.1, DeepSeek(free), Claude 4 are all here. :sparkles: :fire:   
+  GPT 5, Claude Opus 4.1, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.5, Qwen3(free), DeepSeek(free), Claude 4 are all here. :sparkles: :fire:   
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *deepseek-r1-0528* **New model DeepSeek R1 0528 released by DeepSeek;** :sparkles: :fire::fire::fire:  
-  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
-  *Gemini-2.5-Flash-Preview-05-20* **#1 on ChatBot Arena Leaderboard and the price is acceptable** :sparkles: :fire:  
-  *Claude-4-Sonnet* :fire:  
-  *Claude-4-Opus* :fire:  
+  *gpt-5* **New king on ChatBot Arena Leaderboard;** :sparkles: :fire::fire::fire:  
+  *gemini-2.5-pro* **#2 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
+  *qwen3-235b-a22b-instruct-2507* **#5 on ChatBot Arena Leaderboard, very chip** :sparkles: :fire:   
+  *kimi-k2-0711-preview* **very chip** :sparkles: :fire:   
+  *Claude-Opus-4.1* **New model of Claude**   
   *qwen3*  
   *o1/o3/o4-mini*   
   *gpt-4.1*   
-  *DeepSeek-V3* : the latest DeepSeek-V3-0324 boosts a lot in reasoning performance and intelligence     
+  *DeepSeek-V3*     
   *DeepSeek-R1*   
   *claude-3.7-sonnet*   
   *grok3*   
