@@ -1,7 +1,5 @@
-<h1 align="center">
-PapersGPT For Zotero
-</h1>
-It is a zotero AI plugin for improving your papers reading and research efficently with GPT 5, Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral. It offers users the ability to ask questions, extract insights, and converse with PDFs directly, providing a powerful research assistant for scholars, researchers, and anyone who deals with large amounts of text in PDF format.  
+# PapersGPT: The Ultimate Zotero AI Plugin
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
 
 ## Key Features  
 **Blazing-Fast. Even for 100+ Page Documents**  
