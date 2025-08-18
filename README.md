@@ -1,20 +1,50 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
 PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
 
+## Quickstart
+
+***
+
+### Step 1: Download and Install
+
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.1/papersgpt-v0.3.1.xpi).
+2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/blogs/cookbook-papersgpt).
+
+### Step 2: Start Chatting with a PDF or Multiple PDFs
+
+#### 1. Launch PapersGPT
+
+*   **Chat with a Single PDF**
+    *   Open a PDF from your Zotero library.
+    *   When you need AI assistance, click <img width="24" height="24" alt="papersgpt-logo" src="https://github.com/user-attachments/assets/5658ede0-131f-481c-93f0-b4072440524e" />
+ on the top menu of the PDF viewer or use a keyboard shortcut:
+        *   **macOS:** `Command + Enter`
+        *   **Windows:** `Ctrl + Enter`
+
+*   **Chat with Multiple PDFs**
+    *   Select multiple files or a collection in the main Zotero window. Hold `Ctrl` while clicking files on Windows. Hold `Command` while clicking files on Mac. You can see the demo below.
+
+#### 2. Select a LLM model and configure the API KEY of the model, more detailed information please see [here](https://www.papersgpt.com/blogs/cookbook-papersgpt)
+
+#### 3. Ask Questions
+
+*   Use the built-in prompts for common tasks like: Summary, Background, Generating a literature review, Theoretical frameworks, Future directions.  
+*   You can also directly type any question or custom prompt to start the conversation.  
+
+### Step 3: Manage Your Findings and close the chat
+
+*   After chatting, you can easily save the key insights and answers you've gathered from the conversation.  
+
+*   When you're finished, click the red cross (X) close button to exit the PapersGPT window.
+
 ## Key Features  
 **Blazing-Fast. Even for 100+ Page Documents**  
 Optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
 
 **Chat multiple PDFs**  
-Select multiple files(Windows: ctrl+, MacOS: command+) or some collection in main window of Zotero, and then to chat with AI models:  
-- There are some built-in prompts, such as generating literature review, theoretical frameworks, and future directions etc.  
-- You can also directly input any words or prompts to chat.  
-
 
 https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 
-
-  
   
 **Lots of SOTA Business LLMs For Choosing:**
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
@@ -70,39 +100,9 @@ https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
 
 - If use ollama, please set Customized API URL to http://localhost:11434/api/chat in the selection of Customized. The model name need to fill is consistent with the name in ollama. API KEY no need to fill.  
 
-**Seamless Zotero Integration:**
+**Seamless Zotero Integration:**  
 
-- Syncs directly with your Zotero library, making it easy to manage and chat your documents without leaving the Zotero interface.
-  
-## How to Use  
-
-**Installation:** 
-
-- First download papersgpt.xpi plugin [here](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.2.5/papersgpt-v0.2.5.xpi). 
-  Open Zotero in the top menu bar, click on `Tools > Add-ons`.  Click on the gear icon at the top right of the window.  
-  Click on `Install Add-on From File` and open the downloaded plugin file papersgpt.xpi.
-
-**Startup:**
-
-- In Zotero, press the keys to start the plugin, MacOS(command + enter), Windows(ctrl + enter). 
-
-**Select LLM models:**
- 
-- For Windows users, the OpenAI, Claude, and Gemini models can all be accessed and switched by one click.  
-- For Mac users, besides the above excellent business models, Gemma 3, DeepSeek-R1-Distill-Llama, DeepSeek-R1-Distill-Qwen, QwQ-32B, Llama 3.2 and Mistral can all be choosed by just one click in plugin without manualy installing many boring additional tools or softwares.  
-
-**Chat PDFs in Zotero:** 
-
-- Open any PDF and start asking questions. PapersGPT will process the document and provide insightful responses.
-
-**Manage Insights:** 
-
-- Save, export, or share the extracted insights, answers, and annotations from your conversations.
-
-**Quit:**  
-
-- Press esc key to exit. 
-
+- Syncs directly with your Zotero library, making it easy to manage and chat your documents without leaving the Zotero interface.  
 
 ## Build the plugin
 
