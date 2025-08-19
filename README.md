@@ -1,5 +1,5 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
 
 ## Quickstart
 
@@ -77,7 +77,8 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
 **One click running local totaly free SOTA LLMs on Windows and Mac** :sparkles: :fire:  
 - Now support the following models:  
-  *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire:  
+  *gpt-oss-20b* OpenAI open source model :sparkles: :fire: :fire:   
+  *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire: 
   *Gemma 3*  :fire:   
   *Qwen 3*  :fire:   
   *Phi-4*  
