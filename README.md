@@ -1,5 +1,5 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
 
 ## Quickstart
 
@@ -7,7 +7,7 @@ PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities
 
 ### Step 1: Download and Install
 
-1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.1/papersgpt-v0.3.1.xpi).
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.3/papersgpt-v0.3.3.xpi).
 2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/blogs/cookbook-papersgpt).
 
 ### Step 2: Start Chatting with a PDF or Multiple PDFs
@@ -46,7 +46,8 @@ Optimized for heavy documents, 5x faster PDF reading, allowing you to glide thro
 https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 
   
-**Lots of SOTA Business LLMs For Choosing:**
+**Lots of SOTA Business LLMs For Choosing:**  
+- The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.  
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
   GPT 5, Claude Opus 4.1, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.5, Qwen3(free), DeepSeek(free), Claude 4 are all here. :sparkles: :fire:   
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
@@ -99,7 +100,7 @@ https://github.com/user-attachments/assets/2630a332-1bcd-4132-a37e-d8b360ba1c09
 
 **Compatible with ollama:**  
 
-- If use ollama, please set Customized API URL to http://localhost:11434/api/chat in the selection of Customized. The model name need to fill is consistent with the name in ollama. API KEY no need to fill.  
+- If use ollama, just choose the Ollama in the Customized selection. The model name need to fill is consistent with the name in ollama.    
 
 **Seamless Zotero Integration:**  
 
