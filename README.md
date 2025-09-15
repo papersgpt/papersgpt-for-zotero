@@ -1,5 +1,5 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It now supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.    
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral. Now PapersGPT supports MCP:sparkles: :fire:, any chatbo client which supports MCP can connect to your personal Zotero library through PapersGPT.  
 
 ## Quickstart
 
@@ -38,6 +38,9 @@ PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities
 *   When you're finished, click the red cross (X) close button to exit the PapersGPT window.
 
 ## Key Features  
+**The fastest responding MCP server connecting to Zotero**  
+C++ MCP server, no need to install Python or Node, after installing the PapersGPT plugin, start Zotero, and it can be used on all Chatbot clients that support MCP Server on Mac and Windows. It supports BM25 full-text search of document title, author, tags, abstract, notes, annotation and collection.  
+
 **Blazing-Fast. Even for 100+ Page Documents**  
 Optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
 
