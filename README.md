@@ -1,5 +1,6 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral. Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT.  
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports GPT 5, Gemini, DeepSeek V3.1, Grok 4, ChatGPT, o1/o3/o4-mini, Claude, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.5, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.   
+Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT.  
 
 ## Quickstart
 
@@ -7,8 +8,8 @@ PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities
 
 ### Step 1: Download and Install
 
-1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.3/papersgpt-v0.3.3.xpi).
-2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/blogs/cookbook-papersgpt).
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.4/papersgpt-v0.3.4.xpi).  
+2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).  
 
 ### Step 2: Start Chatting with a PDF or Multiple PDFs
 
@@ -24,7 +25,7 @@ PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities
 *   **Chat with Multiple PDFs**
     *   Select multiple files or a collection in the main Zotero window. Hold `Ctrl` while clicking files on Windows. Hold `Command` while clicking files on Mac. You can see the demo below.
 
-#### 2. Select a LLM model and configure the API KEY of the model, more detailed information please see [here](https://www.papersgpt.com/blogs/cookbook-papersgpt)
+#### 2. Select a LLM model and configure the API KEY of the model, more detailed information please see [here](https://www.papersgpt.com/models)
 
 #### 3. Ask Questions
 
