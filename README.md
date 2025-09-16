@@ -40,6 +40,7 @@ PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities
 ## Key Features  
 **The fastest responding MCP server connecting to Zotero**  
 C++ MCP server, no need to install Python or Node, after installing the PapersGPT plugin, start Zotero, and it can be used on all Chatbot clients that support MCP Server on Mac and Windows. It supports BM25 full-text search of document title, author, tags, abstract, notes, annotation and collection.  
+Please use SSE Server of MCP in the MCP host(such as ChatWise, Cherry Studio, Cursor or Gemini Cli...), set the URL to http://localhost:9080/sse  
 
 **Blazing-Fast. Even for 100+ Page Documents**  
 Optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
