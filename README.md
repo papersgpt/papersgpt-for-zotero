@@ -8,7 +8,7 @@ Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports 
 
 ### Step 1: Download and Install
 
-1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.4/papersgpt-v0.3.4.xpi).  
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.3.5/papersgpt-v0.3.5.xpi).  
 2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).  
 
 ### Step 2: Start Chatting with a PDF or Multiple PDFs
@@ -54,12 +54,14 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing:**  
 - The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.  
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  GPT 5, Claude Opus 4.1, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.5, Qwen3(free), DeepSeek(free), Claude 4 are all here. :sparkles: :fire:   
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
-  *gpt-5* **New king on ChatBot Arena Leaderboard;** :sparkles: :fire::fire::fire:  
-  *gemini-2.5-pro* **#2 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
-  *qwen3-235b-a22b-instruct-2507* **#5 on ChatBot Arena Leaderboard, very chip** :sparkles: :fire:   
-  *kimi-k2-0711-preview* **very chip** :sparkles: :fire:   
+  GPT 5, Claude Opus 4.1, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.5, Qwen3(free), DeepSeek(free), Claude 4 are all here. :sparkles: :fire:  
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
+  *Tongyi DeepResearch 30B A3B, o4-mini-deep-research* **DeepResearch models** :sparkles: :fire::fire:  
+  *Grok 4 Fast* **Now it is free in OpenRouter**  
+  *gpt-5* **The latest SOTA model of OpenAI;** Please note that GPT 5 needs identity checked based on OpenAI requirements :sparkles: :fire:  
+  *gemini-2.5-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:  
+  *qwen3-next-80b-a3b-thinking* **a very fast and chip thinking model** :sparkles: :fire:   
+  *kimi-k2-0905-preview* **very chip** :sparkles: :fire:   
   *Claude-Opus-4.1* **New model of Claude**   
   *qwen3*  
   *o1/o3/o4-mini*   
