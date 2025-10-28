@@ -1,5 +1,5 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports GPT 5, Gemini, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.5, OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.6, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.   
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports GPT 5, Gemini, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.6, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.   
 Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT.   
 Support Zotero 8 since v0.3.7.    
 
@@ -55,7 +55,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing:**  
 - The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.   
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  GPT 5, Claude Sonnet 4.5, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.6, Qwen3(free), DeepSeek(free), Claude 4 are all here. :sparkles: :fire:  
+  GPT 5, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2, Grok 4, Gemini 2.5 Pro/Flash, Kimi K2, GLM 4.6, Qwen3, DeepSeek are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *Claude Sonnet 4.5* **New model of Claude**  
   *gemini-flash-latest, gemini-flash-lite-latest* **The latest cost effective models of gemini** :sparkles: :fire:  
