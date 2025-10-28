@@ -84,12 +84,13 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *gpt-oss-20b* OpenAI open source model :sparkles: :fire: :fire:   
   *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire:   
   *Gemma 3*  :fire:   
-  *Qwen 3*  :fire:   
+  *Qwen 3*  :fire:  
+  *Gemma 3n*  
   *Phi-4*  
   *Phi-4-Mini-Reasoning*   
-  *Mistral 3.1*  
+  *Mistral 7b*  
   *DeepSeek-Distill-Llama*  
-  *Llama 3.2*  
+  *Llama 3.1*  
 - Models of different sizes are built in based on the size of the local machine GPU.  
 - Note: Please keep a good connection with huggingface and github network for models and environment downloading.
 - These models can be automatically downloaded, installed and used with just one click on the plugin page, models are all locally stored, ensuring not sending your data to remote LLMs.  
