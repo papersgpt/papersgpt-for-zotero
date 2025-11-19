@@ -56,7 +56,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 - The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.   
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
   GPT 5.1, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2, Grok 4, Gemini 3 Pro Preview, Kimi K2, GLM 4.6, Qwen3, DeepSeek are all here. :sparkles: :fire:  
-- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
+- Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *gemini-3-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:   
   *Claude Sonnet 4.5* **New model of Claude**  
   *gemini-flash-latest, gemini-flash-lite-latest* **The latest cost effective models of gemini** :sparkles: :fire:  
