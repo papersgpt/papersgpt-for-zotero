@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/papersgpt-papersgpt-for-zotero-badge.png)](https://mseep.ai/app/papersgpt-papersgpt-for-zotero)
+
 # PapersGPT: The Ultimate Zotero AI Plugin
 PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3, GPT 5.1, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.6, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.   
 Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT. Windows, Mac and Linux are all supported.    
