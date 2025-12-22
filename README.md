@@ -1,4 +1,29 @@
 # PapersGPT: The Ultimate Zotero AI Plugin
+## 🚀 Introducing PapersGPT AutoPilot (Zotero AI Agent)
+
+We are thrilled to release **AutoPilot**, a powerful automation tool that transforms PapersGPT into a fully autonomous research assistant. Say goodbye to manual skimming and hello to effortless literature review.
+
+### 🛠️ How it Works
+
+1.  **Setup**: Select your preferred LLM in PapersGPT.
+2.  **Launch**: Click the **Robot Icon** (top-left corner) to enter the AutoPilot dashboard.
+3.  **Select**: Choose the specific papers from your **Zotero** library that you wish to process.
+4.  **Prompt**: Define your research goals or specific extraction prompts.
+5.  **Execute**: Sit back as the AI autonomously reads the papers and saves key insights directly into your **Zotero Notes**.
+
+### 🌟 Why it's a Game-Changer
+
+*   **Massive Efficiency**: "Read" and analyze **100+ papers overnight**. Start your next morning with a curated summary of your entire library.
+*   **Seamless Integration**: All AI-generated insights are synced back to Zotero automatically—no manual copy-pasting required.
+*   **Personalized Insights**: Tailor the prompts to focus on methodology, findings, or specific data points relevant to your research.
+
+> [!IMPORTANT]
+> **Open Beta Notice**: AutoPilot is currently in the early testing phase with daily usage limits. We are continuously optimizing the experience and would love to hear your feedback!
+
+---
+*Ready to supercharge your research? [Try AutoPilot on PapersGPT now!](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.4.2/papersgpt-v0.4.2.xpi)*
+
+
 PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3, GPT 5.1, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2, GLM 4.6, DeepSeek R1 0528, Qwen3, Gemma 3, Llama 3.2 and Mistral.   
 Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT. Windows, Mac and Linux are all supported.    
 Support Zotero 8 since v0.3.7.    
@@ -9,7 +34,7 @@ Support Zotero 8 since v0.3.7.
 
 ### Step 1: Download and Install
 
-1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.4.1/papersgpt-v0.4.1.xpi).  
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.4.2/papersgpt-v0.4.2.xpi).  
 2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).  
 
 ### Step 2: Start Chatting with a PDF or Multiple PDFs
