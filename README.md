@@ -6,7 +6,7 @@ We are thrilled to release **AutoPilot**, a powerful automation tool that transf
 ### 🛠️ How it Works
 
 1.  **Setup**: Select your preferred LLM in PapersGPT.
-2.  **Launch**: Click the **Robot Icon** (top-left corner) to enter the AutoPilot dashboard.
+2.  **Launch**: Click the **Robot Icon** (top-right corner) to enter the AutoPilot dashboard.
 3.  **Select**: Choose the specific papers from your **Zotero** library that you wish to process.
 4.  **Prompt**: Define your research goals or specific extraction prompts.
 5.  **Execute**: Sit back as the AI autonomously reads the papers and saves key insights directly into your **Zotero Notes**.
