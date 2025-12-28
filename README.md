@@ -10,6 +10,8 @@ We are thrilled to release **AutoPilot**, a powerful automation tool that transf
 3.  **Select**: Choose the specific papers from your **Zotero** library that you wish to process.
 4.  **Prompt**: Define your research goals or specific extraction prompts.
 5.  **Execute**: Sit back as the AI autonomously reads the papers and saves key insights directly into your **Zotero Notes**.
+![autopolit1224_3](https://github.com/user-attachments/assets/9b2fbb10-5265-4cea-8185-b4c0acce28fd)
+
 
 ### 🌟 Why it's a Game-Changer
 
