@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/papersgpt-papersgpt-for-zotero-badge.png)](https://mseep.ai/app/papersgpt-papersgpt-for-zotero)
+
 # PapersGPT: The Ultimate Zotero AI Plugin
 ## 🚀 Introducing PapersGPT AutoPilot (Zotero AI Agent)
 
