@@ -26,7 +26,7 @@ We are thrilled to release **AutoPilot**, a powerful automation tool that transf
 *Ready to supercharge your research? [Try AutoPilot on PapersGPT now!](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.4.4/papersgpt-v0.4.4.xpi)*
 
 
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3.1, GPT 5.2, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.6, Claude Opus 4.5, MiniMax M2.5 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2.5, GLM 5, DeepSeek R1 0528, Qwen3.5, Gemma 3, Llama 3.2 and Mistral.   
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3.1, GPT 5.4, DeepSeek V3.2, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.6, Claude Opus 4.6, MiniMax M2.5 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2.5, GLM 5, DeepSeek R1 0528, Qwen3.5, Gemma 3, Llama 3.2 and Mistral.   
 Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT. Windows, Mac and Linux are all supported.    
 Support Zotero 8 since v0.3.7.    
 
@@ -82,17 +82,16 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing on Windows, Mac and Linux:**  
 - The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.   
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  GPT 5.1, Claude Sonnet 4.5, Claude Haiku 4.5, MiniMax M2, Grok 4, Gemini 3 Pro Preview, Kimi K2, GLM 4.6, Qwen3, DeepSeek are all here. :sparkles: :fire:  
+  GPT 5.4, Claude Sonnet 4.6, Claude Haiku 4.5, MiniMax M2.5, Grok 4, Gemini 3.1 Flash Preview, Kimi K2, GLM 4.6, Qwen3.5, DeepSeek are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:  
   *gemini-3-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:   
-  *Claude Sonnet 4.5* **New model of Claude**  
+  *Claude Sonnet 4.6* **New model of Claude**  
   *gemini-flash-latest, gemini-flash-lite-latest* **The latest cost effective models of gemini** :sparkles: :fire:  
   *deepseek-v3.2 exp* **very chip** :sparkles: :fire:  
-  *glm 4.6*  **very chip** :sparkles: :fire:   
-  
-  *Tongyi DeepResearch 30B A3B, o4-mini-deep-research* **DeepResearch models** :sparkles: :fire::fire:  
+  *glm 5*  **very chip** :sparkles: :fire:   
+   
   *Grok 4 Fast* **Now it is free in OpenRouter**  
-  *gpt-5.1* **The latest SOTA model of OpenAI;** Please note that GPT 5 needs identity checked based on OpenAI requirements :sparkles: :fire:  
+  *gpt-5.4* **The latest SOTA model of OpenAI;** Please note that GPT 5 needs identity checked based on OpenAI requirements :sparkles: :fire:  
   *qwen3-next-80b-a3b-thinking* **a very fast and chip thinking model** :sparkles: :fire:   
   *kimi-k2-thinking and kimi-k2-0905-preview* **very chip** :sparkles: :fire:   
   *qwen3*   
@@ -108,9 +107,10 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   *claude-3.5-haiku*  
   
 **One click running local totaly free SOTA LLMs on Windows, Mac and Linux** :sparkles: :fire:  
-- Now support the following models:  
-  *gpt-oss-20b* OpenAI open source model :sparkles: :fire: :fire:   
-  *DeepSeek 0528 Distill Qwen3 8B*  :sparkles: :fire:   
+- Now support the following models:
+  *qwen-3.5* 2b, 4b and 9b are all supported  :sparkles: :fire:   
+  *gpt-oss-20b* OpenAI open source model :fire:  
+  *DeepSeek 0528 Distill Qwen3 8B*  
   *Gemma 3*  :fire:   
   *Qwen 3*  :fire:  
   *Gemma 3n*  
