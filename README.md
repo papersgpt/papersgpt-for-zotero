@@ -108,6 +108,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
   
 **One click running local totaly free SOTA LLMs on Windows, Mac and Linux** :sparkles: :fire:  
 - Now support the following models:
+  *gemma-4* 26b, e4b, e2b are all supported :sparkles: :fire:  
   *qwen-3.5* 2b, 4b and 9b are all supported  :sparkles: :fire:   
   *gpt-oss-20b* OpenAI open source model :fire:  
   *DeepSeek 0528 Distill Qwen3 8B*  
