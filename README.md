@@ -67,9 +67,10 @@ Support Zotero 8, 9 since v0.3.7.
 *   When you're finished, click the red cross (X) close button to exit the PapersGPT window.
 
 ## Key Features  
-**The fastest responding MCP server connecting to Zotero**  
-C++ MCP server, no need to install Python or Node, after installing the PapersGPT plugin, start Zotero, and it can be used on all Chatbot clients that support MCP Server on Mac and Windows. It supports BM25 full-text search of document title, author, tags, abstract, notes, annotation and collection.  
-Please use SSE Server of MCP in the MCP host(such as ChatWise, Cherry Studio, Cursor or Gemini Cli...), set the URL to http://localhost:9080/sse  
+**Professional [SKILL](papersgpt-for-zotero/SKILL.md) provides various agents for connecting to your local Zotero library.**   
+If you use OpenClaw, you can see the papersgpt-for-zotero skill [here](https://clawhub.ai/papersgpt/papersgpt-for-zotero). You are welcome to submit any issues in this github repo or clawhub, thank you.  
+Hermes agent support is coming soon.  
+If you use the App of OpenAI, Claude, Cursor, Claude Code, CodeX or Gemini CLI, you can directly copy and load the [SKILL](papersgpt-for-zotero/SKILL.md).  
 
 **Blazing-Fast. Even for 100+ Page Documents**  
 Optimized for heavy documents, 5x faster PDF reading, allowing you to glide through hundred-page reports, academic papers, and e-books with zero lag.  
