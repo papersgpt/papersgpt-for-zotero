@@ -68,7 +68,7 @@ Support Zotero 8, 9 since v0.3.7.
 
 ## Key Features  
 **Professional [SKILL](papersgpt-for-zotero/SKILL.md) provides various agents for connecting to your local Zotero library.**   
-If you use OpenClaw, you can see the papersgpt-for-zotero skill [here](https://clawhub.ai/papersgpt/papersgpt-for-zotero). You are welcome to submit any issues in this github repo or clawhub, thank you.  
+If you use OpenClaw, you can see the papersgpt-for-zotero skill [here](https://clawhub.ai/papersgpt/papersgpt-for-zotero). You are welcome to submit any issues in this github repo or clawhub.    
 Hermes agent support is coming soon.  
 If you use the App of OpenAI, Claude, Cursor, Claude Code, CodeX or Gemini CLI, you can directly copy and load the [SKILL](papersgpt-for-zotero/SKILL.md).  
 
