@@ -23,10 +23,10 @@ We are thrilled to release **AutoPilot**, a powerful automation tool that transf
 > **Open Beta Notice**: AutoPilot is currently in the early testing phase with daily usage limits. We are continuously optimizing the experience and would love to hear your feedback!
 
 ---
-*Ready to supercharge your research? [Try AutoPilot on PapersGPT now!](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.5.1/papersgpt-v0.5.1.xpi)*
+*Ready to supercharge your research? [Try AutoPilot on PapersGPT now!](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.5.2/papersgpt-v0.5.2.xpi)*
 
 
-PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3.1, GPT 5.4, DeepSeek V4, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.6, Claude Opus 4.6, MiniMax M2.5 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2.6, GLM 5.1, DeepSeek R1 0528, Qwen3.5, Gemma 3, Llama 3.2 and Mistral.   
+PapersGPT is a Zotero plugin that brings state-of-the-art Zotero AI capabilities directly into your research workflow, allowing you to chat PDFs in Zotero, quickly gain key detailed insight, generate summaries, and more. It supports Gemini 3.1, GPT 5.5, DeepSeek V4, Grok 4, ChatGPT, o1/o3/o4-mini, Claude Sonnet 4.6, Claude Opus 4.6, MiniMax M2.5 in OpenRouter, SiliconFlow, gpt-oss, Kimi K2.6, GLM 5.1, DeepSeek R1 0528, Qwen3.5, Gemma 3, Llama 3.2 and Mistral.   
 Now PapersGPT supports MCP :sparkles: :fire:, any chatbot client which supports MCP can connect to your personal Zotero library through PapersGPT. Windows, Mac and Linux are all supported.    
 Support Zotero 8, 9 since v0.3.7.    
 
@@ -36,7 +36,7 @@ Support Zotero 8, 9 since v0.3.7.
 
 ### Step 1: Download and Install
 
-1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.5.1/papersgpt-v0.5.1.xpi).  
+1.  First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.5.2/papersgpt-v0.5.2.xpi).  
 2.  Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).  
 
 ### Step 2: Start Chatting with a PDF or Multiple PDFs
@@ -83,7 +83,7 @@ https://github.com/user-attachments/assets/a7c383cd-3986-44cb-bd0e-0d4832b07500
 **Lots of SOTA Business LLMs For Choosing on Windows, Mac and Linux:**  
 - The offical API of Qwen, Mistral, Kimi, Z.ai and SiliconFlow can all be accessed in PapersGPT now, they are all top models with very high cost performance.   
 - Integrate OpenRouter in which there are almost all the SOTA business models, and just one key to access all the models on it.  
-  GPT 5.4, Claude Opus 4.7, DeepSeek V4, Claude Haiku 4.5, MiniMax M2.5, Grok 4, Gemini 3.1 Flash Preview, Kimi K2, GLM 5, Qwen3.5, are all here. :sparkles: :fire:  
+  GPT 5.5, Claude Opus 4.7, DeepSeek V4, Claude Haiku 4.5, MiniMax M2.5, Grok 4, Gemini 3.1 Flash Preview, Kimi K2, GLM 5, Qwen3.5, are all here. :sparkles: :fire:  
 - Powered by the smartest cutting-edge LLMs, offering high accuracy to assist you effectively reading papers. Now support the following latest SOTA models:
   *deepseek-v4* **cost-effective 1M context length, chip** :sparkles: :fire:  
   *gemini-3.1-pro* **#1 on ChatBot Arena Leaderboard;** :sparkles: :fire:   
