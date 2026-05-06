@@ -67,6 +67,7 @@ Support Zotero 8, 9 since v0.3.7.
 *   When you're finished, click the red cross (X) close button to exit the PapersGPT window.
 
 ## Key Features  
+**Support MCP which makes you can access your Zotero papers in Claude, ChatGPT desktop app, please see [here](https://github.com/docsagent/docsagent) in detail.**  
 **Professional [SKILL](papersgpt-for-zotero/SKILL.md) provides various agents for connecting to your local Zotero library.**   
 If you use OpenClaw, you can see the papersgpt-for-zotero skill [here](https://clawhub.ai/papersgpt/papersgpt-for-zotero). You are welcome to submit any issues in this github repo or clawhub.    
 Hermes agent support is coming soon.  
