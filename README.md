@@ -149,7 +149,14 @@ cd papersgpt-for-zotero
 npm install
 npm run build
 ```
-The plugin file(papersgpt.xpi) will be built and generated into the build directory
+The plugin file (`papersgpt.xpi`) will be built and generated into the `build` directory.
+
+Build notes:
+
+- `npm run build` runs both the production bundle and the TypeScript check.
+- Use `npm run build-dev` when you only need a development bundle while iterating locally.
+- On Windows PowerShell, run the same commands from the repository root. If `npm` is blocked by a PowerShell shim or execution policy, use `npm.cmd install` and `npm.cmd run build`.
+- If the build fails after switching branches or Node.js versions, remove `node_modules` only after saving any local work, then run `npm install` again.
  
 ## Use Cases
 
