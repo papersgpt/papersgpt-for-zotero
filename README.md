@@ -58,7 +58,7 @@ PapersGPT moves beyond the "fuzzy" matching of standard semantic search by embed
 
 ### Step 1: Download and Install
 
-1. First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.6.0/papersgpt-v0.6.0.xpi).
+1. First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v0.6.1/papersgpt-v0.6.1.xpi).
 2. Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).
 
 ---
