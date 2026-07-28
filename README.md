@@ -1,4 +1,6 @@
 # PapersGPT
+
+[![MCP Toplist](https://mcptoplist.com/badge/mcp.so%2Fpapersgpt-for-zotero%2Fpapersgpt.svg)](https://mcptoplist.com/server/mcp.so%2Fpapersgpt-for-zotero%2Fpapersgpt)
 ## Industrial-Scale Multi-Document Intelligence for Zotero. 100% Local. Zero Hallucinations.
 
 **PapersGPT** is a professional-grade Zotero extension engineered in Native C++ to transform thousands of isolated PDFs into a single, high-precision knowledge engine. While standard tools struggle with single-file chat or slow, "fuzzy" embeddings, PapersGPT delivers instant, cross-document synthesis and global library search with absolute data sovereignty.
