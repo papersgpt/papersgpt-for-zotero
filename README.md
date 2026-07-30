@@ -11,7 +11,7 @@
 
 Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts that lag or crash as your library grows. **PapersGPT’s C++ core provides:**
 
-- **Near-Instant Indexing**: Process 1,000+ documents in minutes, not hours.
+- **Near-Instant Indexing**: Process 10,000+ documents in minutes, not hours.
 - **Hardware Efficiency**: Millisecond-level retrieval with minimal RAM usage, leaving your system resources free for other tasks.
 - **Zero-Cloud Dependency**: High-speed structural indexing occurs 100% on your machine. No external APIs, no cloud bottlenecks, even works in Airplane Mode.
 
