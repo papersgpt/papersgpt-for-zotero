@@ -3232,14 +3232,6 @@ export default class Views {
     text = await Meet.integratellms.getGPTResponse(text) as string
     this.dotsContainer?.classList.remove("loading")
     if (text.trim().length) {
-      try {
-        window.eval(`
-          setTimeout(async () => {
-            ${text}
-          })
-        `)
-        popunWin.createLine({ text: "Code is executed", type: "success" })
-      } catch { }
       popunWin.createLine({ text: "Done", type: "success" })
     } else {
       popunWin.createLine({ text: "Done", type: "fail" })
@@ -3268,7 +3260,7 @@ export default class Views {
       .find((tag: Tag) => {
       const trigger = tag.trigger
       if (trigger.startsWith("/") && trigger.endsWith("/")) {
-        return (window.eval(trigger) as RegExp).test(text)
+        return new RegExp(trigger.slice(1, -1)).test(text)
       } else {
         return text.indexOf(trigger as string) >= 0
       }
