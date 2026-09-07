@@ -19,7 +19,7 @@ Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts th
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1,000 PDFs | 4.2 GB | 51.5s | 13.1 ms | 353 MB | 100 MB |
 | **10,000 PDFs** | **42 GB** | **421s (7m 01s)** | **19.5 ms** | **2.21 GB** | **901 MB** |
-  
+👉 **[View Detailed Scalability Report & System Specs](./benchmark.md)**
 - **Hardware Efficiency**: Millisecond-level retrieval with minimal RAM usage, leaving your system resources free for other tasks.
 - **Zero-Cloud Dependency**: High-speed structural indexing occurs 100% on your machine. No external APIs, no cloud bottlenecks, even works in Airplane Mode.
 
