@@ -1,4 +1,4 @@
-[← Back to README](../README.md)
+[← Back to README](./README.md)
 
 # Scalability & Performance Report: Handling 10,000+ Documents
 *A technical analysis of indexing speed, memory management, and data efficiency with a 42GB research corpus.*
@@ -60,4 +60,4 @@ Search performance remains lightning-fast even as data volume grows. Even with a
 *   **NAS & Remote Support:** Optimized for low disk I/O, making it ideal for environments where PDFs are stored on Network Attached Storage.
 
 ---
-[← Back to README](../README.md)
+[← Back to README](./README.md)
