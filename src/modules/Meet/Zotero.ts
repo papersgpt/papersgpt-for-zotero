@@ -47,7 +47,15 @@ export function getClipboardText(): string {
  */
 async function selectedItems2documents(key: string) {
   const docs = ZoteroPane.getSelectedItems().map((item: Zotero.Item) => {
-    const text = JSON.stringify(item.toJSON());
+    // Only send the minimal, non-sensitive bibliographic fields needed for
+    // similarity search to external LLM services, instead of the full
+    // item.toJSON() payload (which can include tags, notes, relations,
+    // attachment paths and other private metadata).
+    const text = JSON.stringify({
+      title: item.getField("title"),
+      abstractNote: item.getField("abstractNote"),
+      date: item.getField("date")
+    });
     return new Document({
       pageContent: text.slice(0, 500),
       metadata: {
