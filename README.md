@@ -9,9 +9,8 @@
 
 ## ⚡ Extreme Performance: Built for "Big Data" Researchers
 
-Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts that lag or crash as your library grows. **PapersGPT’s C++ core provides:**
+Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts that lag or crash as your library grows. PapersGPT is built to handle professional-scale research. It turns massive document silos into instant knowledge bases. Whether you have 100 or 10,000+ PDFs, the experience remains lightning-fast. **PapersGPT’s Enterprise-Grade Performance:**
 
-- **Enterprise-Grade Performance**: PapersGPT is built to handle professional-scale research. It turns massive document silos into instant knowledge bases. Whether you have 100 or 10,000+ PDFs, the experience remains lightning-fast.  
 *   **Massive Throughput:** 10,000 PDFs (170k pages) totaling **42GB** indexed in just **7 minutes**.
 *   **Instant Retrieval:** Average query response time of **19.5ms**, even at 10k scale (42GB of knowledge).
 *   **Smart Resource Management:** Automatic memory offloading ensures a low resource footprint for large-scale enterprise libraries.
