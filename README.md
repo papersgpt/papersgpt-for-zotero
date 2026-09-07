@@ -11,6 +11,16 @@
 
 Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts that lag or crash as your library grows. **PapersGPT’s C++ core provides:**
 
+- **Enterprise-Grade Performance**: PapersGPT is built to handle professional-scale research. It turns massive document silos into instant knowledge bases. Whether you have 100 or 10,000+ PDFs, the experience remains lightning-fast.  
+*   **Massive Throughput:** 10,000 PDFs (170k pages) totaling **42GB** indexed in just **7 minutes**.
+*   **Instant Retrieval:** Average query response time of **19.5ms**, even at 10k scale (42GB of knowledge).
+*   **Smart Resource Management:** Automatic memory offloading ensures a low resource footprint for large-scale enterprise libraries.
+
+| Library Size | Raw Data Size | Indexing Time | Avg. Query Time | Memory (RSS) | Index Size |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1,000 PDFs | 4.2 GB | 51.5s | 13.1 ms | 353 MB | 100 MB |
+| **10,000 PDFs** | **42 GB** | **421s (7m 01s)** | **19.5 ms** | **2.21 GB** | **901 MB** |
+  
 - **Benchmark**: On a Mac with an Intel i9, indexing 1,506 documents occupying 4.5GB of disk space took 141 seconds, while the PapersGPT agent process consumed 227MB of memory, with an average retrieval time of 15ms.
 - **Near-Instant Indexing**: Process 10,000+ documents in minutes, not hours.
 - **Hardware Efficiency**: Millisecond-level retrieval with minimal RAM usage, leaving your system resources free for other tasks.
