@@ -3,14 +3,6 @@
 # Scalability & Performance Report: Handling 10,000+ Documents
 *A technical analysis of indexing speed, memory management, and data efficiency with a 42GB research corpus.*
 
----
-
-### 📢 Status: Next-Gen Engine Preview
-The benchmarks presented below are powered by our **newly optimized indexing engine**. This update delivers a massive leap in scalability and resource efficiency. 
-> [!NOTE]
-> This engine is currently in the final stage of internal testing and has not yet been rolled out to the stable version. It will be **officially launched very soon**. Stay tuned for the update!
-
----
 
 ## 💻 Test Environment
 *   **Device:** MacBook Pro (Intel Core i9)
@@ -18,6 +10,7 @@ The benchmarks presented below are powered by our **newly optimized indexing eng
 *   **Data Source:** 10,000 Academic PDFs downloaded from arXiv (Standard research papers)
 *   **Average Length:** 17 pages per document
 *   **Total Raw Data:** ~42.0 GB
+*   **Version:** [v1.5.0](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v1.5.0/papersgpt-v1.5.0.xpi)
 
 ## 📊 Performance Metrics
 
