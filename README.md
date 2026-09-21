@@ -61,7 +61,7 @@ PapersGPT moves beyond the "fuzzy" matching of standard semantic search by embed
 
 - **AutoPilot Automation**: The world's first "Autonomous Researcher" for Zotero. Define a research goal and let AI batch-process 1,000+ papers overnight, saving insights directly into Zotero Notes while you sleep.
 - **SOTA Model Cowork**: Seamlessly switch between DeepSeek V4 Pro, Claude Fable 5, Claude Opus 5, GPT-5.6, Gemini 3.7 Flash, GLM 5.3, and Kimi k3, or run Free Local LLMs (via Ollama) for a total air-gapped experience.
-- **Zotero MCP Server**: Integrate your local knowledge base as a primary "skill" for agentic platforms like Claude Code, Cursor, or Windsurf.
+- **Zotero MCP Server**: Integrate your local Zotero knowledge base as a primary "skill" for agentic platforms like Claude Code, Cursor, or Windsurf. Even no need to start Zotero, you can index and search all your Zotero library very fast by the [mcp-zotero](https://github.com/docsagent/docsagent).
 
 ---
 
