@@ -69,7 +69,7 @@ PapersGPT moves beyond the "fuzzy" matching of standard semantic search by embed
 
 ### Step 1: Download and Install
 
-1. First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v1.5.0/papersgpt-v1.5.0.xpi).
+1. First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v1.7.0/papersgpt-v1.7.0.xpi).
 2. Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).
 
 ---
@@ -110,7 +110,7 @@ For more detailed information please see [here](https://www.papersgpt.com/models
 
 ## 🔌 MCP & SKILL Support
 
-**Support MCP** which makes you can access your Zotero papers in Claude, ChatGPT desktop app, please see [here](https://github.com/docsagent/docsagent) in detail.
+**Support MCP** which makes you can access your Zotero papers, Obsidian, and Apple Notes in Claude, ChatGPT desktop app, please see [here](https://github.com/docsagent/docsagent) in detail.
 
 **Professional [SKILL](papersgpt-for-zotero/SKILL.md)** provides various agents for connecting to your local Zotero library.
 
