@@ -1,67 +1,86 @@
 # PapersGPT
 
-## Industrial-Scale Multi-Document Intelligence for Zotero. 100% Local. Zero Hallucinations.
+## AI Research Agent for Zotero — Whole-Library Search, Literature Radar, Multi-PDF Chat & AutoPilot
 
-**PapersGPT** is a professional-grade Zotero extension engineered in Native C++ to transform thousands of isolated PDFs into a single, high-precision knowledge engine. While standard tools struggle with single-file chat or slow, "fuzzy" embeddings, PapersGPT delivers instant, cross-document synthesis and global library search with absolute data sovereignty.
+**PapersGPT** is a professional AI research tool for Zotero, built for deep research across your entire library. More than chatting with a single PDF — go one step beyond: ask questions across your **entire library**, **discover and track new research** with Literature Radar, **compare multiple papers side-by-side**, and let **AutoPilot** batch-read collections overnight, with structured results saved directly into Zotero Notes.
+
+It supports 30+ cloud LLMs (GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
+
+<p align="center">
+  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.1.0/papersgpt-v2.1.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
+  <a href="https://www.papersgpt.com">Website</a> ·
+  <a href="https://www.papersgpt.com/quickstart">Quickstart</a>
+</p>
+
+## 🧭 PapersGPT at a Glance
+
+| | |
+| :--- | :--- |
+| **What it is** | Professional AI research agent and plugin for Zotero — deep-research your library: chat with PDFs, whole-library search, discover and track new papers |
+| **LLM support** | 30+ cloud models (GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3…) · built-in local models · Ollama · custom OpenAI-compatible APIs |
+| **Privacy** | 100% local parsing, indexing and search; local LLMs run fully offline — your data never leaves your machine |
+| **Scale (tested)** | 10,000 PDFs (42 GB, 170k pages) indexed in ~7 minutes; 19.5 ms average query time — [benchmark details](./benchmark.md) |
+| **Integrations** | Zotero MCP Server (Claude Desktop, Claude Code, Cursor, ChatGPT desktop…) · Ollama · Agent SKILL |
+| **Compatibility** | Zotero 7, 8, 9, 10 · macOS, Windows, Linux |
+| **License** | AGPL-3.0 open source |
 
 ---
 
-## ⚡ Extreme Performance: Built for "Big Data" Researchers
+## ✨ Core Features
 
-Stop waiting for embedding progress bars. Most AI tools use Python/JS scripts that lag or crash as your library grows. PapersGPT is built to handle professional-scale research. It turns massive document silos into instant knowledge bases. Whether you have 100 or 10,000+ PDFs, the experience remains lightning-fast. **PapersGPT’s Enterprise-Grade Performance:**
+### 1. Whole-Library Search — ask across every paper in your Zotero library
+PapersGPT indexes your entire Zotero library (thousands of PDFs). Just ask in natural language and get answers based on **all** your papers — not just the one you have open. Works at 10,000+ paper scale, and pairs well with multi-PDF chat for cross-paper analysis.
 
-*   **Massive Throughput:** 10,000 PDFs (170k pages) totaling **42GB** indexed in just **7 minutes**.
-*   **Instant Retrieval:** Average query response time of **19.5ms**, even at 10k scale (42GB of knowledge).
-*   **Smart Resource Management:** Automatic memory offloading ensures a low resource footprint for large-scale enterprise libraries.
+### 2. Literature Radar — discover & track new research
+Subscribe to your research topics and Literature Radar monitors **arXiv, PubMed, Semantic Scholar, Europe PMC, Crossref, bioRxiv, medRxiv** for you. New papers arrive as a daily digest inside Zotero, visualized against your existing collections — new research finds you, instead of you chasing databases. Queries go straight from your machine to the source APIs, with no relay server.
+
+### 3. Multi-PDF Chat & Comparison
+Beyond chatting with a single PDF, you can chat with multiple PDFs at once: select several papers or an entire collection and compare **methods, results and controversies side-by-side**. Synthesize the cross-paper results into structured drafts or Zotero notes.
+
+*“Compare the sample sizes and p-values of all 50 clinical trials in my 'Cardiology' folder.”*
+
+### 4. AutoPilot — batch-read 100+ papers overnight
+Set your research question once and AutoPilot autonomously reads the whole collection, extracting hypotheses, methods and findings into **structured Zotero Notes** while you sleep. Works with cloud models or fully local LLMs, protecting your privacy.
+
+### 5. Verifiable Evidence — click-to-jump citations
+Every AI response includes precise citations; clicking one takes you straight to the exact paper being cited. Accuracy you can verify, not just trust.
+
+### 6. Zotero MCP Server & Agent Skills
+Turn your local Zotero knowledge base into a primary "skill" for agentic platforms — **Claude Desktop, Claude Code, Cursor, Windsurf, ChatGPT desktop** and any MCP-compatible client. Setup takes just a few clicks from the PapersGPT settings panel; with [mcp-zotero](https://github.com/docsagent/docsagent) you can even index and search your whole library **without launching Zotero**. See [MCP & SKILL Support](#-mcp--skill-support) below.
+
+---
+
+## 🔍 How It Works
+
+PapersGPT parses and indexes every PDF in your Zotero library **locally** — structure-aware, so headings, sections and tables stay meaningful. When you ask a question, it retrieves the relevant passages across your library, synthesizes an answer with your chosen LLM (cloud or local), and attaches **click-to-jump citations** back to the exact source papers. Parsing, indexing and searching all happen on your machine — nothing is uploaded.
+
+---
+
+## ⚡ Performance at Scale
+
+PapersGPT's engine parses document structure directly, so a library of 100 or 10,000+ PDFs stays fast to query — with 100% of parsing, indexing and searching happening **locally**, even in Airplane Mode.
 
 | Library Size | Raw Data Size | Indexing Time | Avg. Query Time | Memory (RSS) | Index Size |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1,000 PDFs | 4.2 GB | 51.5s | 13.1 ms | 353 MB | 100 MB |
-| **10,000 PDFs** | **42 GB** | **421s (7m 01s)** | **19.5 ms** | **2.21 GB** | **901 MB** | 
+| **10,000 PDFs** | **42 GB** | **421s (7m 01s)** | **19.5 ms** | **2.21 GB** | **901 MB** |
 
 👉 **[View Detailed Scalability Report & System Specs](./benchmark.md)**
 
-- **Hardware Efficiency**: Millisecond-level retrieval with minimal RAM usage, leaving your system resources free for other tasks.
-- **Zero-Cloud Dependency**: High-speed structural indexing occurs 100% on your machine. No external APIs, no cloud bottlenecks, even works in Airplane Mode.
-
 ---
 
-## 🎯 Superior Multi-Doc Intelligence & Accuracy
+## 🤖 Models: 30+ Cloud LLMs or Fully Local & Offline
 
-PapersGPT moves beyond the "fuzzy" matching of standard semantic search by embeddings. Our engine understands document structure, ensuring that cross-paper comparisons are logically sound and factually accurate.
+- **Cloud LLMs (30+):** GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3 and more — switch seamlessly, or plug in your own API key / any custom OpenAI-compatible endpoint.
+- **Built-in local models:** Gemma 4, Qwen 3.5, DeepSeek Distill, Mistral 7B, Llama 3.1 — one-click download from Hugging Face, no complex installation. Run **100% on your machine, completely offline, no API keys needed.**
 
-- **Deep Cross-Document Comparison**  
-  *“Compare the sample sizes and p-values of all 50 clinical trials in my 'Cardiology' folder.”*  
-  AI synthesizes data from multiple files into structured tables or reports without losing the nuances of individual studies.
+Three ways to connect local LLMs:
 
-- **Global Library Synthesis**  
-  Ask questions across your entire Zotero library. Identify trends, evolution of terms, or conflicting evidence across 10,000+ documents simultaneously.
+1. **Integrated SOTA open-source LLMs** — select a model from the "Local LLM" option and it is downloaded from Hugging Face and launched automatically.
+2. **Custom OpenAI-compatible endpoint** — connect to any privately deployed OpenAI-compatible LLM API.
+3. **Ollama integration** — use any LLM running in your local Ollama instance.
 
-- **Verifiable Evidence (Click-to-Jump)**  
-  Accuracy is useless without proof. Every synthesis includes interactive citations. Every AI response includes precise citations; clicking on them takes you directly to the specific paper being cited.
-
-- **Ensure the absolute 100% privacy and security of your local sensitive Zotero data**
-
-- **Support 100% offline local LLMs**  
-  PapersGPT currently supports three different ways to connect to local large language models (LLMs):
-
-  1. **Integrated SOTA open-source LLMs** – such as Gemma 4 12B and Qwen3.5 4B. These models can be downloaded and run with a single click, eliminating the need for complex installation procedures; simply selecting a model from the "Local LLM" option triggers an automatic download from Hugging Face and launches the model.
-
-  2. **Custom OpenAI-compatible endpoint** – connect to a flexible OpenAI-compatible privately deployed LLM endpoint by configuring a customized LLM API within PapersGPT.
-
-  3. **Ollama integration** – supports connections to local Ollama instances; any LLM deployed and running locally via Ollama can be connected and used simply by configuring it within PapersGPT.
-
-- **Parsing, Indexing and Searching** documents in Zotero are performed locally, there is no reliance on the clouds, and these operations can be run offline.
-
-- **Local LLMs and local document processing** ensure **"zero-byte" data leakage** from your device.
-
----
-
-## ✨ Core Unique Features
-
-- **AutoPilot Automation**: The world's first "Autonomous Researcher" for Zotero. Define a research goal and let AI batch-process 1,000+ papers overnight, saving insights directly into Zotero Notes while you sleep.
-- **SOTA Model Cowork**: Seamlessly switch between DeepSeek V4.1, Claude Fable 5.1, Claude Opus 5.5, GPT-6.1, Gemini 4, GLM 5.3, and Kimi k3, or run Free Local LLMs (via Ollama) for a total air-gapped experience.
-- **Zotero MCP Server**: Integrate your local Zotero knowledge base as a primary "skill" for agentic platforms like Claude Code, Cursor, or Windsurf. Even no need to start Zotero, you can index and search all your Zotero library very fast by the [mcp-zotero](https://github.com/docsagent/docsagent).
+🔒 **Privacy by design:** parsing, indexing and searching all happen locally; local LLMs + local document processing ensure **"zero-byte" data leakage** from your device — critical for confidential research, unpublished work and institutional compliance.
 
 ---
 
@@ -69,54 +88,62 @@ PapersGPT moves beyond the "fuzzy" matching of standard semantic search by embed
 
 ### Step 1: Download and Install
 
-1. First, download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.1.0/papersgpt-v2.1.0.xpi).
-2. Then, install the downloaded Zotero plugin file. For more details, please see [here](https://www.papersgpt.com/quickstart).
+1. Download the latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.1.0/papersgpt-v2.1.0.xpi) (.xpi).
+2. Install it into Zotero. For more details, see the [PapersGPT Quickstart guide](https://www.papersgpt.com/quickstart).
 
----
+### Step 2: Launch and Choose What to Chat With
 
-### Step 2: Start Chatting with a PDF, Multiple PDFs or your entire Zotero Library
+- **Chat with a Single PDF** — open a PDF from your library, then click <img width="24" height="24" alt="PapersGPT button in the Zotero PDF viewer toolbar" src="https://github.com/user-attachments/assets/5658ede0-131f-481c-93f0-b4072440524e" /> on the PDF viewer's top menu, or use the shortcut:
+  - **macOS:** `Command + Enter` · **Windows:** `Ctrl + Enter`
+- **Chat with Multiple PDFs** — select multiple files or a collection in the main Zotero window (`Ctrl`+click on Windows, `Command`+click on Mac).
+- **Chat with the Entire Library** — check **"Search entire library"** in PapersGPT and it will retrieve relevant documents across the whole library and synthesize an answer.
+- **Literature Radar & AutoPilot** — subscribe to topics in Literature Radar, or set a research goal in AutoPilot and let it process a collection overnight.
 
-#### 1. Launch PapersGPT
+Then pick a model: any of the 30+ cloud LLMs (a built-in trial is included, no API key needed to start) or a built-in local model. See the [Models guide](https://www.papersgpt.com/models) for details.
 
-- **Chat with a Single PDF**
-  - Open a PDF from your Zotero library.
-  - When you need AI assistance, click <img width="24" height="24" alt="papersgpt-logo" src="https://github.com/user-attachments/assets/5658ede0-131f-481c-93f0-b4072440524e" /> on the top menu of the PDF viewer or use a keyboard shortcut:
-    - **macOS:** `Command + Enter`
-    - **Windows:** `Ctrl + Enter`
+### Step 3: Ask, Save and Close
 
-- **Chat with Multiple PDFs**
-  - Select multiple files or a collection in the main Zotero window. Hold `Ctrl` while clicking files on Windows. Hold `Command` while clicking files on Mac.
-
-- **Chat with the entire Zotero Library**
-  - Simply check "Search entire library" in PapersGPT, and it will search the entire document library for relevant documents and synthesize answers based on the questions.
-
-#### 2. Select a LLM model and configure the API KEY of the model
-
-For more detailed information please see [here](https://www.papersgpt.com/models).
-
-#### 3. Ask Questions
-
-- Use the built-in prompts for common tasks like: Summary, Background, Generating a literature review, Theoretical frameworks, Future directions.
-- You can also directly type any question or custom prompt to start the conversation.
-
----
-
-### Step 3: Manage Your Findings and close the chat
-
-- After chatting, you can easily save the key insights and answers you've gathered from the conversation.
-- When you're finished, click the red cross (X) close button to exit the PapersGPT window.
+- Use the built-in prompts for common tasks: Summary, Background, Literature review, Theoretical frameworks, Future directions — or type any question directly.
+- Save the key insights from your conversation into your Zotero notes.
+- When you're finished, click the red cross (X) button to exit the PapersGPT window.
 
 ---
 
 ## 🔌 MCP & SKILL Support
 
-**Support MCP** which makes you can access your Zotero papers, Obsidian, and Apple Notes in Claude, ChatGPT desktop app, please see [here](https://github.com/docsagent/docsagent) in detail.
+**MCP** lets you access your Zotero papers, Obsidian, and Apple Notes from Claude, the ChatGPT desktop app and other MCP clients — see [docsagent](https://github.com/docsagent/docsagent) for details.
 
-**Professional [SKILL](papersgpt-for-zotero/SKILL.md)** provides various agents for connecting to your local Zotero library.
+**Professional [SKILL](papersgpt-for-zotero/SKILL.md)** provides various agents for connecting to your local Zotero library:
 
-If you use OpenClaw, you can see the papersgpt-for-zotero skill [here](https://clawhub.ai/papersgpt/papersgpt-for-zotero). You are welcome to submit any issues in this github repo or clawhub.
+- OpenClaw users: get the skill from [ClawHub](https://clawhub.ai/papersgpt/papersgpt-for-zotero) — issues are welcome in this GitHub repo or on ClawHub.
+- Users of OpenAI, Claude, Cursor, Claude Code, CodeX or Gemini CLI apps can directly copy and load the [SKILL](papersgpt-for-zotero/SKILL.md).
 
-If you use the App of OpenAI, Claude, Cursor, Claude Code, CodeX or Gemini CLI, you can directly copy and load the [SKILL](papersgpt-for-zotero/SKILL.md).
+---
+
+## ❓ FAQ
+
+### What is PapersGPT?
+A professional AI research tool that runs inside Zotero: it indexes your library locally, so you can chat with a single PDF, multiple papers, or the whole library — track new research with Literature Radar and batch-read collections with AutoPilot.
+
+### Can I chat with multiple PDFs in Zotero?
+Yes. Select several papers or a whole collection and ask questions across all of them — methods, results and controversies are compared side-by-side, and answers can be saved into Zotero notes.
+
+### Can I use AI with my Zotero library completely locally and offline?
+Yes. Built-in local LLMs (Gemma 4, Qwen 3.5, Mistral 7B, Llama 3.1 and more) run entirely on your machine — PDFs, questions and responses never leave it, and parsing, indexing and searching work offline too.
+
+### How do I do a literature review with AI and Zotero?
+Select a collection, set your research questions, and AutoPilot reads the papers overnight, extracting findings into structured Zotero Notes. You can also chat with multiple papers simultaneously and export synthesized insights.
+
+### Can AI automatically track new papers in my research field?
+Yes — subscribe to your topics in Literature Radar and get daily digests from arXiv, PubMed, Semantic Scholar, bioRxiv and more, delivered inside Zotero.
+
+### How do I connect Zotero to Claude Desktop, ChatGPT or Cursor?
+PapersGPT's built-in MCP (Model Context Protocol) Server connects your library to any MCP-compatible client — setup takes a few clicks in the settings panel. See [MCP & SKILL Support](#-mcp--skill-support).
+
+### How large a library can PapersGPT handle?
+In our benchmark, 10,000 PDFs (42 GB, 170k pages) were indexed in about 7 minutes, with an average query time of 19.5 ms. See the [scalability report](./benchmark.md).
+
+More questions: [the PapersGPT FAQ](https://www.papersgpt.com/#faq) on papersgpt.com.
 
 ---
 
@@ -130,8 +157,13 @@ PapersGPT is designed for professionals in **Research, Legal and Finance** who h
 
 ---
 
-## 👥 Join 50,000+ Researchers
+## 👥 Join 50,000+ Satisfied Researchers
+
+> *"PapersGPT is one of those apps you don't realize you need until you try it. It helps me filter my Zotero library and focus on reading relevant papers at amazing speed."*
+> — Pratik Narain Srivastava, Postdoctoral Researcher, University of Calgary
 
 **Unlock Professional Capabilities** at [papersgpt.com](https://www.papersgpt.com) →
 
 > Don't just search your library. Understand it. PapersGPT provides the industrial-scale intelligence your research library demands.
+
+
