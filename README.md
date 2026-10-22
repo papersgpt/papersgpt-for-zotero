@@ -164,4 +164,6 @@ PapersGPT is designed for professionals in **Research, Legal and Finance** who h
 
 **Unlock Professional Capabilities** at [papersgpt.com](https://www.papersgpt.com) →
 
-> Don't just search your library. Understand it.
+> Don't just search your library. Understand it. PapersGPT provides the industrial-scale intelligence your research library demands.
+
+
