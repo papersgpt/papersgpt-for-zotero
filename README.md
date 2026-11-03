@@ -4,10 +4,10 @@
 
 **PapersGPT** is a professional AI research tool for Zotero, built for deep research across your entire library. More than chatting with a single PDF — go one step beyond: ask questions across your **entire library**, **discover and track new research** with Literature Radar, **compare multiple papers side-by-side**, and let **AutoPilot** batch-read collections overnight, with structured results saved directly into Zotero Notes.
 
-It supports 30+ cloud LLMs (GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
+It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
 
 <p align="center">
-  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.1.0/papersgpt-v2.1.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
+  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.2.0/papersgpt-v2.2.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
   <a href="https://www.papersgpt.com">Website</a> ·
   <a href="https://www.papersgpt.com/quickstart">Quickstart</a>
 </p>
@@ -17,7 +17,7 @@ It supports 30+ cloud LLMs (GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…)
 | | |
 | :--- | :--- |
 | **What it is** | Professional AI research agent and plugin for Zotero — deep-research your library: chat with PDFs, whole-library search, discover and track new papers |
-| **LLM support** | 30+ cloud models (GPT-6, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3…) · built-in local models · Ollama · custom OpenAI-compatible APIs |
+| **LLM support** | 30+ cloud models (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3…) · built-in local models · Ollama · custom OpenAI-compatible APIs |
 | **Privacy** | 100% local parsing, indexing and search; local LLMs run fully offline — your data never leaves your machine |
 | **Scale (tested)** | 10,000 PDFs (42 GB, 170k pages) indexed in ~7 minutes; 19.5 ms average query time — [benchmark details](./benchmark.md) |
 | **Integrations** | Zotero MCP Server (Claude Desktop, Claude Code, Cursor, ChatGPT desktop…) · Ollama · Agent SKILL |
