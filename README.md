@@ -7,7 +7,7 @@
 It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
 
 <p align="center">
-  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.2.0/papersgpt-v2.2.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
+  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.3.0/papersgpt-v2.3.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
   <a href="https://www.papersgpt.com">Website</a> ·
   <a href="https://www.papersgpt.com/quickstart">Quickstart</a>
 </p>
