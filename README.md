@@ -17,7 +17,7 @@ It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok�
 | | |
 | :--- | :--- |
 | **What it is** | Professional AI research agent and plugin for Zotero — deep-research your library: chat with PDFs, whole-library search, discover and track new papers |
-| **LLM support** | 30+ cloud models (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3…) · built-in local models · Ollama · custom OpenAI-compatible APIs |
+| **LLM support** | 30+ cloud models (GPT-6.1, Claude Fable 5.2, Claude 5.5, Gemini 4 Carbon, Gemini 4 Hydrogen, DeepSeek v4.1, Grok, GLM 5.3, Kimi k3…) · built-in local models · Ollama · custom OpenAI-compatible APIs |
 | **Privacy** | 100% local parsing, indexing and search; local LLMs run fully offline — your data never leaves your machine |
 | **Scale (tested)** | 10,000 PDFs (42 GB, 170k pages) indexed in ~7 minutes; 19.5 ms average query time — [benchmark details](./benchmark.md) |
 | **Integrations** | Zotero MCP Server (Claude Desktop, Claude Code, Cursor, ChatGPT desktop…) · Ollama · Agent SKILL |
