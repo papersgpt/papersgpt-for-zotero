@@ -120,6 +120,19 @@ Then pick a model: any of the 30+ cloud LLMs (a built-in trial is included, no A
 
 ---
 
+## 📱 Related Project: DocsAgent for iPhone
+
+**[DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595)** puts your Zotero library in your pocket — search every paper and chat with them from your phone, with answers that cite the exact passage. No account, no sign-in, your library stays on your devices.
+
+**[App Store](https://apps.apple.com/us/app/docsagent/id6829574595)** · **[docsagent.app](https://www.docsagent.app)**
+
+Before you download:
+
+- **A Mac is required for setup** — the free DocsAgent Mac companion pairs your iPhone with your library via a QR code (Windows version coming soon).
+- **Not yet available in mainland China or the EU** — the app can't be downloaded or used in these two regions for now.
+
+---
+
 ## ❓ FAQ
 
 ### What is PapersGPT?
