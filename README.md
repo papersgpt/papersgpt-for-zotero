@@ -6,6 +6,8 @@
 
 It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
 
+Want the same library on your phone? See **[DocsAgent for iPhone](#-related-project-docsagent-for-iphone)** below.
+
 <p align="center">
   <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.3.0/papersgpt-v2.3.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
   <a href="https://www.papersgpt.com">Website</a> ·
@@ -124,11 +126,11 @@ Then pick a model: any of the 30+ cloud LLMs (a built-in trial is included, no A
 
 **[DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595)** puts your Zotero library in your pocket — search every paper and chat with them from your phone, with answers that cite the exact passage. No account, no sign-in, your library stays on your devices.
 
-**[App Store](https://apps.apple.com/us/app/docsagent/id6829574595)** · **[DocsAgent official website](https://www.docsagent.app)**
+**[App Store](https://apps.apple.com/us/app/docsagent/id6829574595)** · **[docsagent.app](https://www.docsagent.app)**
 
 Before you download:
 
-- **A Mac is required for setup** — the free DocsAgent Mac companion pairs your iPhone with your library via a QR code (Windows version coming soon).
+- **A Mac is required for setup** — the free [DocsAgent Mac companion](https://www.docsagent.app/#download) pairs your iPhone with your library via a QR code (Windows version coming soon).
 - **Not yet available in mainland China or the EU** — the app can't be downloaded or used in these two regions for now.
 
 ---
