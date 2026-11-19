@@ -6,10 +6,11 @@
 
 It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
 
-Want the same library on your phone? See **[DocsAgent for iPhone](#-related-project-docsagent-for-iphone)** below.
+The latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.4.0/papersgpt-v2.4.0.xpi), through its integration with the [DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595) app, allows you to chat with your pocket Zotero on iPhone. More details please see [docsagent.app](https://www.docsagent.app).
+- **Not yet available in mainland China or the EU** — the app can be downloaded and used in all other regions now.
 
 <p align="center">
-  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.3.0/papersgpt-v2.3.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
+  <a href="https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.4.0/papersgpt-v2.4.0.xpi"><b>⬇️ Download PapersGPT</b></a> ·
   <a href="https://www.papersgpt.com">Website</a> ·
   <a href="https://www.papersgpt.com/quickstart">Quickstart</a>
 </p>
@@ -119,21 +120,6 @@ Then pick a model: any of the 30+ cloud LLMs (a built-in trial is included, no A
 
 - OpenClaw users: get the skill from [ClawHub](https://clawhub.ai/papersgpt/papersgpt-for-zotero) — issues are welcome in this GitHub repo or on ClawHub.
 - Users of OpenAI, Claude, Cursor, Claude Code, CodeX or Gemini CLI apps can directly copy and load the [SKILL](papersgpt-for-zotero/SKILL.md).
-
----
-
-## 📱 Related Project: DocsAgent for iPhone
-
-**[DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595)** puts your Zotero library in your pocket — search every paper and chat with them from your phone, with answers that cite the exact passage. No account, no sign-in, your library stays on your devices.
-
-**[App Store](https://apps.apple.com/us/app/docsagent/id6829574595)** · **[docsagent.app](https://www.docsagent.app)**
-
-Before you download:
-
-- **A Mac is required for setup** — the free [DocsAgent Mac companion](https://www.docsagent.app/#download) pairs your iPhone with your library via a QR code (Windows version coming soon).
-- **Not yet available in mainland China or the EU** — the app can't be downloaded or used in these two regions for now.
-
----
 
 ## ❓ FAQ
 
