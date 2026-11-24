@@ -6,7 +6,7 @@
 
 It supports 30+ cloud LLMs (GPT-6.1, Claude 5.5, Gemini 4, DeepSeek v4.1, Grok…), built-in local models that run fully offline, or your own API key. **Quick to start:** a built-in trial of cloud AI chats — no API key needed.
 
-The latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.4.0/papersgpt-v2.4.0.xpi), through its integration with the [DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595) app, allows you to chat with your pocket Zotero on iPhone. More details please see [docsagent.app](https://www.docsagent.app).
+The latest [PapersGPT](https://github.com/papersgpt/papersgpt-for-zotero/releases/download/papersgpt-v2.4.2/papersgpt-v2.4.2.xpi), through its integration with the [DocsAgent](https://apps.apple.com/us/app/docsagent/id6829574595) app, allows you to chat with your pocket Zotero on iPhone. More details please see [docsagent.app](https://www.docsagent.app).
 - **Not yet available in mainland China or the EU** — the app can be downloaded and used in all other regions now.
 
 <p align="center">
